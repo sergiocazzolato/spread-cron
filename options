@@ -1,2 +1,2 @@
-pattern_extractor="curl -sI https://login.ubuntu.com | sed -n 's|X-Bzr-Revision-Number: \(.*\)|\1|p'"
-message="New SSO version"
+pattern_extractor="curl -sI https://search.apps.staging.ubuntu.com/api/v1/channels -H 'Cache-control: no-cache' | sed -n 's|X-Bzr-Revision-Number: \(.*\)|\1|p'"
+message="New staging CPI version"
