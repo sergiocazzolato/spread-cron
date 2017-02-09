@@ -1,4 +1,4 @@
-project: spread-cron-core-amd64-staging-sync
+project: spread-cron-core-i386-staging-sync
 
 path: /sync
 
@@ -11,8 +11,6 @@ backends:
 
         systems:
             - ubuntu-16.04-64:
-                kernel: GRUB 2
-            - ubuntu-16.04-32:
                 kernel: GRUB 2
 
 suites:
