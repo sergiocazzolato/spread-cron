@@ -1,2 +1,2 @@
-pattern_extractor="curl -sI https://dashboard.snapcraft.io/dev/ | sed -n 's|X-Bzr-Revision-Number: \(.*\)|\1|p'"
+pattern_extractor="curl -sI -H 'X-Ubuntu-Architecture: amd64' -H 'X-Ubuntu-Series: 16' https://search.apps.ubuntu.com/api/v1/snaps/details/core | sed -n 's|X-VCS-Revision: \(.*\)|\1|p'"
 message="New SCA version"
