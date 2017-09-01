@@ -1,2 +1,2 @@
-pattern_extractor="curl --silent -O http://archive.ubuntu.com/ubuntu/dists/zesty-proposed/universe/binary-amd64/Packages.gz  > /dev/null && zcat -c ./Packages.gz | grep -e 'ubuntu-snappy_.*_all.deb' | awk -F'ubuntu-snappy_|_all.deb' '{print \$2}'"
-message="New snapd package in zesty's proposed pocket"
+pattern_extractor="curl --silent -O http://archive.ubuntu.com/ubuntu/dists/zesty-proposed/universe/binary-amd64/Packages.gz  > /dev/null && zcat -c ./Packages.gz | grep -e 'ubuntu-snappy_.*_all.deb' | tail -n 1 | awk -F'ubuntu-snappy_|_all.deb' '{print \$2}'"
+message="New snapd package in zesty's proposed"
