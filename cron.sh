@@ -12,6 +12,17 @@ record_new_value(){
     git push
 }
 
+run_external_script(){
+    mkdir -p "$BASE_DIR"/logs
+    rm -f "$BASE_DIR"/logs/*
+    if [ ! -f . "$BASE_DIR"/run-external ]; then
+        echo "$BASE_DIR/run-external file does not exist"
+        exit 1
+    fi
+    . "$BASE_DIR"/run-external
+    git add "$BASE_DIR"/logs/*
+}
+
 check(){
     . "$BASE_DIR"/options
 
@@ -33,6 +44,9 @@ check(){
         if echo "$log_entry" | grep "^$message" ; then
             old_value=$( echo "$log_entry" | sed -e "s|$message (\(.*\))|\1|")
             if [ "$new_value" != "$old_value" ]; then
+                if [ "$run_external" = "true" ]; then
+                    run_external_script
+                fi
                 record_new_value "$message" "$new_value"
             fi
             exit 0
@@ -40,6 +54,9 @@ check(){
         n=$((n+1))
     done
     # no previous recorded value found
+    if [ "$run_external" = "true" ]; then
+        run_external_script
+    fi
     record_new_value "$message" "$new_value"
 }
 
