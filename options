@@ -1,2 +1,3 @@
-pattern_extractor="if [ $(date +%H%M) \< "0230" ]; then echo ""; else date +%Y%m%d; fi"
-message="Nightly install snaps execution"
+pattern_extractor=""
+message=""
+manual="true"
