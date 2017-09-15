@@ -8,6 +8,13 @@ else
 	exit 1
 fi
 
+if cat logs/spread.log | grep -q "Successful tasks:"; then
+	echo "spread tests executed"
+else
+	echo "spread tests not executed"
+	exit 1
+fi
+
 if cat logs/spread.log | grep -q "error: unsuccessful run"; then
 	echo "spread tests failed"
 	exit 1
