@@ -1,0 +1,1899 @@
+Running tests on a vm in a test flinger desktop device
+Loading environment variables
+Using environment file: tf_snapd_amd64
+Deleting test flinger data
+Creating job for snapd using a vm
+Running testflinger client
+Submitting job to testflinger
+JOB_ID: ad791c3c-df9f-4d9e-9228-c08837a6454a
+Print job: /var/snap/testflinger-cli/current/job.yaml 
+job_queue: "amd-gfx"
+provision_data:
+    distro: xenial
+test_data:
+    test_cmds:
+        - ssh ubuntu@{device_ip} "sudo apt update && sudo apt install -y git curl"
+        - ssh ubuntu@{device_ip} "git clone https://github.com/sergiocazzolato/snappy-qa-jobs.git"
+        - ssh ubuntu@{device_ip} "(cd snappy-qa-jobs && git checkout master)"
+        - ssh ubuntu@{device_ip} "git clone https://github.com/sergiocazzolato/validator.git"
+        - ssh ubuntu@{device_ip} "git clone https://github.com/snapcore/snapd.git"
+        - ssh ubuntu@{device_ip} "(cd snapd && git checkout "release/2.28")"
+        - ssh ubuntu@{device_ip} "sudo snappy-qa-jobs/scripts/utils/create_vm.sh \"amd64\" \""beta"\" \"8022\""
+        - ssh ubuntu@{device_ip} ". snappy-qa-jobs/scripts/utils/run_setup.sh \"localhost\" \"8022\" \"test\" \"ubuntu\" \"\""
+        - ssh ubuntu@{device_ip} ". snappy-qa-jobs/scripts/utils/get_spread.sh"
+        - ssh ubuntu@{device_ip} ". snappy-qa-jobs/scripts/utils/run_spread.sh \"localhost\" \"8022\" \"snapd\" \""external:ubuntu-core-16-64:tests/"\" \"\" \""tests/main/auto-refresh"\""
+Showing job data
+This job is currently waiting on a node to become available. You will see no further output until the job starts running.
+******************************************
+
+* Starting setup phase on unknown-wealth *
+
+******************************************
+Cleaning up container if it exists...
+Error response from daemon: No such container: unknown-wealth
+
+**********************************************
+
+* Starting provision phase on unknown-wealth *
+
+**********************************************
+Install python-logstash if you want to use logstash logging
+2017-09-15 01:04:39,527 unknown-wealth INFO: BEGIN provision
+2017-09-15 01:04:39,527 unknown-wealth INFO: Recovering device
+2017-09-15 01:04:39,527 unknown-wealth INFO: Releasing node unknown-wealth
+{
+    "interface_set": [
+        {
+            "system_id": "th4fnf",
+            "tags": [],
+            "links": [
+                {
+                    "ip_address": "10.101.50.15",
+                    "mode": "dhcp",
+                    "id": 91,
+                    "subnet": {
+                        "dns_servers": [
+                            "10.101.48.1"
+                        ],
+                        "name": "10.101.48.0/22",
+                        "space": "undefined",
+                        "vlan": {
+                            "fabric": "fabric-1",
+                            "primary_rack": null,
+                            "name": "untagged",
+                            "space": "undefined",
+                            "fabric_id": 1,
+                            "id": 5002,
+                            "dhcp_on": false,
+                            "vid": 0,
+                            "secondary_rack": null,
+                            "mtu": 1500,
+                            "relay_vlan": null,
+                            "external_dhcp": "10.101.48.1",
+                            "resource_uri": "/MAAS/api/2.0/vlans/5002/"
+                        },
+                        "allow_proxy": true,
+                        "id": 1,
+                        "managed": true,
+                        "gateway_ip": null,
+                        "active_discovery": false,
+                        "rdns_mode": 2,
+                        "resource_uri": "/MAAS/api/2.0/subnets/1/",
+                        "cidr": "10.101.48.0/22"
+                    }
+                }
+            ],
+            "type": "physical",
+            "name": "enp3s0",
+            "vlan": {
+                "fabric": "fabric-1",
+                "primary_rack": null,
+                "name": "untagged",
+                "space": "undefined",
+                "fabric_id": 1,
+                "id": 5002,
+                "dhcp_on": false,
+                "vid": 0,
+                "secondary_rack": null,
+                "mtu": 1500,
+                "relay_vlan": null,
+                "external_dhcp": "10.101.48.1",
+                "resource_uri": "/MAAS/api/2.0/vlans/5002/"
+            },
+            "params": {},
+            "children": [],
+            "mac_address": "34:e6:d7:7f:68:71",
+            "enabled": true,
+            "effective_mtu": 1500,
+            "discovered": [
+                {
+                    "ip_address": "10.101.50.15",
+                    "subnet": {
+                        "dns_servers": [
+                            "10.101.48.1"
+                        ],
+                        "name": "10.101.48.0/22",
+                        "space": "undefined",
+                        "vlan": {
+                            "fabric": "fabric-1",
+                            "primary_rack": null,
+                            "name": "untagged",
+                            "space": "undefined",
+                            "fabric_id": 1,
+                            "id": 5002,
+                            "dhcp_on": false,
+                            "vid": 0,
+                            "secondary_rack": null,
+                            "mtu": 1500,
+                            "relay_vlan": null,
+                            "external_dhcp": "10.101.48.1",
+                            "resource_uri": "/MAAS/api/2.0/vlans/5002/"
+                        },
+                        "allow_proxy": true,
+                        "id": 1,
+                        "managed": true,
+                        "gateway_ip": null,
+                        "active_discovery": false,
+                        "rdns_mode": 2,
+                        "resource_uri": "/MAAS/api/2.0/subnets/1/",
+                        "cidr": "10.101.48.0/22"
+                    }
+                }
+            ],
+            "parents": [],
+            "id": 20,
+            "resource_uri": "/MAAS/api/2.0/nodes/th4fnf/interfaces/20/"
+        }
+    ],
+    "boot_disk": {
+        "system_id": "th4fnf",
+        "id_path": "/dev/disk/by-id/wwn-0x5000c50089fc515c",
+        "tags": [
+            "rotary",
+            "sata",
+            "5400rpm"
+        ],
+        "available_size": 0,
+        "used_for": "MBR partitioned with 1 partition",
+        "type": "physical",
+        "partitions": [
+            {
+                "system_id": "th4fnf",
+                "bootable": false,
+                "type": "partition",
+                "path": "/dev/disk/by-dname/sda-part1",
+                "size": 1000198897664,
+                "resource_uri": "/MAAS/api/2.0/nodes/th4fnf/blockdevices/11/partition/12",
+                "uuid": "e26b295e-1242-4bec-90c9-b22b86ed06f8",
+                "id": 12,
+                "filesystem": {
+                    "mount_options": null,
+                    "label": "root",
+                    "mount_point": "/",
+                    "uuid": "4f5be5d8-7183-4759-ba42-20e6fccaef23",
+                    "fstype": "ext4"
+                },
+                "device_id": 11,
+                "used_for": "ext4 formatted filesystem mounted at /"
+            }
+        ],
+        "name": "sda",
+        "id": 11,
+        "path": "/dev/disk/by-dname/sda",
+        "filesystem": null,
+        "used_size": 1000204140544,
+        "block_size": 4096,
+        "size": 1000204886016,
+        "partition_table_type": "MBR",
+        "uuid": null,
+        "serial": "W771DVNL",
+        "resource_uri": "/MAAS/api/2.0/nodes/th4fnf/blockdevices/11/",
+        "model": "ST1000LM014-1EJ1"
+    },
+    "current_installation_result_id": null,
+    "status_name": "Ready",
+    "status": 4,
+    "owner": null,
+    "hwe_kernel": null,
+    "tag_names": [],
+    "domain": {
+        "ttl": null,
+        "name": "maas",
+        "authoritative": true,
+        "id": 0,
+        "resource_record_count": 0,
+        "resource_uri": "/MAAS/api/2.0/domains/0/"
+    },
+    "blockdevice_set": [
+        {
+            "system_id": "th4fnf",
+            "id_path": "/dev/disk/by-id/wwn-0x5000c50089fc515c",
+            "tags": [
+                "rotary",
+                "sata",
+                "5400rpm"
+            ],
+            "available_size": 0,
+            "used_for": "MBR partitioned with 1 partition",
+            "type": "physical",
+            "name": "sda",
+            "path": "/dev/disk/by-dname/sda",
+            "id": 11,
+            "resource_uri": "/MAAS/api/2.0/nodes/th4fnf/blockdevices/11/",
+            "filesystem": null,
+            "used_size": 1000204140544,
+            "block_size": 4096,
+            "size": 1000204886016,
+            "partition_table_type": "MBR",
+            "uuid": null,
+            "serial": "W771DVNL",
+            "partitions": [
+                {
+                    "system_id": "th4fnf",
+                    "bootable": false,
+                    "type": "partition",
+                    "path": "/dev/disk/by-dname/sda-part1",
+                    "size": 1000198897664,
+                    "resource_uri": "/MAAS/api/2.0/nodes/th4fnf/blockdevices/11/partition/12",
+                    "uuid": "e26b295e-1242-4bec-90c9-b22b86ed06f8",
+                    "id": 12,
+                    "filesystem": {
+                        "mount_options": null,
+                        "label": "root",
+                        "mount_point": "/",
+                        "uuid": "4f5be5d8-7183-4759-ba42-20e6fccaef23",
+                        "fstype": "ext4"
+                    },
+                    "device_id": 11,
+                    "used_for": "ext4 formatted filesystem mounted at /"
+                }
+            ],
+            "model": "ST1000LM014-1EJ1"
+        }
+    ],
+    "status_action": "release",
+    "power_state": "unknown",
+    "owner_data": {},
+    "current_testing_result_id": null,
+    "virtualblockdevice_set": [],
+    "node_type": 0,
+    "zone": {
+        "id": 1,
+        "resource_uri": "/MAAS/api/2.0/zones/default/",
+        "description": "",
+        "name": "default"
+    },
+    "status_message": "(tpelab)",
+    "physicalblockdevice_set": [
+        {
+            "system_id": "th4fnf",
+            "id_path": "/dev/disk/by-id/wwn-0x5000c50089fc515c",
+            "tags": [
+                "rotary",
+                "sata",
+                "5400rpm"
+            ],
+            "available_size": 0,
+            "used_for": "MBR partitioned with 1 partition",
+            "type": "physical",
+            "partitions": [
+                {
+                    "system_id": "th4fnf",
+                    "bootable": false,
+                    "type": "partition",
+                    "path": "/dev/disk/by-dname/sda-part1",
+                    "size": 1000198897664,
+                    "resource_uri": "/MAAS/api/2.0/nodes/th4fnf/blockdevices/11/partition/12",
+                    "uuid": "e26b295e-1242-4bec-90c9-b22b86ed06f8",
+                    "id": 12,
+                    "filesystem": {
+                        "mount_options": null,
+                        "label": "root",
+                        "mount_point": "/",
+                        "uuid": "4f5be5d8-7183-4759-ba42-20e6fccaef23",
+                        "fstype": "ext4"
+                    },
+                    "device_id": 11,
+                    "used_for": "ext4 formatted filesystem mounted at /"
+                }
+            ],
+            "name": "sda",
+            "id": 11,
+            "path": "/dev/disk/by-dname/sda",
+            "filesystem": null,
+            "used_size": 1000204140544,
+            "block_size": 4096,
+            "size": 1000204886016,
+            "partition_table_type": "MBR",
+            "uuid": null,
+            "serial": "W771DVNL",
+            "resource_uri": "/MAAS/api/2.0/nodes/th4fnf/blockdevices/11/",
+            "model": "ST1000LM014-1EJ1"
+        }
+    ],
+    "address_ttl": null,
+    "hostname": "unknown-wealth",
+    "storage": 1000204.8860160001,
+    "osystem": "",
+    "current_commissioning_result_id": 11,
+    "fqdn": "unknown-wealth.maas",
+    "system_id": "th4fnf",
+    "node_type_name": "Machine",
+    "memory": 16384,
+    "netboot": true,
+    "architecture": "amd64/generic",
+    "disable_ipv4": false,
+    "special_filesystems": [],
+    "ip_addresses": [
+        "10.101.50.15"
+    ],
+    "cpu_count": 4,
+    "iscsiblockdevice_set": [],
+    "distro_series": "",
+    "boot_interface": {
+        "system_id": "th4fnf",
+        "tags": [],
+        "links": [
+            {
+                "ip_address": "10.101.50.15",
+                "mode": "dhcp",
+                "id": 91,
+                "subnet": {
+                    "dns_servers": [
+                        "10.101.48.1"
+                    ],
+                    "name": "10.101.48.0/22",
+                    "space": "undefined",
+                    "vlan": {
+                        "fabric": "fabric-1",
+                        "primary_rack": null,
+                        "name": "untagged",
+                        "space": "undefined",
+                        "fabric_id": 1,
+                        "id": 5002,
+                        "dhcp_on": false,
+                        "vid": 0,
+                        "secondary_rack": null,
+                        "mtu": 1500,
+                        "relay_vlan": null,
+                        "external_dhcp": "10.101.48.1",
+                        "resource_uri": "/MAAS/api/2.0/vlans/5002/"
+                    },
+                    "allow_proxy": true,
+                    "id": 1,
+                    "managed": true,
+                    "gateway_ip": null,
+                    "active_discovery": false,
+                    "rdns_mode": 2,
+                    "resource_uri": "/MAAS/api/2.0/subnets/1/",
+                    "cidr": "10.101.48.0/22"
+                }
+            }
+        ],
+        "type": "physical",
+        "name": "enp3s0",
+        "vlan": {
+            "fabric": "fabric-1",
+            "primary_rack": null,
+            "name": "untagged",
+            "space": "undefined",
+            "fabric_id": 1,
+            "id": 5002,
+            "dhcp_on": false,
+            "vid": 0,
+            "secondary_rack": null,
+            "mtu": 1500,
+            "relay_vlan": null,
+            "external_dhcp": "10.101.48.1",
+            "resource_uri": "/MAAS/api/2.0/vlans/5002/"
+        },
+        "params": {},
+        "children": [],
+        "mac_address": "34:e6:d7:7f:68:71",
+        "enabled": true,
+        "effective_mtu": 1500,
+        "discovered": [
+            {
+                "ip_address": "10.101.50.15",
+                "subnet": {
+                    "dns_servers": [
+                        "10.101.48.1"
+                    ],
+                    "name": "10.101.48.0/22",
+                    "space": "undefined",
+                    "vlan": {
+                        "fabric": "fabric-1",
+                        "primary_rack": null,
+                        "name": "untagged",
+                        "space": "undefined",
+                        "fabric_id": 1,
+                        "id": 5002,
+                        "dhcp_on": false,
+                        "vid": 0,
+                        "secondary_rack": null,
+                        "mtu": 1500,
+                        "relay_vlan": null,
+                        "external_dhcp": "10.101.48.1",
+                        "resource_uri": "/MAAS/api/2.0/vlans/5002/"
+                    },
+                    "allow_proxy": true,
+                    "id": 1,
+                    "managed": true,
+                    "gateway_ip": null,
+                    "active_discovery": false,
+                    "rdns_mode": 2,
+                    "resource_uri": "/MAAS/api/2.0/subnets/1/",
+                    "cidr": "10.101.48.0/22"
+                }
+            }
+        ],
+        "parents": [],
+        "id": 20,
+        "resource_uri": "/MAAS/api/2.0/nodes/th4fnf/interfaces/20/"
+    },
+    "resource_uri": "/MAAS/api/2.0/machines/th4fnf/",
+    "min_hwe_kernel": "",
+    "default_gateways": {
+        "ipv6": {
+            "gateway_ip": null,
+            "link_id": null
+        },
+        "ipv4": {
+            "gateway_ip": null,
+            "link_id": null
+        }
+    },
+    "power_type": "apc",
+    "pod": null,
+    "swap_size": null
+}2017-09-15 01:04:46,125 unknown-wealth INFO: Provisioning device
+2017-09-15 01:04:46,126 unknown-wealth INFO: Acquiring node
+{
+    "interface_set": [
+        {
+            "system_id": "th4fnf",
+            "tags": [],
+            "links": [
+                {
+                    "ip_address": "10.101.50.15",
+                    "mode": "dhcp",
+                    "id": 91,
+                    "subnet": {
+                        "dns_servers": [
+                            "10.101.48.1"
+                        ],
+                        "name": "10.101.48.0/22",
+                        "space": "undefined",
+                        "vlan": {
+                            "fabric": "fabric-1",
+                            "primary_rack": null,
+                            "name": "untagged",
+                            "space": "undefined",
+                            "fabric_id": 1,
+                            "id": 5002,
+                            "dhcp_on": false,
+                            "vid": 0,
+                            "secondary_rack": null,
+                            "mtu": 1500,
+                            "relay_vlan": null,
+                            "external_dhcp": "10.101.48.1",
+                            "resource_uri": "/MAAS/api/2.0/vlans/5002/"
+                        },
+                        "allow_proxy": true,
+                        "id": 1,
+                        "managed": true,
+                        "gateway_ip": null,
+                        "active_discovery": false,
+                        "rdns_mode": 2,
+                        "resource_uri": "/MAAS/api/2.0/subnets/1/",
+                        "cidr": "10.101.48.0/22"
+                    }
+                }
+            ],
+            "type": "physical",
+            "name": "enp3s0",
+            "vlan": {
+                "fabric": "fabric-1",
+                "primary_rack": null,
+                "name": "untagged",
+                "space": "undefined",
+                "fabric_id": 1,
+                "id": 5002,
+                "dhcp_on": false,
+                "vid": 0,
+                "secondary_rack": null,
+                "mtu": 1500,
+                "relay_vlan": null,
+                "external_dhcp": "10.101.48.1",
+                "resource_uri": "/MAAS/api/2.0/vlans/5002/"
+            },
+            "params": {},
+            "children": [],
+            "mac_address": "34:e6:d7:7f:68:71",
+            "enabled": true,
+            "effective_mtu": 1500,
+            "discovered": [
+                {
+                    "ip_address": "10.101.50.15",
+                    "subnet": {
+                        "dns_servers": [
+                            "10.101.48.1"
+                        ],
+                        "name": "10.101.48.0/22",
+                        "space": "undefined",
+                        "vlan": {
+                            "fabric": "fabric-1",
+                            "primary_rack": null,
+                            "name": "untagged",
+                            "space": "undefined",
+                            "fabric_id": 1,
+                            "id": 5002,
+                            "dhcp_on": false,
+                            "vid": 0,
+                            "secondary_rack": null,
+                            "mtu": 1500,
+                            "relay_vlan": null,
+                            "external_dhcp": "10.101.48.1",
+                            "resource_uri": "/MAAS/api/2.0/vlans/5002/"
+                        },
+                        "allow_proxy": true,
+                        "id": 1,
+                        "managed": true,
+                        "gateway_ip": null,
+                        "active_discovery": false,
+                        "rdns_mode": 2,
+                        "resource_uri": "/MAAS/api/2.0/subnets/1/",
+                        "cidr": "10.101.48.0/22"
+                    }
+                }
+            ],
+            "parents": [],
+            "id": 20,
+            "resource_uri": "/MAAS/api/2.0/nodes/th4fnf/interfaces/20/"
+        }
+    ],
+    "system_id": "th4fnf",
+    "current_installation_result_id": null,
+    "status_name": "Allocated",
+    "status": 10,
+    "owner": "tpelab",
+    "hwe_kernel": null,
+    "domain": {
+        "ttl": null,
+        "name": "maas",
+        "authoritative": true,
+        "id": 0,
+        "resource_record_count": 0,
+        "resource_uri": "/MAAS/api/2.0/domains/0/"
+    },
+    "blockdevice_set": [
+        {
+            "system_id": "th4fnf",
+            "id_path": "/dev/disk/by-id/wwn-0x5000c50089fc515c",
+            "tags": [
+                "rotary",
+                "sata",
+                "5400rpm"
+            ],
+            "available_size": 0,
+            "used_for": "MBR partitioned with 1 partition",
+            "type": "physical",
+            "name": "sda",
+            "path": "/dev/disk/by-dname/sda",
+            "id": 11,
+            "resource_uri": "/MAAS/api/2.0/nodes/th4fnf/blockdevices/11/",
+            "filesystem": null,
+            "used_size": 1000204140544,
+            "block_size": 4096,
+            "size": 1000204886016,
+            "partition_table_type": "MBR",
+            "uuid": null,
+            "serial": "W771DVNL",
+            "partitions": [
+                {
+                    "system_id": "th4fnf",
+                    "bootable": false,
+                    "type": "partition",
+                    "path": "/dev/disk/by-dname/sda-part1",
+                    "size": 1000198897664,
+                    "resource_uri": "/MAAS/api/2.0/nodes/th4fnf/blockdevices/11/partition/12",
+                    "uuid": "e26b295e-1242-4bec-90c9-b22b86ed06f8",
+                    "id": 12,
+                    "filesystem": {
+                        "mount_options": null,
+                        "label": "root",
+                        "mount_point": "/",
+                        "uuid": "4f5be5d8-7183-4759-ba42-20e6fccaef23",
+                        "fstype": "ext4"
+                    },
+                    "device_id": 11,
+                    "used_for": "ext4 formatted filesystem mounted at /"
+                }
+            ],
+            "model": "ST1000LM014-1EJ1"
+        }
+    ],
+    "virtualblockdevice_set": [],
+    "zone": {
+        "id": 1,
+        "resource_uri": "/MAAS/api/2.0/zones/default/",
+        "description": "",
+        "name": "default"
+    },
+    "status_message": "(tpelab)",
+    "address_ttl": null,
+    "hostname": "unknown-wealth",
+    "storage": 1000204.8860160001,
+    "resource_uri": "/MAAS/api/2.0/machines/th4fnf/",
+    "current_commissioning_result_id": 11,
+    "fqdn": "unknown-wealth.maas",
+    "boot_disk": {
+        "system_id": "th4fnf",
+        "id_path": "/dev/disk/by-id/wwn-0x5000c50089fc515c",
+        "tags": [
+            "rotary",
+            "sata",
+            "5400rpm"
+        ],
+        "available_size": 0,
+        "used_for": "MBR partitioned with 1 partition",
+        "type": "physical",
+        "partitions": [
+            {
+                "system_id": "th4fnf",
+                "bootable": false,
+                "type": "partition",
+                "path": "/dev/disk/by-dname/sda-part1",
+                "size": 1000198897664,
+                "resource_uri": "/MAAS/api/2.0/nodes/th4fnf/blockdevices/11/partition/12",
+                "uuid": "e26b295e-1242-4bec-90c9-b22b86ed06f8",
+                "id": 12,
+                "filesystem": {
+                    "mount_options": null,
+                    "label": "root",
+                    "mount_point": "/",
+                    "uuid": "4f5be5d8-7183-4759-ba42-20e6fccaef23",
+                    "fstype": "ext4"
+                },
+                "device_id": 11,
+                "used_for": "ext4 formatted filesystem mounted at /"
+            }
+        ],
+        "name": "sda",
+        "id": 11,
+        "path": "/dev/disk/by-dname/sda",
+        "filesystem": null,
+        "used_size": 1000204140544,
+        "block_size": 4096,
+        "size": 1000204886016,
+        "partition_table_type": "MBR",
+        "uuid": null,
+        "serial": "W771DVNL",
+        "resource_uri": "/MAAS/api/2.0/nodes/th4fnf/blockdevices/11/",
+        "model": "ST1000LM014-1EJ1"
+    },
+    "default_gateways": {
+        "ipv6": {
+            "gateway_ip": null,
+            "link_id": null
+        },
+        "ipv4": {
+            "gateway_ip": null,
+            "link_id": null
+        }
+    },
+    "constraints_by_type": {},
+    "disable_ipv4": false,
+    "special_filesystems": [],
+    "ip_addresses": [
+        "10.101.50.15"
+    ],
+    "distro_series": "",
+    "min_hwe_kernel": "",
+    "power_type": "apc",
+    "swap_size": null,
+    "status_action": "acquire",
+    "boot_interface": {
+        "system_id": "th4fnf",
+        "tags": [],
+        "links": [
+            {
+                "ip_address": "10.101.50.15",
+                "mode": "dhcp",
+                "id": 91,
+                "subnet": {
+                    "dns_servers": [
+                        "10.101.48.1"
+                    ],
+                    "name": "10.101.48.0/22",
+                    "space": "undefined",
+                    "vlan": {
+                        "fabric": "fabric-1",
+                        "primary_rack": null,
+                        "name": "untagged",
+                        "space": "undefined",
+                        "fabric_id": 1,
+                        "id": 5002,
+                        "dhcp_on": false,
+                        "vid": 0,
+                        "secondary_rack": null,
+                        "mtu": 1500,
+                        "relay_vlan": null,
+                        "external_dhcp": "10.101.48.1",
+                        "resource_uri": "/MAAS/api/2.0/vlans/5002/"
+                    },
+                    "allow_proxy": true,
+                    "id": 1,
+                    "managed": true,
+                    "gateway_ip": null,
+                    "active_discovery": false,
+                    "rdns_mode": 2,
+                    "resource_uri": "/MAAS/api/2.0/subnets/1/",
+                    "cidr": "10.101.48.0/22"
+                }
+            }
+        ],
+        "type": "physical",
+        "name": "enp3s0",
+        "vlan": {
+            "fabric": "fabric-1",
+            "primary_rack": null,
+            "name": "untagged",
+            "space": "undefined",
+            "fabric_id": 1,
+            "id": 5002,
+            "dhcp_on": false,
+            "vid": 0,
+            "secondary_rack": null,
+            "mtu": 1500,
+            "relay_vlan": null,
+            "external_dhcp": "10.101.48.1",
+            "resource_uri": "/MAAS/api/2.0/vlans/5002/"
+        },
+        "params": {},
+        "children": [],
+        "mac_address": "34:e6:d7:7f:68:71",
+        "enabled": true,
+        "effective_mtu": 1500,
+        "discovered": [
+            {
+                "ip_address": "10.101.50.15",
+                "subnet": {
+                    "dns_servers": [
+                        "10.101.48.1"
+                    ],
+                    "name": "10.101.48.0/22",
+                    "space": "undefined",
+                    "vlan": {
+                        "fabric": "fabric-1",
+                        "primary_rack": null,
+                        "name": "untagged",
+                        "space": "undefined",
+                        "fabric_id": 1,
+                        "id": 5002,
+                        "dhcp_on": false,
+                        "vid": 0,
+                        "secondary_rack": null,
+                        "mtu": 1500,
+                        "relay_vlan": null,
+                        "external_dhcp": "10.101.48.1",
+                        "resource_uri": "/MAAS/api/2.0/vlans/5002/"
+                    },
+                    "allow_proxy": true,
+                    "id": 1,
+                    "managed": true,
+                    "gateway_ip": null,
+                    "active_discovery": false,
+                    "rdns_mode": 2,
+                    "resource_uri": "/MAAS/api/2.0/subnets/1/",
+                    "cidr": "10.101.48.0/22"
+                }
+            }
+        ],
+        "parents": [],
+        "id": 20,
+        "resource_uri": "/MAAS/api/2.0/nodes/th4fnf/interfaces/20/"
+    },
+    "node_type_name": "Machine",
+    "architecture": "amd64/generic",
+    "cpu_count": 4,
+    "power_state": "off",
+    "owner_data": {},
+    "current_testing_result_id": null,
+    "iscsiblockdevice_set": [],
+    "node_type": 0,
+    "physicalblockdevice_set": [
+        {
+            "system_id": "th4fnf",
+            "id_path": "/dev/disk/by-id/wwn-0x5000c50089fc515c",
+            "tags": [
+                "rotary",
+                "sata",
+                "5400rpm"
+            ],
+            "available_size": 0,
+            "used_for": "MBR partitioned with 1 partition",
+            "type": "physical",
+            "partitions": [
+                {
+                    "system_id": "th4fnf",
+                    "bootable": false,
+                    "type": "partition",
+                    "path": "/dev/disk/by-dname/sda-part1",
+                    "size": 1000198897664,
+                    "resource_uri": "/MAAS/api/2.0/nodes/th4fnf/blockdevices/11/partition/12",
+                    "uuid": "e26b295e-1242-4bec-90c9-b22b86ed06f8",
+                    "id": 12,
+                    "filesystem": {
+                        "mount_options": null,
+                        "label": "root",
+                        "mount_point": "/",
+                        "uuid": "4f5be5d8-7183-4759-ba42-20e6fccaef23",
+                        "fstype": "ext4"
+                    },
+                    "device_id": 11,
+                    "used_for": "ext4 formatted filesystem mounted at /"
+                }
+            ],
+            "name": "sda",
+            "id": 11,
+            "path": "/dev/disk/by-dname/sda",
+            "filesystem": null,
+            "used_size": 1000204140544,
+            "block_size": 4096,
+            "size": 1000204886016,
+            "partition_table_type": "MBR",
+            "uuid": null,
+            "serial": "W771DVNL",
+            "resource_uri": "/MAAS/api/2.0/nodes/th4fnf/blockdevices/11/",
+            "model": "ST1000LM014-1EJ1"
+        }
+    ],
+    "memory": 16384,
+    "tag_names": [],
+    "osystem": "",
+    "pod": null,
+    "netboot": true
+}2017-09-15 01:04:46,952 unknown-wealth INFO: Starting node unknown-wealth with distro xenial
+2017-09-15 01:09:52,815 unknown-wealth INFO: Checking if test image booted.
+
+2017-09-15 01:09:53,786 unknown-wealth INFO: END provision
+
+*****************************************
+
+* Starting test phase on unknown-wealth *
+
+*****************************************
+Install python-logstash if you want to use logstash logging
+2017-09-15 01:09:57,979 unknown-wealth INFO: BEGIN testrun
+2017-09-15 01:09:57,979 unknown-wealth INFO: Running: ssh ubuntu@10.101.50.15 "sudo apt update && sudo apt install -y git curl"
+Warning: Permanently added '10.101.50.15' (ECDSA) to the list of known hosts.
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+E: Could not get lock /var/lib/apt/lists/lock - open (11: Resource temporarily unavailable)
+E: Unable to lock directory /var/lib/apt/lists/
+2017-09-15 01:09:59,209 unknown-wealth WARNING: Command failed, rc=100
+2017-09-15 01:09:59,209 unknown-wealth INFO: Running: ssh ubuntu@10.101.50.15 "git clone https://github.com/sergiocazzolato/snappy-qa-jobs.git"
+Warning: Permanently added '10.101.50.15' (ECDSA) to the list of known hosts.
+Cloning into 'snappy-qa-jobs'...
+2017-09-15 01:10:02,595 unknown-wealth INFO: Running: ssh ubuntu@10.101.50.15 "(cd snappy-qa-jobs && git checkout master)"
+Warning: Permanently added '10.101.50.15' (ECDSA) to the list of known hosts.
+Your branch is up-to-date with 'origin/master'.
+Already on 'master'
+2017-09-15 01:10:02,841 unknown-wealth INFO: Running: ssh ubuntu@10.101.50.15 "git clone https://github.com/sergiocazzolato/validator.git"
+Warning: Permanently added '10.101.50.15' (ECDSA) to the list of known hosts.
+Cloning into 'validator'...
+2017-09-15 01:10:05,101 unknown-wealth INFO: Running: ssh ubuntu@10.101.50.15 "git clone https://github.com/snapcore/snapd.git"
+Warning: Permanently added '10.101.50.15' (ECDSA) to the list of known hosts.
+Cloning into 'snapd'...
+2017-09-15 01:13:00,612 unknown-wealth INFO: Running: ssh ubuntu@10.101.50.15 "(cd snapd && git checkout "release/2.28")"
+Warning: Permanently added '10.101.50.15' (ECDSA) to the list of known hosts.
+Branch release/2.28 set up to track remote branch release/2.28 from origin.
+Switched to a new branch 'release/2.28'
+2017-09-15 01:13:00,991 unknown-wealth INFO: Running: ssh ubuntu@10.101.50.15 "sudo snappy-qa-jobs/scripts/utils/create_vm.sh \"amd64\" \""beta"\" \"8022\""
+Warning: Permanently added '10.101.50.15' (ECDSA) to the list of known hosts.
+Creating vm
++ echo 'Creating vm'
++ ARCHITECTURE=amd64
++ CHANNEL=beta
++ PORT=8022
++ BRANCH=
+installing dependencies
++ echo 'installing dependencies'
++ sudo apt update
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Hit:1 http://archive.ubuntu.com/ubuntu xenial InRelease
+Hit:2 http://archive.ubuntu.com/ubuntu xenial-updates InRelease
+Hit:3 http://archive.ubuntu.com/ubuntu xenial-backports InRelease
+Hit:4 http://archive.ubuntu.com/ubuntu xenial-security InRelease
+Reading package lists...
+Building dependency tree...
+Reading state information...
+10 packages can be upgraded. Run 'apt list --upgradable' to see them.
++ sudo apt install -y snapd qemu genisoimage sshpass
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  binfmt-support cpu-checker ipxe-qemu libaio1 libasound2 libasound2-data
+  libasyncns0 libbluetooth3 libboost-iostreams1.58.0 libboost-random1.58.0
+  libboost-system1.58.0 libboost-thread1.58.0 libbrlapi0.6 libcaca0 libcacard0
+  libfdt1 libflac8 libiscsi2 libjpeg-turbo8 libjpeg8 libnspr4 libnss3
+  libnss3-nssdb libogg0 libopus0 libpixman-1-0 libpulse0 librados2 librbd1
+  libsdl1.2debian libsndfile1 libspice-server1 libusbredirparser1 libvorbis0a
+  libvorbisenc2 libxen-4.6 libxenstore3.0 libyajl2 msr-tools qemu-block-extra
+  qemu-slof qemu-system qemu-system-arm qemu-system-common qemu-system-mips
+  qemu-system-misc qemu-system-ppc qemu-system-sparc qemu-system-x86 qemu-user
+  qemu-user-binfmt qemu-utils seabios sharutils ubuntu-core-launcher
+Suggested packages:
+  wodim cdrkit-doc libasound2-plugins alsa-utils opus-tools pulseaudio
+  qemu-user-static samba vde2 openbios-ppc openhackware sgabios ovmf
+  debootstrap bsd-mailx | mailx
+The following NEW packages will be installed:
+  binfmt-support cpu-checker genisoimage ipxe-qemu libaio1 libasound2
+  libasound2-data libasyncns0 libbluetooth3 libboost-iostreams1.58.0
+  libboost-random1.58.0 libboost-system1.58.0 libboost-thread1.58.0
+  libbrlapi0.6 libcaca0 libcacard0 libfdt1 libflac8 libiscsi2 libjpeg-turbo8
+  libjpeg8 libnspr4 libnss3 libnss3-nssdb libogg0 libopus0 libpixman-1-0
+  libpulse0 librados2 librbd1 libsdl1.2debian libsndfile1 libspice-server1
+  libusbredirparser1 libvorbis0a libvorbisenc2 libxen-4.6 libxenstore3.0
+  libyajl2 msr-tools qemu qemu-block-extra qemu-slof qemu-system
+  qemu-system-arm qemu-system-common qemu-system-mips qemu-system-misc
+  qemu-system-ppc qemu-system-sparc qemu-system-x86 qemu-user qemu-user-binfmt
+  qemu-utils seabios sharutils sshpass
+The following packages will be upgraded:
+  snapd ubuntu-core-launcher
+2 upgraded, 57 newly installed, 0 to remove and 8 not upgraded.
+Need to get 55.0 MB of archives.
+After this operation, 267 MB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu xenial/main amd64 libasyncns0 amd64 0.8-5build1 [12.3 kB]
+Get:2 http://archive.ubuntu.com/ubuntu xenial/main amd64 libiscsi2 amd64 1.12.0-2 [51.5 kB]
+Get:3 http://archive.ubuntu.com/ubuntu xenial/main amd64 libjpeg-turbo8 amd64 1.4.2-0ubuntu3 [111 kB]
+Get:4 http://archive.ubuntu.com/ubuntu xenial/main amd64 libogg0 amd64 1.3.2-1 [17.2 kB]
+Get:5 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libboost-iostreams1.58.0 amd64 1.58.0+dfsg-5ubuntu3.1 [29.0 kB]
+Get:6 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libboost-system1.58.0 amd64 1.58.0+dfsg-5ubuntu3.1 [9,146 B]
+Get:7 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libboost-random1.58.0 amd64 1.58.0+dfsg-5ubuntu3.1 [11.7 kB]
+Get:8 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libboost-thread1.58.0 amd64 1.58.0+dfsg-5ubuntu3.1 [47.0 kB]
+Get:9 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libnspr4 amd64 2:4.13.1-0ubuntu0.16.04.1 [112 kB]
+Get:10 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libnss3-nssdb all 2:3.28.4-0ubuntu0.16.04.2 [10.6 kB]
+Get:11 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libnss3 amd64 2:3.28.4-0ubuntu0.16.04.2 [1,147 kB]
+Get:12 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 librados2 amd64 10.2.7-0ubuntu0.16.04.1 [1,642 kB]
+Get:13 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 librbd1 amd64 10.2.7-0ubuntu0.16.04.1 [2,180 kB]
+Get:14 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 qemu-block-extra amd64 1:2.5+dfsg-5ubuntu10.15 [34.3 kB]
+Get:15 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 qemu-system-common amd64 1:2.5+dfsg-5ubuntu10.15 [281 kB]
+Get:16 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 ubuntu-core-launcher amd64 2.27.5 [1,562 B]
+Get:17 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 snapd amd64 2.27.5 [10.7 MB]
+Get:18 http://archive.ubuntu.com/ubuntu xenial/main amd64 libyajl2 amd64 2.1.0-2 [19.6 kB]
+Get:19 http://archive.ubuntu.com/ubuntu xenial/main amd64 binfmt-support amd64 2.1.6-1 [50.7 kB]
+Get:20 http://archive.ubuntu.com/ubuntu xenial/main amd64 msr-tools amd64 1.3-2 [10.6 kB]
+Get:21 http://archive.ubuntu.com/ubuntu xenial/main amd64 cpu-checker amd64 0.7-0ubuntu7 [6,862 B]
+Get:22 http://archive.ubuntu.com/ubuntu xenial/main amd64 genisoimage amd64 9:1.1.11-3ubuntu1 [316 kB]
+Get:23 http://archive.ubuntu.com/ubuntu xenial/main amd64 ipxe-qemu all 1.0.0+git-20150424.a25a16d-1ubuntu1 [718 kB]
+Get:24 http://archive.ubuntu.com/ubuntu xenial/main amd64 libaio1 amd64 0.3.110-2 [6,356 B]
+Get:25 http://archive.ubuntu.com/ubuntu xenial/main amd64 libasound2-data all 1.1.0-0ubuntu1 [29.4 kB]
+Get:26 http://archive.ubuntu.com/ubuntu xenial/main amd64 libasound2 amd64 1.1.0-0ubuntu1 [350 kB]
+Get:27 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libbluetooth3 amd64 5.37-0ubuntu5.1 [61.4 kB]
+Get:28 http://archive.ubuntu.com/ubuntu xenial/main amd64 libcaca0 amd64 0.99.beta19-2build2~gcc5.2 [202 kB]
+Get:29 http://archive.ubuntu.com/ubuntu xenial/main amd64 libcacard0 amd64 1:2.5.0-2 [19.7 kB]
+Get:30 http://archive.ubuntu.com/ubuntu xenial/main amd64 libflac8 amd64 1.3.1-4 [210 kB]
+Get:31 http://archive.ubuntu.com/ubuntu xenial/main amd64 libjpeg8 amd64 8c-2ubuntu8 [2,194 B]
+Get:32 http://archive.ubuntu.com/ubuntu xenial/main amd64 libopus0 amd64 1.1.2-1ubuntu1 [159 kB]
+Get:33 http://archive.ubuntu.com/ubuntu xenial/main amd64 libpixman-1-0 amd64 0.33.6-1 [231 kB]
+Get:34 http://archive.ubuntu.com/ubuntu xenial/main amd64 libvorbis0a amd64 1.3.5-3 [86.8 kB]
+Get:35 http://archive.ubuntu.com/ubuntu xenial/main amd64 libvorbisenc2 amd64 1.3.5-3 [70.7 kB]
+Get:36 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libsndfile1 amd64 1.0.25-10ubuntu0.16.04.1 [138 kB]
+Get:37 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libpulse0 amd64 1:8.0-0ubuntu3.3 [249 kB]
+Get:38 http://archive.ubuntu.com/ubuntu xenial/main amd64 libsdl1.2debian amd64 1.2.15+dfsg1-3 [168 kB]
+Get:39 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libspice-server1 amd64 0.12.6-4ubuntu0.3 [338 kB]
+Get:40 http://archive.ubuntu.com/ubuntu xenial/main amd64 libusbredirparser1 amd64 0.7.1-1 [13.6 kB]
+Get:41 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libxenstore3.0 amd64 4.6.5-0ubuntu1.2 [21.8 kB]
+Get:42 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libxen-4.6 amd64 4.6.5-0ubuntu1.2 [345 kB]
+Get:43 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libbrlapi0.6 amd64 5.3.1-2ubuntu2.1 [20.7 kB]
+Get:44 http://archive.ubuntu.com/ubuntu xenial/main amd64 libfdt1 amd64 1.4.0+dfsg-2 [14.1 kB]
+Get:45 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 qemu-system-arm amd64 1:2.5+dfsg-5ubuntu10.15 [4,123 kB]
+Get:46 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 qemu-system-mips amd64 1:2.5+dfsg-5ubuntu10.15 [4,783 kB]
+Get:47 http://archive.ubuntu.com/ubuntu xenial/main amd64 qemu-slof all 20151103+dfsg-1ubuntu1 [173 kB]
+Get:48 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 qemu-system-ppc amd64 1:2.5+dfsg-5ubuntu10.15 [5,727 kB]
+Get:49 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 qemu-system-sparc amd64 1:2.5+dfsg-5ubuntu10.15 [1,976 kB]
+Get:50 http://archive.ubuntu.com/ubuntu xenial/main amd64 seabios all 1.8.2-1ubuntu1 [113 kB]
+Get:51 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 qemu-system-x86 amd64 1:2.5+dfsg-5ubuntu10.15 [3,781 kB]
+Get:52 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 qemu-system-misc amd64 1:2.5+dfsg-5ubuntu10.15 [6,441 kB]
+Get:53 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 qemu-system amd64 1:2.5+dfsg-5ubuntu10.15 [6,128 B]
+Get:54 http://archive.ubuntu.com/ubuntu xenial-updates/universe amd64 qemu-user amd64 1:2.5+dfsg-5ubuntu10.15 [6,781 kB]
+Get:55 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 qemu-utils amd64 1:2.5+dfsg-5ubuntu10.15 [581 kB]
+Get:56 http://archive.ubuntu.com/ubuntu xenial-updates/universe amd64 qemu amd64 1:2.5+dfsg-5ubuntu10.15 [83.1 kB]
+Get:57 http://archive.ubuntu.com/ubuntu xenial-updates/universe amd64 qemu-user-binfmt amd64 1:2.5+dfsg-5ubuntu10.15 [2,624 B]
+Get:58 http://archive.ubuntu.com/ubuntu xenial/main amd64 sharutils amd64 1:4.15.2-1 [148 kB]
+Get:59 http://archive.ubuntu.com/ubuntu xenial/universe amd64 sshpass amd64 1.05-1 [10.5 kB]
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+Fetched 55.0 MB in 4s (11.3 MB/s)
+Selecting previously unselected package libasyncns0:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 59856 files and directories currently installed.)
+Preparing to unpack .../libasyncns0_0.8-5build1_amd64.deb ...
+Unpacking libasyncns0:amd64 (0.8-5build1) ...
+Selecting previously unselected package libiscsi2:amd64.
+Preparing to unpack .../libiscsi2_1.12.0-2_amd64.deb ...
+Unpacking libiscsi2:amd64 (1.12.0-2) ...
+Selecting previously unselected package libjpeg-turbo8:amd64.
+Preparing to unpack .../libjpeg-turbo8_1.4.2-0ubuntu3_amd64.deb ...
+Unpacking libjpeg-turbo8:amd64 (1.4.2-0ubuntu3) ...
+Selecting previously unselected package libogg0:amd64.
+Preparing to unpack .../libogg0_1.3.2-1_amd64.deb ...
+Unpacking libogg0:amd64 (1.3.2-1) ...
+Selecting previously unselected package libboost-iostreams1.58.0:amd64.
+Preparing to unpack .../libboost-iostreams1.58.0_1.58.0+dfsg-5ubuntu3.1_amd64.deb ...
+Unpacking libboost-iostreams1.58.0:amd64 (1.58.0+dfsg-5ubuntu3.1) ...
+Selecting previously unselected package libboost-system1.58.0:amd64.
+Preparing to unpack .../libboost-system1.58.0_1.58.0+dfsg-5ubuntu3.1_amd64.deb ...
+Unpacking libboost-system1.58.0:amd64 (1.58.0+dfsg-5ubuntu3.1) ...
+Selecting previously unselected package libboost-random1.58.0:amd64.
+Preparing to unpack .../libboost-random1.58.0_1.58.0+dfsg-5ubuntu3.1_amd64.deb ...
+Unpacking libboost-random1.58.0:amd64 (1.58.0+dfsg-5ubuntu3.1) ...
+Selecting previously unselected package libboost-thread1.58.0:amd64.
+Preparing to unpack .../libboost-thread1.58.0_1.58.0+dfsg-5ubuntu3.1_amd64.deb ...
+Unpacking libboost-thread1.58.0:amd64 (1.58.0+dfsg-5ubuntu3.1) ...
+Selecting previously unselected package libnspr4:amd64.
+Preparing to unpack .../libnspr4_2%3a4.13.1-0ubuntu0.16.04.1_amd64.deb ...
+Unpacking libnspr4:amd64 (2:4.13.1-0ubuntu0.16.04.1) ...
+Selecting previously unselected package libnss3-nssdb.
+Preparing to unpack .../libnss3-nssdb_2%3a3.28.4-0ubuntu0.16.04.2_all.deb ...
+Unpacking libnss3-nssdb (2:3.28.4-0ubuntu0.16.04.2) ...
+Selecting previously unselected package libnss3:amd64.
+Preparing to unpack .../libnss3_2%3a3.28.4-0ubuntu0.16.04.2_amd64.deb ...
+Unpacking libnss3:amd64 (2:3.28.4-0ubuntu0.16.04.2) ...
+Selecting previously unselected package librados2.
+Preparing to unpack .../librados2_10.2.7-0ubuntu0.16.04.1_amd64.deb ...
+Unpacking librados2 (10.2.7-0ubuntu0.16.04.1) ...
+Selecting previously unselected package librbd1.
+Preparing to unpack .../librbd1_10.2.7-0ubuntu0.16.04.1_amd64.deb ...
+Unpacking librbd1 (10.2.7-0ubuntu0.16.04.1) ...
+Selecting previously unselected package qemu-block-extra:amd64.
+Preparing to unpack .../qemu-block-extra_1%3a2.5+dfsg-5ubuntu10.15_amd64.deb ...
+Unpacking qemu-block-extra:amd64 (1:2.5+dfsg-5ubuntu10.15) ...
+Selecting previously unselected package qemu-system-common.
+Preparing to unpack .../qemu-system-common_1%3a2.5+dfsg-5ubuntu10.15_amd64.deb ...
+Unpacking qemu-system-common (1:2.5+dfsg-5ubuntu10.15) ...
+Preparing to unpack .../ubuntu-core-launcher_2.27.5_amd64.deb ...
+Unpacking ubuntu-core-launcher (2.27.5) over (2.26.10) ...
+Preparing to unpack .../snapd_2.27.5_amd64.deb ...
+Warning: Stopping snapd.service, but it can still be activated by:
+  snapd.socket
+Unpacking snapd (2.27.5) over (2.26.10) ...
+Selecting previously unselected package libyajl2:amd64.
+Preparing to unpack .../libyajl2_2.1.0-2_amd64.deb ...
+Unpacking libyajl2:amd64 (2.1.0-2) ...
+Selecting previously unselected package binfmt-support.
+Preparing to unpack .../binfmt-support_2.1.6-1_amd64.deb ...
+Unpacking binfmt-support (2.1.6-1) ...
+Selecting previously unselected package msr-tools.
+Preparing to unpack .../msr-tools_1.3-2_amd64.deb ...
+Unpacking msr-tools (1.3-2) ...
+Selecting previously unselected package cpu-checker.
+Preparing to unpack .../cpu-checker_0.7-0ubuntu7_amd64.deb ...
+Unpacking cpu-checker (0.7-0ubuntu7) ...
+Selecting previously unselected package genisoimage.
+Preparing to unpack .../genisoimage_9%3a1.1.11-3ubuntu1_amd64.deb ...
+Unpacking genisoimage (9:1.1.11-3ubuntu1) ...
+Selecting previously unselected package ipxe-qemu.
+Preparing to unpack .../ipxe-qemu_1.0.0+git-20150424.a25a16d-1ubuntu1_all.deb ...
+Unpacking ipxe-qemu (1.0.0+git-20150424.a25a16d-1ubuntu1) ...
+Selecting previously unselected package libaio1:amd64.
+Preparing to unpack .../libaio1_0.3.110-2_amd64.deb ...
+Unpacking libaio1:amd64 (0.3.110-2) ...
+Selecting previously unselected package libasound2-data.
+Preparing to unpack .../libasound2-data_1.1.0-0ubuntu1_all.deb ...
+Unpacking libasound2-data (1.1.0-0ubuntu1) ...
+Selecting previously unselected package libasound2:amd64.
+Preparing to unpack .../libasound2_1.1.0-0ubuntu1_amd64.deb ...
+Unpacking libasound2:amd64 (1.1.0-0ubuntu1) ...
+Selecting previously unselected package libbluetooth3:amd64.
+Preparing to unpack .../libbluetooth3_5.37-0ubuntu5.1_amd64.deb ...
+Unpacking libbluetooth3:amd64 (5.37-0ubuntu5.1) ...
+Selecting previously unselected package libcaca0:amd64.
+Preparing to unpack .../libcaca0_0.99.beta19-2build2~gcc5.2_amd64.deb ...
+Unpacking libcaca0:amd64 (0.99.beta19-2build2~gcc5.2) ...
+Selecting previously unselected package libcacard0:amd64.
+Preparing to unpack .../libcacard0_1%3a2.5.0-2_amd64.deb ...
+Unpacking libcacard0:amd64 (1:2.5.0-2) ...
+Selecting previously unselected package libflac8:amd64.
+Preparing to unpack .../libflac8_1.3.1-4_amd64.deb ...
+Unpacking libflac8:amd64 (1.3.1-4) ...
+Selecting previously unselected package libjpeg8:amd64.
+Preparing to unpack .../libjpeg8_8c-2ubuntu8_amd64.deb ...
+Unpacking libjpeg8:amd64 (8c-2ubuntu8) ...
+Selecting previously unselected package libopus0:amd64.
+Preparing to unpack .../libopus0_1.1.2-1ubuntu1_amd64.deb ...
+Unpacking libopus0:amd64 (1.1.2-1ubuntu1) ...
+Selecting previously unselected package libpixman-1-0:amd64.
+Preparing to unpack .../libpixman-1-0_0.33.6-1_amd64.deb ...
+Unpacking libpixman-1-0:amd64 (0.33.6-1) ...
+Selecting previously unselected package libvorbis0a:amd64.
+Preparing to unpack .../libvorbis0a_1.3.5-3_amd64.deb ...
+Unpacking libvorbis0a:amd64 (1.3.5-3) ...
+Selecting previously unselected package libvorbisenc2:amd64.
+Preparing to unpack .../libvorbisenc2_1.3.5-3_amd64.deb ...
+Unpacking libvorbisenc2:amd64 (1.3.5-3) ...
+Selecting previously unselected package libsndfile1:amd64.
+Preparing to unpack .../libsndfile1_1.0.25-10ubuntu0.16.04.1_amd64.deb ...
+Unpacking libsndfile1:amd64 (1.0.25-10ubuntu0.16.04.1) ...
+Selecting previously unselected package libpulse0:amd64.
+Preparing to unpack .../libpulse0_1%3a8.0-0ubuntu3.3_amd64.deb ...
+Unpacking libpulse0:amd64 (1:8.0-0ubuntu3.3) ...
+Selecting previously unselected package libsdl1.2debian:amd64.
+Preparing to unpack .../libsdl1.2debian_1.2.15+dfsg1-3_amd64.deb ...
+Unpacking libsdl1.2debian:amd64 (1.2.15+dfsg1-3) ...
+Selecting previously unselected package libspice-server1:amd64.
+Preparing to unpack .../libspice-server1_0.12.6-4ubuntu0.3_amd64.deb ...
+Unpacking libspice-server1:amd64 (0.12.6-4ubuntu0.3) ...
+Selecting previously unselected package libusbredirparser1:amd64.
+Preparing to unpack .../libusbredirparser1_0.7.1-1_amd64.deb ...
+Unpacking libusbredirparser1:amd64 (0.7.1-1) ...
+Selecting previously unselected package libxenstore3.0:amd64.
+Preparing to unpack .../libxenstore3.0_4.6.5-0ubuntu1.2_amd64.deb ...
+Unpacking libxenstore3.0:amd64 (4.6.5-0ubuntu1.2) ...
+Selecting previously unselected package libxen-4.6:amd64.
+Preparing to unpack .../libxen-4.6_4.6.5-0ubuntu1.2_amd64.deb ...
+Unpacking libxen-4.6:amd64 (4.6.5-0ubuntu1.2) ...
+Selecting previously unselected package libbrlapi0.6:amd64.
+Preparing to unpack .../libbrlapi0.6_5.3.1-2ubuntu2.1_amd64.deb ...
+Unpacking libbrlapi0.6:amd64 (5.3.1-2ubuntu2.1) ...
+Selecting previously unselected package libfdt1:amd64.
+Preparing to unpack .../libfdt1_1.4.0+dfsg-2_amd64.deb ...
+Unpacking libfdt1:amd64 (1.4.0+dfsg-2) ...
+Selecting previously unselected package qemu-system-arm.
+Preparing to unpack .../qemu-system-arm_1%3a2.5+dfsg-5ubuntu10.15_amd64.deb ...
+Unpacking qemu-system-arm (1:2.5+dfsg-5ubuntu10.15) ...
+Selecting previously unselected package qemu-system-mips.
+Preparing to unpack .../qemu-system-mips_1%3a2.5+dfsg-5ubuntu10.15_amd64.deb ...
+Unpacking qemu-system-mips (1:2.5+dfsg-5ubuntu10.15) ...
+Selecting previously unselected package qemu-slof.
+Preparing to unpack .../qemu-slof_20151103+dfsg-1ubuntu1_all.deb ...
+Unpacking qemu-slof (20151103+dfsg-1ubuntu1) ...
+Selecting previously unselected package qemu-system-ppc.
+Preparing to unpack .../qemu-system-ppc_1%3a2.5+dfsg-5ubuntu10.15_amd64.deb ...
+Unpacking qemu-system-ppc (1:2.5+dfsg-5ubuntu10.15) ...
+Selecting previously unselected package qemu-system-sparc.
+Preparing to unpack .../qemu-system-sparc_1%3a2.5+dfsg-5ubuntu10.15_amd64.deb ...
+Unpacking qemu-system-sparc (1:2.5+dfsg-5ubuntu10.15) ...
+Selecting previously unselected package seabios.
+Preparing to unpack .../seabios_1.8.2-1ubuntu1_all.deb ...
+Unpacking seabios (1.8.2-1ubuntu1) ...
+Selecting previously unselected package qemu-system-x86.
+Preparing to unpack .../qemu-system-x86_1%3a2.5+dfsg-5ubuntu10.15_amd64.deb ...
+Unpacking qemu-system-x86 (1:2.5+dfsg-5ubuntu10.15) ...
+Selecting previously unselected package qemu-system-misc.
+Preparing to unpack .../qemu-system-misc_1%3a2.5+dfsg-5ubuntu10.15_amd64.deb ...
+Unpacking qemu-system-misc (1:2.5+dfsg-5ubuntu10.15) ...
+Selecting previously unselected package qemu-system.
+Preparing to unpack .../qemu-system_1%3a2.5+dfsg-5ubuntu10.15_amd64.deb ...
+Unpacking qemu-system (1:2.5+dfsg-5ubuntu10.15) ...
+Selecting previously unselected package qemu-user.
+Preparing to unpack .../qemu-user_1%3a2.5+dfsg-5ubuntu10.15_amd64.deb ...
+Unpacking qemu-user (1:2.5+dfsg-5ubuntu10.15) ...
+Selecting previously unselected package qemu-utils.
+Preparing to unpack .../qemu-utils_1%3a2.5+dfsg-5ubuntu10.15_amd64.deb ...
+Unpacking qemu-utils (1:2.5+dfsg-5ubuntu10.15) ...
+Selecting previously unselected package qemu.
+Preparing to unpack .../qemu_1%3a2.5+dfsg-5ubuntu10.15_amd64.deb ...
+Unpacking qemu (1:2.5+dfsg-5ubuntu10.15) ...
+Selecting previously unselected package qemu-user-binfmt.
+Preparing to unpack .../qemu-user-binfmt_1%3a2.5+dfsg-5ubuntu10.15_amd64.deb ...
+Unpacking qemu-user-binfmt (1:2.5+dfsg-5ubuntu10.15) ...
+Selecting previously unselected package sharutils.
+Preparing to unpack .../sharutils_1%3a4.15.2-1_amd64.deb ...
+Unpacking sharutils (1:4.15.2-1) ...
+Selecting previously unselected package sshpass.
+Preparing to unpack .../sshpass_1.05-1_amd64.deb ...
+Unpacking sshpass (1.05-1) ...
+Processing triggers for libc-bin (2.23-0ubuntu9) ...
+Processing triggers for man-db (2.7.5-1) ...
+Processing triggers for ureadahead (0.100.0-19) ...
+ureadahead will be reprofiled on next reboot
+Processing triggers for systemd (229-4ubuntu19) ...
+Processing triggers for install-info (6.1.0.dfsg.1-5) ...
+Setting up libasyncns0:amd64 (0.8-5build1) ...
+Setting up libiscsi2:amd64 (1.12.0-2) ...
+Setting up libjpeg-turbo8:amd64 (1.4.2-0ubuntu3) ...
+Setting up libogg0:amd64 (1.3.2-1) ...
+Setting up libboost-iostreams1.58.0:amd64 (1.58.0+dfsg-5ubuntu3.1) ...
+Setting up libboost-system1.58.0:amd64 (1.58.0+dfsg-5ubuntu3.1) ...
+Setting up libboost-random1.58.0:amd64 (1.58.0+dfsg-5ubuntu3.1) ...
+Setting up libboost-thread1.58.0:amd64 (1.58.0+dfsg-5ubuntu3.1) ...
+Setting up libnspr4:amd64 (2:4.13.1-0ubuntu0.16.04.1) ...
+Setting up snapd (2.27.5) ...
+Installing new version of config file /etc/apparmor.d/usr.lib.snapd.snap-confine.real ...
+Setting up ubuntu-core-launcher (2.27.5) ...
+Setting up libyajl2:amd64 (2.1.0-2) ...
+Setting up binfmt-support (2.1.6-1) ...
+Setting up msr-tools (1.3-2) ...
+Setting up cpu-checker (0.7-0ubuntu7) ...
+Setting up genisoimage (9:1.1.11-3ubuntu1) ...
+Setting up ipxe-qemu (1.0.0+git-20150424.a25a16d-1ubuntu1) ...
+Setting up libaio1:amd64 (0.3.110-2) ...
+Setting up libasound2-data (1.1.0-0ubuntu1) ...
+Setting up libasound2:amd64 (1.1.0-0ubuntu1) ...
+Setting up libbluetooth3:amd64 (5.37-0ubuntu5.1) ...
+Setting up libcaca0:amd64 (0.99.beta19-2build2~gcc5.2) ...
+Setting up libflac8:amd64 (1.3.1-4) ...
+Setting up libjpeg8:amd64 (8c-2ubuntu8) ...
+Setting up libopus0:amd64 (1.1.2-1ubuntu1) ...
+Setting up libpixman-1-0:amd64 (0.33.6-1) ...
+Setting up libvorbis0a:amd64 (1.3.5-3) ...
+Setting up libvorbisenc2:amd64 (1.3.5-3) ...
+Setting up libsndfile1:amd64 (1.0.25-10ubuntu0.16.04.1) ...
+Setting up libpulse0:amd64 (1:8.0-0ubuntu3.3) ...
+Setting up libsdl1.2debian:amd64 (1.2.15+dfsg1-3) ...
+Setting up libspice-server1:amd64 (0.12.6-4ubuntu0.3) ...
+Setting up libusbredirparser1:amd64 (0.7.1-1) ...
+Setting up libxenstore3.0:amd64 (4.6.5-0ubuntu1.2) ...
+Setting up libxen-4.6:amd64 (4.6.5-0ubuntu1.2) ...
+Setting up libbrlapi0.6:amd64 (5.3.1-2ubuntu2.1) ...
+Setting up libfdt1:amd64 (1.4.0+dfsg-2) ...
+Setting up qemu-slof (20151103+dfsg-1ubuntu1) ...
+Setting up seabios (1.8.2-1ubuntu1) ...
+Setting up qemu-user (1:2.5+dfsg-5ubuntu10.15) ...
+Setting up qemu-user-binfmt (1:2.5+dfsg-5ubuntu10.15) ...
+Setting up sharutils (1:4.15.2-1) ...
+Setting up sshpass (1.05-1) ...
+Setting up libnss3-nssdb (2:3.28.4-0ubuntu0.16.04.2) ...
+Setting up libnss3:amd64 (2:3.28.4-0ubuntu0.16.04.2) ...
+Setting up librados2 (10.2.7-0ubuntu0.16.04.1) ...
+Setting up librbd1 (10.2.7-0ubuntu0.16.04.1) ...
+Setting up qemu-block-extra:amd64 (1:2.5+dfsg-5ubuntu10.15) ...
+Setting up qemu-system-common (1:2.5+dfsg-5ubuntu10.15) ...
+Setting up libcacard0:amd64 (1:2.5.0-2) ...
+Setting up qemu-system-arm (1:2.5+dfsg-5ubuntu10.15) ...
+Setting up qemu-system-mips (1:2.5+dfsg-5ubuntu10.15) ...
+Setting up qemu-system-ppc (1:2.5+dfsg-5ubuntu10.15) ...
+Setting up qemu-system-sparc (1:2.5+dfsg-5ubuntu10.15) ...
+Setting up qemu-system-x86 (1:2.5+dfsg-5ubuntu10.15) ...
+Setting up qemu-system-misc (1:2.5+dfsg-5ubuntu10.15) ...
+Setting up qemu-system (1:2.5+dfsg-5ubuntu10.15) ...
+Setting up qemu-utils (1:2.5+dfsg-5ubuntu10.15) ...
+Setting up qemu (1:2.5+dfsg-5ubuntu10.15) ...
+Processing triggers for libc-bin (2.23-0ubuntu9) ...
+Processing triggers for systemd (229-4ubuntu19) ...
+Processing triggers for ureadahead (0.100.0-19) ...
++ sudo snap install --classic --beta ubuntu-image
+[|] Download snap "core" (2844) from channel "stable"[K[/] Download snap "core" (2844) from channel "stable"[K[-] Download snap "core" (2844) from channel "stable"[K[\] Download snap "core" (2844) from channel "stable"[K[|] Download snap "core" (2844) from channel "stable"[K[/] Download snap "core" (2844) from channel "stable"[K[-] Download snap "core" (2844) from channel "stable"[K[\] Download snap "core" (2844) from channel "stable"[K[|] Download snap "core" (2844) from channel "stable"[Kcore 0 B / 81.39 MB    0.00%core 271.41 KB / 81.39 MB    0.33% 1.32 MB/s 1m1score 1.25 MB / 81.39 MB    1.54% 3.12 MB/s 25score 2.11 MB / 81.39 MB    2.59% 3.51 MB/s 22score 3.31 MB / 81.39 MB    4.07% 4.13 MB/s 18score 4.52 MB / 81.39 MB    5.55% 4.51 MB/s 17score 5.75 MB / 81.39 MB    7.06% 4.78 MB/s 15score 7.02 MB / 81.39 MB    8.62% 5.00 MB/s 14score 8.30 MB / 81.39 MB   10.19% 5.18 MB/s 14score 9.62 MB / 81.39 MB   11.82% 5.34 MB/s 13score 10.98 MB / 81.39 MB   13.49% 5.48 MB/s 12score 12.34 MB / 81.39 MB   15.16% 5.60 MB/s 12score 13.73 MB / 81.39 MB   16.87% 5.71 MB/s 11score 15.14 MB / 81.39 MB   18.60% 5.81 MB/s 11score 16.56 MB / 81.39 MB   20.35% 5.90 MB/s 10score 17.97 MB / 81.39 MB   22.08% 5.98 MB/s 10score 19.39 MB / 81.39 MB   23.82% 6.05 MB/s 10score 20.83 MB / 81.39 MB   25.59% 6.12 MB/s 9score 21.53 MB / 81.39 MB   26.45% 5.97 MB/s 9score 22.97 MB / 81.39 MB   28.22% 6.03 MB/s 9score 24.41 MB / 81.39 MB   29.98% 6.09 MB/s 9score 25.81 MB / 81.39 MB   31.71% 6.13 MB/s 9score 27.17 MB / 81.39 MB   33.38% 6.16 MB/s 8score 28.61 MB / 81.39 MB   35.15% 6.21 MB/s 8score 30.02 MB / 81.39 MB   36.88% 6.24 MB/s 8score 31.45 MB / 81.39 MB   38.64% 6.28 MB/s 7score 32.89 MB / 81.39 MB   40.41% 6.31 MB/s 7score 34.37 MB / 81.39 MB   42.23% 6.35 MB/s 7score 35.84 MB / 81.39 MB   44.04% 6.39 MB/s 7score 37.31 MB / 81.39 MB   45.84% 6.42 MB/s 6score 38.81 MB / 81.39 MB   47.68% 6.46 MB/s 6score 40.33 MB / 81.39 MB   49.55% 6.49 MB/s 6score 41.84 MB / 81.39 MB   51.41% 6.53 MB/s 6score 43.37 MB / 81.39 MB   53.29% 6.56 MB/s 5score 44.14 MB / 81.39 MB   54.23% 6.48 MB/s 5score 45.69 MB / 81.39 MB   56.13% 6.52 MB/s 5score 47.25 MB / 81.39 MB   58.05% 6.55 MB/s 5score 48.81 MB / 81.39 MB   59.97% 6.58 MB/s 4score 50.37 MB / 81.39 MB   61.89% 6.62 MB/s 4score 51.95 MB / 81.39 MB   63.83% 6.65 MB/s 4score 53.55 MB / 81.39 MB   65.79% 6.68 MB/s 4score 55.14 MB / 81.39 MB   67.74% 6.71 MB/s 3score 56.80 MB / 81.39 MB   69.78% 6.75 MB/s 3score 58.44 MB / 81.39 MB   71.79% 6.78 MB/s 3score 60.11 MB / 81.39 MB   73.85% 6.82 MB/s 3score 61.78 MB / 81.39 MB   75.90% 6.85 MB/s 2score 63.47 MB / 81.39 MB   77.98% 6.89 MB/s 2score 65.17 MB / 81.39 MB   80.07% 6.92 MB/s 2score 66.87 MB / 81.39 MB   82.16% 6.95 MB/s 2score 67.70 MB / 81.39 MB   83.18% 6.90 MB/s 1score 69.42 MB / 81.39 MB   85.29% 6.93 MB/s 1score 71.12 MB / 81.39 MB   87.38% 6.96 MB/s 1score 72.86 MB / 81.39 MB   89.51% 6.99 MB/s 1score 74.58 MB / 81.39 MB   91.62% 7.02 MB/s 0core 76.31 MB / 81.39 MB   93.76% 7.05 MB/s 0core 78.09 MB / 81.39 MB   95.94% 7.09 MB/s 0core 79.91 MB / 81.39 MB   98.17% 7.12 MB/s 0core 80.83 MB / 81.39 MB   99.30% 7.08 MB/s 0core 81.39 MB / 81.39 MB  100.00% 7.01 MB/s 0[/] Fetch and check assertions for snap "core" (2844)[K[-] Fetch and check assertions for snap "core" (2844)[K[\] Fetch and check assertions for snap "core" (2844)[K[|] Fetch and check assertions for snap "core" (2844)[K[/] Fetch and check assertions for snap "core" (2844)[K[-] Fetch and check assertions for snap "core" (2844)[K[\] Fetch and check assertions for snap "core" (2844)[K[|] Fetch and check assertions for snap "core" (2844)[K[/] Fetch and check assertions for snap "core" (2844)[K[-] Fetch and check assertions for snap "core" (2844)[K[\] Mount snap "core" (2844)[K[|] Mount snap "core" (2844)[K[/] Mount snap "core" (2844)[K[-] Mount snap "core" (2844)[K[\] Mount snap "core" (2844)[K[|] Mount snap "core" (2844)[K[/] Setup snap "core" (2844) security profiles[K[-] Setup snap "core" (2844) security profiles[K[\] Setup snap "core" (2844) security profiles[K[|] Setup snap "core" (2844) security profiles[K[/] Setup snap "core" (2844) security profiles[K[-] Setup snap "core" (2844) security profiles[K[\] Setup snap "core" (2844) security profiles[K[|] Setup snap "core" (2844) security profiles[K[/] Setup snap "core" (2844) security profiles[K[-] Setup snap "core" (2844) security profiles (phase 2)[K2017-09-15T01:14:01Z INFO Waiting for restart...[K
+[\] Setup snap "core" (2844) security profiles (phase 2)[K[|] Set automatic aliases for snap "core"[K[/] Run configure hook of "core" snap if present[K[-] Run configure hook of "core" snap if present[K[\] Run configure hook of "core" snap if present[K[|] Run configure hook of "core" snap if present[K[/] Run configure hook of "core" snap if present[K[-] Run configure hook of "core" snap if present[K[\] Run configure hook of "core" snap if present[K[|] Run configure hook of "core" snap if present[K[/] Run configure hook of "core" snap if present[K[-] Run configure hook of "core" snap if present[K[\] Download snap "ubuntu-image" (66) from channel "beta"[K[|] Download snap "ubuntu-image" (66) from channel "beta"[K[/] Download snap "ubuntu-image" (66) from channel "beta"[K[-] Download snap "ubuntu-image" (66) from channel "beta"[K[\] Download snap "ubuntu-image" (66) from channel "beta"[K[|] Download snap "ubuntu-image" (66) from channel "beta"[K[/] Download snap "ubuntu-image" (66) from channel "beta"[K[-] Download snap "ubuntu-image" (66) from channel "beta"[K[\] Download snap "ubuntu-image" (66) from channel "beta"[K[|] Download snap "ubuntu-image" (66) from channel "beta"[K[/] Download snap "ubuntu-image" (66) from channel "beta"[K[-] Download snap "ubuntu-image" (66) from channel "beta"[K[\] Download snap "ubuntu-image" (66) from channel "beta"[K[|] Download snap "ubuntu-image" (66) from channel "beta"[K[/] Download snap "ubuntu-image" (66) from channel "beta"[Kubuntu-image 0 B / 13.63 MB    0.00%ubuntu-image 463.41 KB / 13.63 MB    3.32% 2.26 MB/s 5subuntu-image 1.28 MB / 13.63 MB    9.40% 3.19 MB/s 3subuntu-image 2.02 MB / 13.63 MB   14.79% 3.35 MB/s 3subuntu-image 3.09 MB / 13.63 MB   22.70% 3.86 MB/s 2subuntu-image 4.09 MB / 13.63 MB   30.03% 4.08 MB/s 2subuntu-image 5.28 MB / 13.63 MB   38.75% 4.39 MB/s 1subuntu-image 6.30 MB / 13.63 MB   46.20% 4.49 MB/s 1subuntu-image 7.55 MB / 13.63 MB   55.37% 4.71 MB/s 1subuntu-image 8.61 MB / 13.63 MB   63.17% 4.77 MB/s 1subuntu-image 9.83 MB / 13.63 MB   72.11% 4.90 MB/s 0ubuntu-image 10.97 MB / 13.63 MB   80.48% 4.98 MB/s 0ubuntu-image 12.16 MB / 13.63 MB   89.19% 5.06 MB/s 0ubuntu-image 13.41 MB / 13.63 MB   98.36% 5.15 MB/s 0ubuntu-image 13.63 MB / 13.63 MB  100.00% 4.86 MB/s 0[-] Fetch and check assertions for snap "ubuntu-image" (66)[K[\] Fetch and check assertions for snap "ubuntu-image" (66)[K[|] Fetch and check assertions for snap "ubuntu-image" (66)[K[/] Fetch and check assertions for snap "ubuntu-image" (66)[K[-] Fetch and check assertions for snap "ubuntu-image" (66)[K[\] Fetch and check assertions for snap "ubuntu-image" (66)[K[|] Fetch and check assertions for snap "ubuntu-image" (66)[K[/] Fetch and check assertions for snap "ubuntu-image" (66)[K[-] Fetch and check assertions for snap "ubuntu-image" (66)[K[\] Mount snap "ubuntu-image" (66)[K[|] Mount snap "ubuntu-image" (66)[K[/] Mount snap "ubuntu-image" (66)[K[-] Mount snap "ubuntu-image" (66)[K[\] Mount snap "ubuntu-image" (66)[K[|] Copy snap "ubuntu-image" data[K[/] Setup snap "ubuntu-image" (66) security profiles[K[-] Setup snap "ubuntu-image" (66) security profiles[K[\] Setup snap "ubuntu-image" (66) security profiles[K[|] Run configure hook of "ubuntu-image" snap if present[K[Kubuntu-image (beta) 1.1+snap2 from 'canonical' installed
+Download snapd and checkout branch
++ echo 'Download snapd and checkout branch'
++ '[' '!' -d snapd ']'
++ '[' '!' -z ']'
++ export TESTSLIB=./snapd/tests/lib
++ TESTSLIB=./snapd/tests/lib
++ case "$ARCHITECTURE" in
+++ which qemu-system-x86_64
++ QEMU=/usr/bin/qemu-system-x86_64
++ mkdir -p /tmp/work-dir
++ snap download --beta core
+Fetching snap "core"
+core 0 B / 83.11 MB    0.00%core 559.41 KB / 83.11 MB    0.66% 2.72 MB/s 30score 2.14 MB / 83.11 MB    2.57% 5.33 MB/s 15score 3.81 MB / 83.11 MB    4.59% 6.34 MB/s 12score 5.53 MB / 83.11 MB    6.65% 6.90 MB/s 11score 7.31 MB / 83.11 MB    8.80% 7.30 MB/s 10score 9.16 MB / 83.11 MB   11.02% 7.62 MB/s 9score 11.03 MB / 83.11 MB   13.27% 7.87 MB/s 9score 12.95 MB / 83.11 MB   15.58% 8.08 MB/s 8score 14.92 MB / 83.11 MB   17.95% 8.28 MB/s 8score 16.94 MB / 83.11 MB   20.38% 8.45 MB/s 7score 18.98 MB / 83.11 MB   22.84% 8.62 MB/s 7score 21.06 MB / 83.11 MB   25.34% 8.76 MB/s 7score 23.16 MB / 83.11 MB   27.86% 8.89 MB/s 6score 25.28 MB / 83.11 MB   30.42% 9.02 MB/s 6score 27.44 MB / 83.11 MB   33.01% 9.13 MB/s 6score 29.61 MB / 83.11 MB   35.63% 9.24 MB/s 5score 31.78 MB / 83.11 MB   38.24% 9.33 MB/s 5score 33.97 MB / 83.11 MB   40.87% 9.42 MB/s 5score 36.16 MB / 83.11 MB   43.50% 9.50 MB/s 4score 38.34 MB / 83.11 MB   46.14% 9.57 MB/s 4score 40.52 MB / 83.11 MB   48.75% 9.63 MB/s 4score 42.70 MB / 83.11 MB   51.38% 9.69 MB/s 4score 44.89 MB / 83.11 MB   54.01% 9.75 MB/s 3score 47.08 MB / 83.11 MB   56.65% 9.79 MB/s 3score 49.27 MB / 83.11 MB   59.28% 9.84 MB/s 3score 51.45 MB / 83.11 MB   61.91% 9.88 MB/s 3score 53.62 MB / 83.11 MB   64.52% 9.92 MB/s 2score 55.81 MB / 83.11 MB   67.15% 9.95 MB/s 2score 57.98 MB / 83.11 MB   69.77% 9.98 MB/s 2score 60.17 MB / 83.11 MB   72.40% 10.02 MB/s 2score 62.36 MB / 83.11 MB   75.03% 10.05 MB/s 2score 64.53 MB / 83.11 MB   77.65% 10.07 MB/s 1score 66.72 MB / 83.11 MB   80.28% 10.10 MB/s 1score 68.91 MB / 83.11 MB   82.91% 10.12 MB/s 1score 71.09 MB / 83.11 MB   85.54% 10.14 MB/s 1score 73.27 MB / 83.11 MB   88.15% 10.16 MB/s 0core 75.45 MB / 83.11 MB   90.79% 10.18 MB/s 0core 77.64 MB / 83.11 MB   93.42% 10.20 MB/s 0core 79.75 MB / 83.11 MB   95.96% 10.21 MB/s 0core 81.86 MB / 83.11 MB   98.50% 10.22 MB/s 0[KFetching assertions for "core"
++ /snap/bin/ubuntu-image --image-size 3G ./snapd/tests/lib/assertions/nested-amd64.model --channel beta --output ubuntu-core.img --extra-snaps core_2925.snap
+pc 0 B / 836.00 KB    0.00%pc 559.42 KB / 836.00 KB   66.92% 2.72 MB/s 0[KCopying "core_2925.snap" (core)
+Fetching pc-kernel
+pc-kernel 0 B / 124.43 MB    0.00%pc-kernel 575.41 KB / 124.43 MB    0.45% 2.80 MB/s 44spc-kernel 1.72 MB / 124.43 MB    1.38% 4.29 MB/s 28spc-kernel 2.95 MB / 124.43 MB    2.37% 4.91 MB/s 24spc-kernel 4.28 MB / 124.43 MB    3.44% 5.34 MB/s 22spc-kernel 5.67 MB / 124.43 MB    4.56% 5.66 MB/s 20spc-kernel 7.09 MB / 124.43 MB    5.70% 5.90 MB/s 19spc-kernel 8.59 MB / 124.43 MB    6.91% 6.13 MB/s 18spc-kernel 10.17 MB / 124.43 MB    8.17% 6.35 MB/s 17spc-kernel 11.80 MB / 124.43 MB    9.48% 6.54 MB/s 17spc-kernel 13.48 MB / 124.43 MB   10.84% 6.73 MB/s 16spc-kernel 15.22 MB / 124.43 MB   12.23% 6.91 MB/s 15spc-kernel 17.03 MB / 124.43 MB   13.69% 7.09 MB/s 15spc-kernel 18.87 MB / 124.43 MB   15.17% 7.25 MB/s 14spc-kernel 20.78 MB / 124.43 MB   16.70% 7.41 MB/s 13spc-kernel 22.77 MB / 124.43 MB   18.30% 7.58 MB/s 13spc-kernel 24.73 MB / 124.43 MB   19.88% 7.72 MB/s 12spc-kernel 26.75 MB / 124.43 MB   21.50% 7.86 MB/s 12spc-kernel 28.80 MB / 124.43 MB   23.14% 7.99 MB/s 11spc-kernel 30.87 MB / 124.43 MB   24.81% 8.11 MB/s 11spc-kernel 32.97 MB / 124.43 MB   26.50% 8.23 MB/s 11spc-kernel 35.11 MB / 124.43 MB   28.22% 8.35 MB/s 10spc-kernel 37.27 MB / 124.43 MB   29.95% 8.46 MB/s 10spc-kernel 39.44 MB / 124.43 MB   31.70% 8.56 MB/s 9spc-kernel 41.61 MB / 124.43 MB   33.44% 8.66 MB/s 9spc-kernel 43.80 MB / 124.43 MB   35.20% 8.75 MB/s 9spc-kernel 45.98 MB / 124.43 MB   36.96% 8.83 MB/s 8spc-kernel 48.11 MB / 124.43 MB   38.66% 8.90 MB/s 8spc-kernel 50.30 MB / 124.43 MB   40.42% 8.97 MB/s 8spc-kernel 52.48 MB / 124.43 MB   42.18% 9.04 MB/s 7spc-kernel 54.67 MB / 124.43 MB   43.94% 9.10 MB/s 7spc-kernel 56.86 MB / 124.43 MB   45.70% 9.16 MB/s 7spc-kernel 59.03 MB / 124.43 MB   47.44% 9.21 MB/s 7spc-kernel 61.22 MB / 124.43 MB   49.20% 9.26 MB/s 6spc-kernel 63.41 MB / 124.43 MB   50.96% 9.31 MB/s 6spc-kernel 65.59 MB / 124.43 MB   52.72% 9.36 MB/s 6spc-kernel 67.78 MB / 124.43 MB   54.47% 9.40 MB/s 5spc-kernel 69.95 MB / 124.43 MB   56.22% 9.44 MB/s 5spc-kernel 72.14 MB / 124.43 MB   57.98% 9.48 MB/s 5spc-kernel 74.33 MB / 124.43 MB   59.74% 9.52 MB/s 5spc-kernel 76.50 MB / 124.43 MB   61.48% 9.55 MB/s 4spc-kernel 78.69 MB / 124.43 MB   63.24% 9.59 MB/s 4spc-kernel 80.87 MB / 124.43 MB   65.00% 9.62 MB/s 4spc-kernel 83.06 MB / 124.43 MB   66.76% 9.65 MB/s 4spc-kernel 85.25 MB / 124.43 MB   68.51% 9.68 MB/s 4spc-kernel 87.42 MB / 124.43 MB   70.26% 9.70 MB/s 3spc-kernel 89.61 MB / 124.43 MB   72.02% 9.73 MB/s 3spc-kernel 91.78 MB / 124.43 MB   73.76% 9.75 MB/s 3spc-kernel 93.97 MB / 124.43 MB   75.52% 9.78 MB/s 3spc-kernel 96.14 MB / 124.43 MB   77.27% 9.80 MB/s 2spc-kernel 98.33 MB / 124.43 MB   79.03% 9.82 MB/s 2spc-kernel 100.50 MB / 124.43 MB   80.77% 9.84 MB/s 2spc-kernel 102.69 MB / 124.43 MB   82.53% 9.86 MB/s 2spc-kernel 104.87 MB / 124.43 MB   84.29% 9.88 MB/s 1spc-kernel 107.05 MB / 124.43 MB   86.03% 9.90 MB/s 1spc-kernel 109.23 MB / 124.43 MB   87.79% 9.92 MB/s 1spc-kernel 111.42 MB / 124.43 MB   89.55% 9.94 MB/s 1spc-kernel 113.61 MB / 124.43 MB   91.31% 9.96 MB/s 1spc-kernel 115.78 MB / 124.43 MB   93.05% 9.97 MB/s 0pc-kernel 117.91 MB / 124.43 MB   94.76% 9.98 MB/s 0pc-kernel 120.00 MB / 124.43 MB   96.44% 9.99 MB/s 0pc-kernel 122.19 MB / 124.43 MB   98.20% 10.00 MB/s 0pc-kernel 124.37 MB / 124.43 MB   99.96% 10.02 MB/s 0[KFetching pc
+pc 0 B / 836.00 KB    0.00%pc 575.42 KB / 836.00 KB   68.83% 2.80 MB/s 0[Kcore already prepared, skipping
+-o/--output is deprecated; use -O/--output-dir instead
++ mv ubuntu-core.img /tmp/work-dir
++ create_assertions_disk
++ dd if=/dev/null of=assertions.disk bs=1M seek=1
+0+0 records in
+0+0 records out
+0 bytes copied, 8.1452e-05 s, 0.0 kB/s
++ mkfs.ext4 -F assertions.disk
+mke2fs 1.42.13 (17-May-2015)
+Discarding device blocks:          done                            
+Creating filesystem with 1024 1k blocks and 128 inodes
+
+Allocating group tables: 0/1   done                            
+Writing inode tables: 0/1   done                            
+Writing superblocks and filesystem accounting information: 0/1   
+Filesystem too small for a journal
+done
+
++ mkdir /mnt/assertions
++ mount -t ext4 -o loop assertions.disk /mnt/assertions
++ cp ./snapd/tests/lib/assertions/auto-import.assert /mnt/assertions
++ umount /mnt/assertions
++ rm -rf /mnt/assertions
++ systemd_create_and_start_unit nested-vm '/usr/bin/qemu-system-x86_64 -m 1024 -nographic -net nic,model=virtio -net user,hostfwd=tcp::8022-:22 -drive file=/tmp/work-dir/ubuntu-core.img,if=virtio,cache=none -drive file=/home/ubuntu/assertions.disk,if=virtio,cache=none -machine accel=kvm'
++ printf '[Unit]\nDescription=For testing purposes\n[Service]\nType=simple\nExecStart=%s\n' '/usr/bin/qemu-system-x86_64 -m 1024 -nographic -net nic,model=virtio -net user,hostfwd=tcp::8022-:22 -drive file=/tmp/work-dir/ubuntu-core.img,if=virtio,cache=none -drive file=/home/ubuntu/assertions.disk,if=virtio,cache=none -machine accel=kvm'
++ '[' -n '' ']'
++ systemctl daemon-reload
++ systemctl start nested-vm
++ wait_for_ssh
++ retry=300
++ execute_remote true
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost true
++ retry=299
++ '[' 299 -le 0 ']'
++ sleep 1
++ execute_remote true
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost true
++ retry=298
++ '[' 298 -le 0 ']'
++ sleep 1
++ execute_remote true
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost true
++ retry=297
++ '[' 297 -le 0 ']'
++ sleep 1
++ execute_remote true
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost true
++ retry=296
++ '[' 296 -le 0 ']'
++ sleep 1
++ execute_remote true
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost true
++ retry=295
++ '[' 295 -le 0 ']'
++ sleep 1
++ execute_remote true
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost true
++ retry=294
++ '[' 294 -le 0 ']'
++ sleep 1
++ execute_remote true
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost true
++ retry=293
++ '[' 293 -le 0 ']'
++ sleep 1
++ execute_remote true
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost true
++ retry=292
++ '[' 292 -le 0 ']'
++ sleep 1
++ execute_remote true
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost true
++ retry=291
++ '[' 291 -le 0 ']'
++ sleep 1
++ execute_remote true
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost true
++ retry=290
++ '[' 290 -le 0 ']'
++ sleep 1
++ execute_remote true
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost true
++ retry=289
++ '[' 289 -le 0 ']'
++ sleep 1
++ execute_remote true
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost true
++ retry=288
++ '[' 288 -le 0 ']'
++ sleep 1
++ execute_remote true
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost true
++ retry=287
++ '[' 287 -le 0 ']'
++ sleep 1
++ execute_remote true
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost true
++ retry=286
++ '[' 286 -le 0 ']'
++ sleep 1
++ execute_remote true
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost true
++ prepare_ssh
++ execute_remote 'sudo adduser --extrausers --quiet --disabled-password --gecos '\'''\'' test'
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost 'sudo adduser --extrausers --quiet --disabled-password --gecos '\'''\'' test'
+ENTER EXTRAUSERS_GROUP_FILEEXIT EXTRAUSERS_GROUP_FILEENTER EXTRAUSERS_SHADOWGROUP_FILEEXIT EXTRAUSERS_SHADOWGROUP_FILE+ execute_remote 'echo test:ubuntu | sudo chpasswd'
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost 'echo test:ubuntu | sudo chpasswd'
++ execute_remote 'echo '\''test ALL=(ALL) NOPASSWD:ALL'\'' | sudo tee /etc/sudoers.d/test-user'
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost 'echo '\''test ALL=(ALL) NOPASSWD:ALL'\'' | sudo tee /etc/sudoers.d/test-user'
+test ALL=(ALL) NOPASSWD:ALL
+Wait for first boot to be done
++ echo 'Wait for first boot to be done'
++ execute_remote 'snap changes'
++ grep -q -E 'Done.*Initialize system state'
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost 'snap changes'
++ sleep 1
++ execute_remote 'snap changes'
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost 'snap changes'
++ grep -q -E 'Done.*Initialize system state'
++ sleep 1
++ execute_remote 'snap changes'
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost 'snap changes'
++ grep -q -E 'Done.*Initialize system state'
++ sleep 1
++ execute_remote 'snap changes'
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost 'snap changes'
++ grep -q -E 'Done.*Initialize system state'
++ sleep 1
++ execute_remote 'snap changes'
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost 'snap changes'
++ grep -q -E 'Done.*Initialize system state'
++ sleep 1
++ grep -q -E 'Done.*Initialize system state'
++ execute_remote 'snap changes'
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost 'snap changes'
++ sleep 1
++ execute_remote 'snap changes'
++ grep -q -E 'Done.*Initialize system state'
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost 'snap changes'
++ sleep 1
++ execute_remote 'snap changes'
++ grep -q -E 'Done.*Initialize system state'
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost 'snap changes'
++ sleep 1
++ execute_remote 'snap changes'
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost 'snap changes'
++ grep -q -E 'Done.*Initialize system state'
++ sleep 1
++ execute_remote 'snap changes'
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost 'snap changes'
++ grep -q -E 'Done.*Initialize system state'
++ sleep 1
++ execute_remote 'snap changes'
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost 'snap changes'
++ grep -q -E 'Done.*Initialize system state'
++ sleep 1
++ execute_remote 'snap changes'
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost 'snap changes'
++ grep -q -E 'Done.*Initialize system state'
++ sleep 1
++ execute_remote 'snap changes'
++ grep -q -E 'Done.*Initialize system state'
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost 'snap changes'
++ sleep 1
++ execute_remote 'snap changes'
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost 'snap changes'
++ grep -q -E 'Done.*Initialize system state'
++ sleep 1
++ execute_remote 'snap changes'
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost 'snap changes'
++ grep -q -E 'Done.*Initialize system state'
++ sleep 1
++ execute_remote 'snap changes'
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost 'snap changes'
++ grep -q -E 'Done.*Initialize system state'
++ sleep 1
++ execute_remote 'snap changes'
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost 'snap changes'
++ grep -q -E 'Done.*Initialize system state'
++ sleep 1
++ execute_remote 'snap changes'
++ sshpass -p ubuntu ssh -p 8022 -q -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user1@localhost 'snap changes'
++ grep -q -E 'Done.*Initialize system state'
+VM Ready
++ echo 'VM Ready'
+2017-09-15 01:16:06,985 unknown-wealth INFO: Running: ssh ubuntu@10.101.50.15 ". snappy-qa-jobs/scripts/utils/run_setup.sh \"localhost\" \"8022\" \"test\" \"ubuntu\" \"\""
+Warning: Permanently added '10.101.50.15' (ECDSA) to the list of known hosts.
+Running setup command
+No setup command to run
+2017-09-15 01:16:07,279 unknown-wealth INFO: Running: ssh ubuntu@10.101.50.15 ". snappy-qa-jobs/scripts/utils/get_spread.sh"
+Warning: Permanently added '10.101.50.15' (ECDSA) to the list of known hosts.
+Getting spread
+spread
+Spread downloaded and ready to use
+2017-09-15 01:16:11,938 unknown-wealth INFO: Running: ssh ubuntu@10.101.50.15 ". snappy-qa-jobs/scripts/utils/run_spread.sh \"localhost\" \"8022\" \"snapd\" \""external:ubuntu-core-16-64:tests/"\" \"\" \""tests/main/auto-refresh"\""
+Warning: Permanently added '10.101.50.15' (ECDSA) to the list of known hosts.
+Running spread
+Moving to manual all the tests to skip: tests/main/auto-refresh
+Running command: spread -v external:ubuntu-core-16-64:tests/
+2017-09-15 01:16:18 Found /home/ubuntu/snapd/spread.yaml.
+2017-09-15 01:16:19 Project content is packed for delivery (1.42MB).
+2017-09-15 01:16:19 Sequence of jobs produced with -seed=1505438179
+2017-09-15 01:16:19 Allocating external:ubuntu-core-16-64...
+2017-09-15 01:16:19 Waiting for external:ubuntu-core-16-64 to make SSH available at localhost:8022...
+2017-09-15 01:16:19 Allocated external:ubuntu-core-16-64.
+2017-09-15 01:16:19 If killed, discard servers with: spread -reuse-pid=5846 -discard
+2017-09-15 01:16:19 Connecting to external:ubuntu-core-16-64...
+2017-09-15 01:16:20 Connected to external:ubuntu-core-16-64 at localhost:8022.
+2017-09-15 01:16:20 Sending project content to external:ubuntu-core-16-64...
+2017-09-15 01:16:20 Preparing project on external:ubuntu-core-16-64...
+2017-09-15 01:16:40 Preparing external:ubuntu-core-16-64:tests/main/...
+2017-09-15 01:16:56 Preparing external:ubuntu-core-16-64:tests/main/ubuntu-core-writablepaths...
+2017-09-15 01:17:10 Executing external:ubuntu-core-16-64:tests/main/ubuntu-core-writablepaths (1/147)...
+2017-09-15 01:17:11 Preparing external:ubuntu-core-16-64:tests/main/ubuntu-core-gadget-config-defaults...
+2017-09-15 01:17:18 Executing external:ubuntu-core-16-64:tests/main/ubuntu-core-gadget-config-defaults (2/147)...
+2017-09-15 01:17:18 Restoring external:ubuntu-core-16-64:tests/main/ubuntu-core-gadget-config-defaults...
+2017-09-15 01:17:18 Preparing external:ubuntu-core-16-64:tests/main/interfaces-log-observe...
+2017-09-15 01:17:31 Executing external:ubuntu-core-16-64:tests/main/interfaces-log-observe (3/147)...
+2017-09-15 01:17:37 Restoring external:ubuntu-core-16-64:tests/main/interfaces-log-observe...
+2017-09-15 01:17:37 Preparing external:ubuntu-core-16-64:tests/main/refresh:classic_fake...
+2017-09-15 01:17:45 Executing external:ubuntu-core-16-64:tests/main/refresh:classic_fake (4/147)...
+2017-09-15 01:17:45 Restoring external:ubuntu-core-16-64:tests/main/refresh:classic_fake...
+2017-09-15 01:17:45 Preparing external:ubuntu-core-16-64:tests/main/revert-devmode:remote...
+2017-09-15 01:18:09 Executing external:ubuntu-core-16-64:tests/main/revert-devmode:remote (5/147)...
+2017-09-15 01:18:40 Restoring external:ubuntu-core-16-64:tests/main/revert-devmode:remote...
+2017-09-15 01:18:40 Preparing external:ubuntu-core-16-64:tests/main/known...
+2017-09-15 01:18:48 Executing external:ubuntu-core-16-64:tests/main/known (6/147)...
+2017-09-15 01:18:48 Preparing external:ubuntu-core-16-64:tests/main/find-private...
+2017-09-15 01:18:55 Executing external:ubuntu-core-16-64:tests/main/find-private (7/147)...
+2017-09-15 01:18:56 Restoring external:ubuntu-core-16-64:tests/main/find-private...
+2017-09-15 01:18:56 Preparing external:ubuntu-core-16-64:tests/main/failover:emptysystemd...
+2017-09-15 01:19:02 Executing external:ubuntu-core-16-64:tests/main/failover:emptysystemd (8/147)...
+2017-09-15 01:20:54 Rebooting external:ubuntu-core-16-64 as requested...
+2017-09-15 01:21:19 Restoring external:ubuntu-core-16-64:tests/main/failover:emptysystemd...
+2017-09-15 01:21:21 Preparing external:ubuntu-core-16-64:tests/main/econnreset...
+2017-09-15 01:21:31 Executing external:ubuntu-core-16-64:tests/main/econnreset (9/147)...
+2017-09-15 01:21:40 Restoring external:ubuntu-core-16-64:tests/main/econnreset...
+2017-09-15 01:21:40 Preparing external:ubuntu-core-16-64:tests/main/snap-info...
+2017-09-15 01:22:03 Executing external:ubuntu-core-16-64:tests/main/snap-info (10/147)...
+2017-09-15 01:22:05 Restoring external:ubuntu-core-16-64:tests/main/snap-info...
+2017-09-15 01:22:05 Preparing external:ubuntu-core-16-64:tests/main/security-device-cgroups:kmsg...
+2017-09-15 01:22:15 Executing external:ubuntu-core-16-64:tests/main/security-device-cgroups:kmsg (11/147)...
+2017-09-15 01:22:23 Restoring external:ubuntu-core-16-64:tests/main/security-device-cgroups:kmsg...
+2017-09-15 01:22:24 Preparing external:ubuntu-core-16-64:tests/main/snap-switch...
+2017-09-15 01:22:32 Executing external:ubuntu-core-16-64:tests/main/snap-switch (12/147)...
+2017-09-15 01:22:46 Preparing external:ubuntu-core-16-64:tests/main/alias...
+2017-09-15 01:22:59 Executing external:ubuntu-core-16-64:tests/main/alias (13/147)...
+2017-09-15 01:23:03 Preparing external:ubuntu-core-16-64:tests/main/security-device-cgroups:uinput...
+2017-09-15 01:23:09 Executing external:ubuntu-core-16-64:tests/main/security-device-cgroups:uinput (14/147)...
+2017-09-15 01:23:17 Restoring external:ubuntu-core-16-64:tests/main/security-device-cgroups:uinput...
+2017-09-15 01:23:17 Preparing external:ubuntu-core-16-64:tests/main/xauth-migration...
+2017-09-15 01:23:24 Executing external:ubuntu-core-16-64:tests/main/xauth-migration (15/147)...
+2017-09-15 01:23:35 Preparing external:ubuntu-core-16-64:tests/main/interfaces-network-observe...
+2017-09-15 01:23:48 Executing external:ubuntu-core-16-64:tests/main/interfaces-network-observe (16/147)...
+2017-09-15 01:23:52 Restoring external:ubuntu-core-16-64:tests/main/interfaces-network-observe...
+2017-09-15 01:23:52 Preparing external:ubuntu-core-16-64:tests/main/interfaces-account-control...
+2017-09-15 01:24:07 Executing external:ubuntu-core-16-64:tests/main/interfaces-account-control (17/147)...
+2017-09-15 01:24:08 Restoring external:ubuntu-core-16-64:tests/main/interfaces-account-control...
+2017-09-15 01:24:08 Preparing external:ubuntu-core-16-64:tests/main/help:changes...
+2017-09-15 01:24:16 Executing external:ubuntu-core-16-64:tests/main/help:changes (18/147)...
+2017-09-15 01:24:16 Preparing external:ubuntu-core-16-64:tests/main/enable-disable...
+2017-09-15 01:24:24 Executing external:ubuntu-core-16-64:tests/main/enable-disable (19/147)...
+2017-09-15 01:24:36 Preparing external:ubuntu-core-16-64:tests/main/auto-aliases...
+2017-09-15 01:24:45 Executing external:ubuntu-core-16-64:tests/main/auto-aliases (20/147)...
+2017-09-15 01:25:04 Preparing external:ubuntu-core-16-64:tests/main/interfaces-snapd-control...
+2017-09-15 01:25:20 Executing external:ubuntu-core-16-64:tests/main/interfaces-snapd-control (21/147)...
+2017-09-15 01:25:32 Restoring external:ubuntu-core-16-64:tests/main/interfaces-snapd-control...
+2017-09-15 01:25:32 Preparing external:ubuntu-core-16-64:tests/main/interfaces-mount-observe...
+2017-09-15 01:25:47 Executing external:ubuntu-core-16-64:tests/main/interfaces-mount-observe (22/147)...
+2017-09-15 01:25:57 Restoring external:ubuntu-core-16-64:tests/main/interfaces-mount-observe...
+2017-09-15 01:25:57 Preparing external:ubuntu-core-16-64:tests/main/interfaces-hooks...
+2017-09-15 01:26:17 Executing external:ubuntu-core-16-64:tests/main/interfaces-hooks (23/147)...
+2017-09-15 01:26:20 Restoring external:ubuntu-core-16-64:tests/main/interfaces-hooks...
+2017-09-15 01:26:20 Preparing external:ubuntu-core-16-64:tests/main/install-store-laaaarge...
+2017-09-15 01:26:32 Executing external:ubuntu-core-16-64:tests/main/install-store-laaaarge (24/147)...
+2017-09-15 01:26:44 Restoring external:ubuntu-core-16-64:tests/main/install-store-laaaarge...
+2017-09-15 01:26:45 Preparing external:ubuntu-core-16-64:tests/main/interfaces-content...
+2017-09-15 01:27:08 Executing external:ubuntu-core-16-64:tests/main/interfaces-content (25/147)...
+2017-09-15 01:27:11 Preparing external:ubuntu-core-16-64:tests/main/enable-disable-units-gpio...
+2017-09-15 01:27:21 Executing external:ubuntu-core-16-64:tests/main/enable-disable-units-gpio (26/147)...
+2017-09-15 01:27:22 Restoring external:ubuntu-core-16-64:tests/main/enable-disable-units-gpio...
+2017-09-15 01:27:22 Preparing external:ubuntu-core-16-64:tests/main/refresh-undo...
+2017-09-15 01:27:30 Executing external:ubuntu-core-16-64:tests/main/refresh-undo (27/147)...
+2017-09-15 01:27:45 Preparing external:ubuntu-core-16-64:tests/main/snapctl-from-snap...
+2017-09-15 01:28:02 Executing external:ubuntu-core-16-64:tests/main/snapctl-from-snap (28/147)...
+2017-09-15 01:28:17 Restoring external:ubuntu-core-16-64:tests/main/snapctl-from-snap...
+2017-09-15 01:28:17 Preparing external:ubuntu-core-16-64:tests/main/install-store:reexec1...
+2017-09-15 01:28:25 Executing external:ubuntu-core-16-64:tests/main/install-store:reexec1 (29/147)...
+2017-09-15 01:29:36 Preparing external:ubuntu-core-16-64:tests/main/regression-home-snap-root-owned...
+2017-09-15 01:29:56 Executing external:ubuntu-core-16-64:tests/main/regression-home-snap-root-owned (30/147)...
+2017-09-15 01:29:57 Preparing external:ubuntu-core-16-64:tests/main/snap-connect...
+2017-09-15 01:30:09 Executing external:ubuntu-core-16-64:tests/main/snap-connect (31/147)...
+2017-09-15 01:30:49 Preparing external:ubuntu-core-16-64:tests/main/help:remove...
+2017-09-15 01:31:04 Executing external:ubuntu-core-16-64:tests/main/help:remove (32/147)...
+2017-09-15 01:31:04 Preparing external:ubuntu-core-16-64:tests/main/prefer...
+2017-09-15 01:31:11 Executing external:ubuntu-core-16-64:tests/main/prefer (33/147)...
+2017-09-15 01:31:22 Preparing external:ubuntu-core-16-64:tests/main/security-apparmor...
+2017-09-15 01:31:37 Executing external:ubuntu-core-16-64:tests/main/security-apparmor (34/147)...
+2017-09-15 01:31:37 Restoring external:ubuntu-core-16-64:tests/main/security-apparmor...
+2017-09-15 01:31:37 Preparing external:ubuntu-core-16-64:tests/main/interfaces-system-observe...
+2017-09-15 01:32:00 Executing external:ubuntu-core-16-64:tests/main/interfaces-system-observe (35/147)...
+2017-09-15 01:32:04 Restoring external:ubuntu-core-16-64:tests/main/interfaces-system-observe...
+2017-09-15 01:32:04 Preparing external:ubuntu-core-16-64:tests/main/snap-auto-import-asserts-spools...
+2017-09-15 01:32:12 Executing external:ubuntu-core-16-64:tests/main/snap-auto-import-asserts-spools (36/147)...
+2017-09-15 01:32:12 Restoring external:ubuntu-core-16-64:tests/main/snap-auto-import-asserts-spools...
+2017-09-15 01:32:12 Preparing external:ubuntu-core-16-64:tests/main/interfaces-browser-support:disallow...
+2017-09-15 01:32:24 Executing external:ubuntu-core-16-64:tests/main/interfaces-browser-support:disallow (37/147)...
+2017-09-15 01:32:26 Restoring external:ubuntu-core-16-64:tests/main/interfaces-browser-support:disallow...
+2017-09-15 01:32:26 Preparing external:ubuntu-core-16-64:tests/main/server-snap:goServer...
+2017-09-15 01:32:46 Executing external:ubuntu-core-16-64:tests/main/server-snap:goServer (38/147)...
+2017-09-15 01:32:46 Restoring external:ubuntu-core-16-64:tests/main/server-snap:goServer...
+2017-09-15 01:32:46 Preparing external:ubuntu-core-16-64:tests/main/snap-update-ns...
+2017-09-15 01:33:03 Executing external:ubuntu-core-16-64:tests/main/snap-update-ns (39/147)...
+2017-09-15 01:33:05 Preparing external:ubuntu-core-16-64:tests/main/snapctl-configure-core...
+2017-09-15 01:33:15 Executing external:ubuntu-core-16-64:tests/main/snapctl-configure-core (40/147)...
+2017-09-15 01:33:25 Restoring external:ubuntu-core-16-64:tests/main/snapctl-configure-core...
+2017-09-15 01:33:25 Preparing external:ubuntu-core-16-64:tests/main/ubuntu-core-reboot...
+2017-09-15 01:33:42 Executing external:ubuntu-core-16-64:tests/main/ubuntu-core-reboot (41/147)...
+2017-09-15 01:33:42 Rebooting external:ubuntu-core-16-64 as requested...
+2017-09-15 01:34:07 Preparing external:ubuntu-core-16-64:tests/main/interfaces-upower-observe...
+2017-09-15 01:34:59 Executing external:ubuntu-core-16-64:tests/main/interfaces-upower-observe (42/147)...
+2017-09-15 01:35:02 Restoring external:ubuntu-core-16-64:tests/main/interfaces-upower-observe...
+2017-09-15 01:35:02 Preparing external:ubuntu-core-16-64:tests/main/interfaces-process-control...
+2017-09-15 01:35:19 Executing external:ubuntu-core-16-64:tests/main/interfaces-process-control (43/147)...
+2017-09-15 01:35:22 Restoring external:ubuntu-core-16-64:tests/main/interfaces-process-control...
+2017-09-15 01:35:22 Preparing external:ubuntu-core-16-64:tests/main/cmdline...
+2017-09-15 01:35:31 Executing external:ubuntu-core-16-64:tests/main/cmdline (44/147)...
+2017-09-15 01:35:32 Restoring external:ubuntu-core-16-64:tests/main/cmdline...
+2017-09-15 01:35:32 Preparing external:ubuntu-core-16-64:tests/main/op-remove-retry...
+2017-09-15 01:35:39 Executing external:ubuntu-core-16-64:tests/main/op-remove-retry (45/147)...
+2017-09-15 01:35:49 Restoring external:ubuntu-core-16-64:tests/main/op-remove-retry...
+2017-09-15 01:35:49 Preparing external:ubuntu-core-16-64:tests/main/change-errors...
+2017-09-15 01:35:55 Executing external:ubuntu-core-16-64:tests/main/change-errors (46/147)...
+2017-09-15 01:35:56 Preparing external:ubuntu-core-16-64:tests/main/prepare-image-uboot...
+2017-09-15 01:36:03 Executing external:ubuntu-core-16-64:tests/main/prepare-image-uboot (47/147)...
+2017-09-15 01:38:17 Restoring external:ubuntu-core-16-64:tests/main/prepare-image-uboot...
+2017-09-15 01:38:17 Preparing external:ubuntu-core-16-64:tests/main/snap-multi-service-failing...
+2017-09-15 01:38:26 Executing external:ubuntu-core-16-64:tests/main/snap-multi-service-failing (48/147)...
+2017-09-15 01:38:37 Preparing external:ubuntu-core-16-64:tests/main/snap-service...
+2017-09-15 01:38:43 Executing external:ubuntu-core-16-64:tests/main/snap-service (49/147)...
+2017-09-15 01:38:47 Preparing external:ubuntu-core-16-64:tests/main/snap-seccomp...
+2017-09-15 01:38:56 Executing external:ubuntu-core-16-64:tests/main/snap-seccomp (50/147)...
+2017-09-15 01:41:33 Preparing external:ubuntu-core-16-64:tests/main/interfaces-home...
+2017-09-15 01:41:48 Executing external:ubuntu-core-16-64:tests/main/interfaces-home (51/147)...
+2017-09-15 01:42:02 Restoring external:ubuntu-core-16-64:tests/main/interfaces-home...
+2017-09-15 01:42:02 Preparing external:ubuntu-core-16-64:tests/main/interfaces-fuse_support...
+2017-09-15 01:42:22 Executing external:ubuntu-core-16-64:tests/main/interfaces-fuse_support (52/147)...
+2017-09-15 01:42:25 Restoring external:ubuntu-core-16-64:tests/main/interfaces-fuse_support...
+2017-09-15 01:42:25 Preparing external:ubuntu-core-16-64:tests/main/snap-auto-mount...
+2017-09-15 01:42:33 Executing external:ubuntu-core-16-64:tests/main/snap-auto-mount (53/147)...
+2017-09-15 01:42:33 Restoring external:ubuntu-core-16-64:tests/main/snap-auto-mount...
+2017-09-15 01:42:33 Preparing external:ubuntu-core-16-64:tests/main/ubuntu-core-device-reg...
+2017-09-15 01:42:41 Executing external:ubuntu-core-16-64:tests/main/ubuntu-core-device-reg (54/147)...
+2017-09-15 01:42:41 Preparing external:ubuntu-core-16-64:tests/main/writable-areas:reexec1...
+2017-09-15 01:42:49 Executing external:ubuntu-core-16-64:tests/main/writable-areas:reexec1 (55/147)...
+2017-09-15 01:42:55 Restoring external:ubuntu-core-16-64:tests/main/writable-areas:reexec1...
+2017-09-15 01:42:55 Preparing external:ubuntu-core-16-64:tests/main/snapctl...
+2017-09-15 01:43:08 Executing external:ubuntu-core-16-64:tests/main/snapctl (56/147)...
+2017-09-15 01:43:09 Restoring external:ubuntu-core-16-64:tests/main/snapctl...
+2017-09-15 01:43:09 Preparing external:ubuntu-core-16-64:tests/main/snap-download...
+2017-09-15 01:43:17 Executing external:ubuntu-core-16-64:tests/main/snap-download (57/147)...
+2017-09-15 01:43:36 Restoring external:ubuntu-core-16-64:tests/main/snap-download...
+2017-09-15 01:43:36 Preparing external:ubuntu-core-16-64:tests/main/interfaces-iio...
+2017-09-15 01:43:42 Executing external:ubuntu-core-16-64:tests/main/interfaces-iio (58/147)...
+2017-09-15 01:43:42 Restoring external:ubuntu-core-16-64:tests/main/interfaces-iio...
+2017-09-15 01:43:42 Preparing external:ubuntu-core-16-64:tests/main/help:abort...
+2017-09-15 01:43:50 Executing external:ubuntu-core-16-64:tests/main/help:abort (59/147)...
+2017-09-15 01:43:50 Preparing external:ubuntu-core-16-64:tests/main/snap-interface...
+2017-09-15 01:43:58 Executing external:ubuntu-core-16-64:tests/main/snap-interface (60/147)...
+2017-09-15 01:43:58 Restoring external:ubuntu-core-16-64:tests/main/snap-interface...
+2017-09-15 01:43:58 Preparing external:ubuntu-core-16-64:tests/main/install-hook...
+2017-09-15 01:44:06 Executing external:ubuntu-core-16-64:tests/main/install-hook (61/147)...
+2017-09-15 01:44:35 Restoring external:ubuntu-core-16-64:tests/main/install-hook...
+2017-09-15 01:44:35 Preparing external:ubuntu-core-16-64:tests/main/snap-run-symlink-error...
+2017-09-15 01:44:41 Executing external:ubuntu-core-16-64:tests/main/snap-run-symlink-error (62/147)...
+2017-09-15 01:44:42 Restoring external:ubuntu-core-16-64:tests/main/snap-run-symlink-error...
+2017-09-15 01:44:42 Preparing external:ubuntu-core-16-64:tests/main/ubuntu-core-custom-device-reg...
+2017-09-15 01:44:49 Executing external:ubuntu-core-16-64:tests/main/ubuntu-core-custom-device-reg (63/147)...
+2017-09-15 01:44:49 Restoring external:ubuntu-core-16-64:tests/main/ubuntu-core-custom-device-reg...
+2017-09-15 01:44:49 Preparing external:ubuntu-core-16-64:tests/main/ubuntu-core-upgrade...
+2017-09-15 01:45:02 Executing external:ubuntu-core-16-64:tests/main/ubuntu-core-upgrade (64/147)...
+2017-09-15 01:45:09 Rebooting external:ubuntu-core-16-64 as requested...
+2017-09-15 01:45:33 Rebooting external:ubuntu-core-16-64 as requested...
+2017-09-15 01:46:00 Rebooting external:ubuntu-core-16-64 as requested...
+2017-09-15 01:46:25 Rebooting external:ubuntu-core-16-64 as requested...
+2017-09-15 01:46:47 Restoring external:ubuntu-core-16-64:tests/main/ubuntu-core-upgrade...
+2017-09-15 01:46:47 Preparing external:ubuntu-core-16-64:tests/main/classic-confinement-not-supported...
+2017-09-15 01:46:56 Executing external:ubuntu-core-16-64:tests/main/classic-confinement-not-supported (65/147)...
+2017-09-15 01:47:01 Preparing external:ubuntu-core-16-64:tests/main/refresh-devmode:remote...
+2017-09-15 01:47:18 Executing external:ubuntu-core-16-64:tests/main/refresh-devmode:remote (66/147)...
+2017-09-15 01:47:28 Restoring external:ubuntu-core-16-64:tests/main/refresh-devmode:remote...
+2017-09-15 01:47:28 Preparing external:ubuntu-core-16-64:tests/main/refresh:classic_remote...
+2017-09-15 01:47:37 Executing external:ubuntu-core-16-64:tests/main/refresh:classic_remote (67/147)...
+2017-09-15 01:47:38 Restoring external:ubuntu-core-16-64:tests/main/refresh:classic_remote...
+2017-09-15 01:47:38 Preparing external:ubuntu-core-16-64:tests/main/interfaces-content-empty-content-attr...
+2017-09-15 01:48:01 Executing external:ubuntu-core-16-64:tests/main/interfaces-content-empty-content-attr (68/147)...
+2017-09-15 01:48:04 Preparing external:ubuntu-core-16-64:tests/main/media-sharing...
+2017-09-15 01:48:20 Executing external:ubuntu-core-16-64:tests/main/media-sharing (69/147)...
+2017-09-15 01:48:21 Restoring external:ubuntu-core-16-64:tests/main/media-sharing...
+2017-09-15 01:48:21 Preparing external:ubuntu-core-16-64:tests/main/install-remove-multi...
+2017-09-15 01:48:28 Executing external:ubuntu-core-16-64:tests/main/install-remove-multi (70/147)...
+2017-09-15 01:48:49 Preparing external:ubuntu-core-16-64:tests/main/snap-run-hook:reexec0...
+2017-09-15 01:48:59 Executing external:ubuntu-core-16-64:tests/main/snap-run-hook:reexec0 (71/147)...
+2017-09-15 01:48:59 Restoring external:ubuntu-core-16-64:tests/main/snap-run-hook:reexec0...
+2017-09-15 01:48:59 Preparing external:ubuntu-core-16-64:tests/main/ubuntu-core-apt...
+2017-09-15 01:49:07 Executing external:ubuntu-core-16-64:tests/main/ubuntu-core-apt (72/147)...
+2017-09-15 01:49:07 Preparing external:ubuntu-core-16-64:tests/main/interfaces-alsa...
+2017-09-15 01:49:20 Executing external:ubuntu-core-16-64:tests/main/interfaces-alsa (73/147)...
+2017-09-15 01:49:24 Restoring external:ubuntu-core-16-64:tests/main/interfaces-alsa...
+2017-09-15 01:49:24 Preparing external:ubuntu-core-16-64:tests/main/searching...
+2017-09-15 01:49:31 Executing external:ubuntu-core-16-64:tests/main/searching (74/147)...
+2017-09-15 01:49:36 Preparing external:ubuntu-core-16-64:tests/main/known-remote...
+2017-09-15 01:49:42 Executing external:ubuntu-core-16-64:tests/main/known-remote (75/147)...
+2017-09-15 01:49:43 Preparing external:ubuntu-core-16-64:tests/main/ubuntu-core-fan...
+2017-09-15 01:49:51 Executing external:ubuntu-core-16-64:tests/main/ubuntu-core-fan (76/147)...
+2017-09-15 01:49:51 Restoring external:ubuntu-core-16-64:tests/main/ubuntu-core-fan...
+2017-09-15 01:49:51 Preparing external:ubuntu-core-16-64:tests/main/revert:fake...
+2017-09-15 01:49:57 Executing external:ubuntu-core-16-64:tests/main/revert:fake (77/147)...
+2017-09-15 01:49:57 Restoring external:ubuntu-core-16-64:tests/main/revert:fake...
+2017-09-15 01:49:58 Preparing external:ubuntu-core-16-64:tests/main/lxd...
+2017-09-15 01:50:05 Executing external:ubuntu-core-16-64:tests/main/lxd (78/147)...
+2017-09-15 01:50:05 Restoring external:ubuntu-core-16-64:tests/main/lxd...
+2017-09-15 01:50:05 Preparing external:ubuntu-core-16-64:tests/main/server-snap:pythonServer...
+2017-09-15 01:50:37 Executing external:ubuntu-core-16-64:tests/main/server-snap:pythonServer (79/147)...
+2017-09-15 01:50:37 Restoring external:ubuntu-core-16-64:tests/main/server-snap:pythonServer...
+2017-09-15 01:50:37 Preparing external:ubuntu-core-16-64:tests/main/snap-env...
+2017-09-15 01:50:53 Executing external:ubuntu-core-16-64:tests/main/snap-env (80/147)...
+2017-09-15 01:50:53 Restoring external:ubuntu-core-16-64:tests/main/snap-env...
+2017-09-15 01:50:53 Preparing external:ubuntu-core-16-64:tests/main/refresh-devmode:fake...
+2017-09-15 01:51:00 Executing external:ubuntu-core-16-64:tests/main/refresh-devmode:fake (81/147)...
+2017-09-15 01:51:00 Restoring external:ubuntu-core-16-64:tests/main/refresh-devmode:fake...
+2017-09-15 01:51:00 Preparing external:ubuntu-core-16-64:tests/main/security-setuid-root...
+2017-09-15 01:51:16 Executing external:ubuntu-core-16-64:tests/main/security-setuid-root (82/147)...
+2017-09-15 01:51:16 Restoring external:ubuntu-core-16-64:tests/main/security-setuid-root...
+2017-09-15 01:51:16 Preparing external:ubuntu-core-16-64:tests/main/interfaces-bluez...
+2017-09-15 01:51:25 Executing external:ubuntu-core-16-64:tests/main/interfaces-bluez (83/147)...
+2017-09-15 01:51:42 Preparing external:ubuntu-core-16-64:tests/main/revert:remote...
+2017-09-15 01:52:02 Executing external:ubuntu-core-16-64:tests/main/revert:remote (84/147)...
+2017-09-15 01:52:25 Restoring external:ubuntu-core-16-64:tests/main/revert:remote...
+2017-09-15 01:52:25 Preparing external:ubuntu-core-16-64:tests/main/interfaces-firewall-control...
+2017-09-15 01:52:40 Executing external:ubuntu-core-16-64:tests/main/interfaces-firewall-control (85/147)...
+2017-09-15 01:52:45 Restoring external:ubuntu-core-16-64:tests/main/interfaces-firewall-control...
+2017-09-15 01:52:45 Preparing external:ubuntu-core-16-64:tests/main/abort...
+2017-09-15 01:52:53 Executing external:ubuntu-core-16-64:tests/main/abort (86/147)...
+2017-09-15 01:53:08 Preparing external:ubuntu-core-16-64:tests/main/help:find...
+2017-09-15 01:53:16 Executing external:ubuntu-core-16-64:tests/main/help:find (87/147)...
+2017-09-15 01:53:16 Preparing external:ubuntu-core-16-64:tests/main/snap-auto-import-asserts...
+2017-09-15 01:53:24 Executing external:ubuntu-core-16-64:tests/main/snap-auto-import-asserts (88/147)...
+2017-09-15 01:53:24 Restoring external:ubuntu-core-16-64:tests/main/snap-auto-import-asserts...
+2017-09-15 01:53:24 Preparing external:ubuntu-core-16-64:tests/main/interfaces-kernel-module-control...
+2017-09-15 01:53:47 Executing external:ubuntu-core-16-64:tests/main/interfaces-kernel-module-control (89/147)...
+2017-09-15 01:53:54 Restoring external:ubuntu-core-16-64:tests/main/interfaces-kernel-module-control...
+2017-09-15 01:53:54 Preparing external:ubuntu-core-16-64:tests/main/base-snaps...
+2017-09-15 01:54:05 Executing external:ubuntu-core-16-64:tests/main/base-snaps (90/147)...
+2017-09-15 01:54:30 Preparing external:ubuntu-core-16-64:tests/main/interfaces-hardware-observe...
+2017-09-15 01:54:51 Executing external:ubuntu-core-16-64:tests/main/interfaces-hardware-observe (91/147)...
+2017-09-15 01:54:54 Restoring external:ubuntu-core-16-64:tests/main/interfaces-hardware-observe...
+2017-09-15 01:54:54 Preparing external:ubuntu-core-16-64:tests/main/snap-remove-not-mounted...
+2017-09-15 01:55:01 Executing external:ubuntu-core-16-64:tests/main/snap-remove-not-mounted (92/147)...
+2017-09-15 01:55:10 Preparing external:ubuntu-core-16-64:tests/main/ubuntu-core-custom-device-reg-extras...
+2017-09-15 01:55:15 Executing external:ubuntu-core-16-64:tests/main/ubuntu-core-custom-device-reg-extras (93/147)...
+2017-09-15 01:55:15 Restoring external:ubuntu-core-16-64:tests/main/ubuntu-core-custom-device-reg-extras...
+2017-09-15 01:55:15 Preparing external:ubuntu-core-16-64:tests/main/listing...
+2017-09-15 01:55:30 Executing external:ubuntu-core-16-64:tests/main/listing (94/147)...
+2017-09-15 01:55:36 Preparing external:ubuntu-core-16-64:tests/main/interfaces-udev...
+2017-09-15 01:55:50 Executing external:ubuntu-core-16-64:tests/main/interfaces-udev (95/147)...
+2017-09-15 01:55:52 Restoring external:ubuntu-core-16-64:tests/main/interfaces-udev...
+2017-09-15 01:55:53 Preparing external:ubuntu-core-16-64:tests/main/systemd-service...
+2017-09-15 01:55:59 Executing external:ubuntu-core-16-64:tests/main/systemd-service (96/147)...
+2017-09-15 01:56:04 Restoring external:ubuntu-core-16-64:tests/main/systemd-service...
+2017-09-15 01:56:04 Preparing external:ubuntu-core-16-64:tests/main/interfaces-locale-control...
+2017-09-15 01:56:14 Executing external:ubuntu-core-16-64:tests/main/interfaces-locale-control (97/147)...
+2017-09-15 01:56:14 Restoring external:ubuntu-core-16-64:tests/main/interfaces-locale-control...
+2017-09-15 01:56:14 Preparing external:ubuntu-core-16-64:tests/main/interfaces-network-bind...
+2017-09-15 01:56:27 Executing external:ubuntu-core-16-64:tests/main/interfaces-network-bind (98/147)...
+2017-09-15 01:56:34 Restoring external:ubuntu-core-16-64:tests/main/interfaces-network-bind...
+2017-09-15 01:56:34 Preparing external:ubuntu-core-16-64:tests/main/interfaces-network...
+2017-09-15 01:56:48 Executing external:ubuntu-core-16-64:tests/main/interfaces-network (99/147)...
+2017-09-15 01:56:55 Restoring external:ubuntu-core-16-64:tests/main/interfaces-network...
+2017-09-15 01:56:55 Preparing external:ubuntu-core-16-64:tests/main/ubuntu-core-grub:kernelimg...
+2017-09-15 01:57:03 Executing external:ubuntu-core-16-64:tests/main/ubuntu-core-grub:kernelimg (100/147)...
+2017-09-15 01:57:04 Preparing external:ubuntu-core-16-64:tests/main/ack...
+2017-09-15 01:57:11 Executing external:ubuntu-core-16-64:tests/main/ack (101/147)...
+2017-09-15 01:57:11 Preparing external:ubuntu-core-16-64:tests/main/failover:rclocalcrash...
+2017-09-15 01:57:18 Executing external:ubuntu-core-16-64:tests/main/failover:rclocalcrash (102/147)...
+2017-09-15 01:59:07 Rebooting external:ubuntu-core-16-64 as requested...
+2017-09-15 01:59:32 Restoring external:ubuntu-core-16-64:tests/main/failover:rclocalcrash...
+2017-09-15 01:59:34 Preparing external:ubuntu-core-16-64:tests/main/i18n...
+2017-09-15 01:59:46 Executing external:ubuntu-core-16-64:tests/main/i18n (103/147)...
+2017-09-15 01:59:46 Preparing external:ubuntu-core-16-64:tests/main/ubuntu-core-classic...
+2017-09-15 01:59:54 Executing external:ubuntu-core-16-64:tests/main/ubuntu-core-classic (104/147)...
+2017-09-15 02:00:51 Restoring external:ubuntu-core-16-64:tests/main/ubuntu-core-classic...
+2017-09-15 02:00:51 Preparing external:ubuntu-core-16-64:tests/main/snap-repair...
+2017-09-15 02:01:01 Executing external:ubuntu-core-16-64:tests/main/snap-repair (105/147)...
+2017-09-15 02:01:02 Preparing external:ubuntu-core-16-64:tests/main/debug-confinement...
+2017-09-15 02:01:10 Executing external:ubuntu-core-16-64:tests/main/debug-confinement (106/147)...
+2017-09-15 02:01:10 Preparing external:ubuntu-core-16-64:tests/main/ubuntu-core-grub:vmlinuz...
+2017-09-15 02:01:16 Executing external:ubuntu-core-16-64:tests/main/ubuntu-core-grub:vmlinuz (107/147)...
+2017-09-15 02:01:17 Preparing external:ubuntu-core-16-64:tests/main/interfaces-cli...
+2017-09-15 02:01:31 Executing external:ubuntu-core-16-64:tests/main/interfaces-cli (108/147)...
+2017-09-15 02:01:31 Restoring external:ubuntu-core-16-64:tests/main/interfaces-cli...
+2017-09-15 02:01:31 Preparing external:ubuntu-core-16-64:tests/main/help:interfaces...
+2017-09-15 02:01:37 Executing external:ubuntu-core-16-64:tests/main/help:interfaces (109/147)...
+2017-09-15 02:01:37 Preparing external:ubuntu-core-16-64:tests/main/writable-areas:reexec0...
+2017-09-15 02:01:44 Executing external:ubuntu-core-16-64:tests/main/writable-areas:reexec0 (110/147)...
+2017-09-15 02:01:47 Restoring external:ubuntu-core-16-64:tests/main/writable-areas:reexec0...
+2017-09-15 02:01:47 Preparing external:ubuntu-core-16-64:tests/main/try-snap-goes-away:network_bind_consumer...
+2017-09-15 02:01:52 Executing external:ubuntu-core-16-64:tests/main/try-snap-goes-away:network_bind_consumer (111/147)...
+2017-09-15 02:01:56 Restoring external:ubuntu-core-16-64:tests/main/try-snap-goes-away:network_bind_consumer...
+2017-09-15 02:01:56 Preparing external:ubuntu-core-16-64:tests/main/install-sideload:reexec0...
+2017-09-15 02:02:01 Executing external:ubuntu-core-16-64:tests/main/install-sideload:reexec0 (112/147)...
+2017-09-15 02:02:16 Restoring external:ubuntu-core-16-64:tests/main/install-sideload:reexec0...
+2017-09-15 02:02:16 Preparing external:ubuntu-core-16-64:tests/main/security-profiles...
+2017-09-15 02:02:26 Executing external:ubuntu-core-16-64:tests/main/security-profiles (113/147)...
+2017-09-15 02:02:30 Restoring external:ubuntu-core-16-64:tests/main/security-profiles...
+2017-09-15 02:02:30 Preparing external:ubuntu-core-16-64:tests/main/ubuntu-core-create-user...
+2017-09-15 02:02:37 Executing external:ubuntu-core-16-64:tests/main/ubuntu-core-create-user (114/147)...
+2017-09-15 02:02:38 Restoring external:ubuntu-core-16-64:tests/main/ubuntu-core-create-user...
+2017-09-15 02:02:38 Preparing external:ubuntu-core-16-64:tests/main/interfaces-network-control...
+2017-09-15 02:02:47 Executing external:ubuntu-core-16-64:tests/main/interfaces-network-control (115/147)...
+2017-09-15 02:02:54 Restoring external:ubuntu-core-16-64:tests/main/interfaces-network-control...
+2017-09-15 02:02:54 Preparing external:ubuntu-core-16-64:tests/main/help:install...
+2017-09-15 02:03:00 Executing external:ubuntu-core-16-64:tests/main/help:install (116/147)...
+2017-09-15 02:03:00 Preparing external:ubuntu-core-16-64:tests/main/refresh:strict_fake...
+2017-09-15 02:03:07 Executing external:ubuntu-core-16-64:tests/main/refresh:strict_fake (117/147)...
+2017-09-15 02:03:07 Restoring external:ubuntu-core-16-64:tests/main/refresh:strict_fake...
+2017-09-15 02:03:07 Preparing external:ubuntu-core-16-64:tests/main/remove-errors...
+2017-09-15 02:03:14 Executing external:ubuntu-core-16-64:tests/main/remove-errors (118/147)...
+2017-09-15 02:03:18 Preparing external:ubuntu-core-16-64:tests/main/interfaces-time-control...
+2017-09-15 02:03:24 Executing external:ubuntu-core-16-64:tests/main/interfaces-time-control (119/147)...
+2017-09-15 02:03:24 Preparing external:ubuntu-core-16-64:tests/main/op-remove...
+2017-09-15 02:03:31 Executing external:ubuntu-core-16-64:tests/main/op-remove (120/147)...
+2017-09-15 02:03:36 Restoring external:ubuntu-core-16-64:tests/main/op-remove...
+2017-09-15 02:03:36 Preparing external:ubuntu-core-16-64:tests/main/snap-get...
+2017-09-15 02:03:54 Executing external:ubuntu-core-16-64:tests/main/snap-get (121/147)...
+2017-09-15 02:03:56 Restoring external:ubuntu-core-16-64:tests/main/snap-get...
+2017-09-15 02:03:56 Preparing external:ubuntu-core-16-64:tests/main/ubuntu-core-grub:initrdimg...
+2017-09-15 02:04:02 Executing external:ubuntu-core-16-64:tests/main/ubuntu-core-grub:initrdimg (122/147)...
+2017-09-15 02:04:03 Preparing external:ubuntu-core-16-64:tests/main/interfaces-browser-support:allow...
+2017-09-15 02:04:12 Executing external:ubuntu-core-16-64:tests/main/interfaces-browser-support:allow (123/147)...
+2017-09-15 02:04:14 Restoring external:ubuntu-core-16-64:tests/main/interfaces-browser-support:allow...
+2017-09-15 02:04:14 Preparing external:ubuntu-core-16-64:tests/main/install-store:reexec0...
+2017-09-15 02:04:20 Executing external:ubuntu-core-16-64:tests/main/install-store:reexec0 (124/147)...
+2017-09-15 02:05:07 Preparing external:ubuntu-core-16-64:tests/main/snap-set...
+2017-09-15 02:05:19 Executing external:ubuntu-core-16-64:tests/main/snap-set (125/147)...
+2017-09-15 02:05:24 Restoring external:ubuntu-core-16-64:tests/main/snap-set...
+2017-09-15 02:05:24 Preparing external:ubuntu-core-16-64:tests/main/try-snap-goes-away:test_snapd_tools...
+2017-09-15 02:05:31 Executing external:ubuntu-core-16-64:tests/main/try-snap-goes-away:test_snapd_tools (126/147)...
+2017-09-15 02:05:34 Restoring external:ubuntu-core-16-64:tests/main/try-snap-goes-away:test_snapd_tools...
+2017-09-15 02:05:34 Preparing external:ubuntu-core-16-64:tests/main/snap-run-hook:reexec1...
+2017-09-15 02:05:41 Executing external:ubuntu-core-16-64:tests/main/snap-run-hook:reexec1 (127/147)...
+2017-09-15 02:05:41 Restoring external:ubuntu-core-16-64:tests/main/snap-run-hook:reexec1...
+2017-09-15 02:05:41 Preparing external:ubuntu-core-16-64:tests/main/snap-debug-get-base-declaration...
+2017-09-15 02:05:48 Executing external:ubuntu-core-16-64:tests/main/snap-debug-get-base-declaration (128/147)...
+2017-09-15 02:05:48 Preparing external:ubuntu-core-16-64:tests/main/refresh:strict_remote...
+2017-09-15 02:06:02 Executing external:ubuntu-core-16-64:tests/main/refresh:strict_remote (129/147)...
+2017-09-15 02:06:20 Restoring external:ubuntu-core-16-64:tests/main/refresh:strict_remote...
+2017-09-15 02:06:20 Preparing external:ubuntu-core-16-64:tests/main/ubuntu-core-os-release...
+2017-09-15 02:06:29 Executing external:ubuntu-core-16-64:tests/main/ubuntu-core-os-release (130/147)...
+2017-09-15 02:06:29 Preparing external:ubuntu-core-16-64:tests/main/revert-sideload...
+2017-09-15 02:06:36 Executing external:ubuntu-core-16-64:tests/main/revert-sideload (131/147)...
+2017-09-15 02:06:40 Restoring external:ubuntu-core-16-64:tests/main/revert-sideload...
+2017-09-15 02:06:40 Preparing external:ubuntu-core-16-64:tests/main/install-sideload:reexec1...
+2017-09-15 02:06:46 Executing external:ubuntu-core-16-64:tests/main/install-sideload:reexec1 (132/147)...
+2017-09-15 02:07:02 Restoring external:ubuntu-core-16-64:tests/main/install-sideload:reexec1...
+2017-09-15 02:07:02 Preparing external:ubuntu-core-16-64:tests/main/interfaces-network-control-ip-netns...
+2017-09-15 02:07:19 Executing external:ubuntu-core-16-64:tests/main/interfaces-network-control-ip-netns (133/147)...
+2017-09-15 02:07:20 Restoring external:ubuntu-core-16-64:tests/main/interfaces-network-control-ip-netns...
+2017-09-15 02:07:21 Preparing external:ubuntu-core-16-64:tests/main/revert-devmode:fake...
+2017-09-15 02:07:26 Executing external:ubuntu-core-16-64:tests/main/revert-devmode:fake (134/147)...
+2017-09-15 02:07:26 Restoring external:ubuntu-core-16-64:tests/main/revert-devmode:fake...
+2017-09-15 02:07:26 Preparing external:ubuntu-core-16-64:tests/main/snap-discard-ns...
+2017-09-15 02:07:36 Executing external:ubuntu-core-16-64:tests/main/snap-discard-ns (135/147)...
+2017-09-15 02:07:36 Restoring external:ubuntu-core-16-64:tests/main/...
+2017-09-15 02:07:42 Preparing external:ubuntu-core-16-64:tests/regression/...
+2017-09-15 02:07:43 Preparing external:ubuntu-core-16-64:tests/regression/lp-1641885...
+2017-09-15 02:07:51 Executing external:ubuntu-core-16-64:tests/regression/lp-1641885 (136/147)...
+2017-09-15 02:07:51 Restoring external:ubuntu-core-16-64:tests/regression/lp-1641885...
+2017-09-15 02:07:51 Preparing external:ubuntu-core-16-64:tests/regression/lp-1599891...
+2017-09-15 02:07:58 Executing external:ubuntu-core-16-64:tests/regression/lp-1599891 (137/147)...
+2017-09-15 02:07:58 Preparing external:ubuntu-core-16-64:tests/regression/lp-1615113...
+2017-09-15 02:08:08 Executing external:ubuntu-core-16-64:tests/regression/lp-1615113 (138/147)...
+2017-09-15 02:08:09 Preparing external:ubuntu-core-16-64:tests/regression/lp-1693042...
+2017-09-15 02:08:16 Executing external:ubuntu-core-16-64:tests/regression/lp-1693042 (139/147)...
+2017-09-15 02:08:19 Preparing external:ubuntu-core-16-64:tests/regression/lp-1606277...
+2017-09-15 02:08:28 Executing external:ubuntu-core-16-64:tests/regression/lp-1606277 (140/147)...
+2017-09-15 02:08:28 Preparing external:ubuntu-core-16-64:tests/regression/lp-1667385:devmode...
+2017-09-15 02:08:40 Executing external:ubuntu-core-16-64:tests/regression/lp-1667385:devmode (141/147)...
+2017-09-15 02:08:41 Preparing external:ubuntu-core-16-64:tests/regression/lp-1607796...
+2017-09-15 02:08:49 Executing external:ubuntu-core-16-64:tests/regression/lp-1607796 (142/147)...
+2017-09-15 02:08:50 Restoring external:ubuntu-core-16-64:tests/regression/lp-1607796...
+2017-09-15 02:08:50 Preparing external:ubuntu-core-16-64:tests/regression/lp-1665004...
+2017-09-15 02:08:59 Executing external:ubuntu-core-16-64:tests/regression/lp-1665004 (143/147)...
+2017-09-15 02:08:59 Preparing external:ubuntu-core-16-64:tests/regression/lp-1667385:jailmode...
+2017-09-15 02:09:12 Executing external:ubuntu-core-16-64:tests/regression/lp-1667385:jailmode (144/147)...
+2017-09-15 02:09:13 Preparing external:ubuntu-core-16-64:tests/regression/lp-1630479...
+2017-09-15 02:09:22 Executing external:ubuntu-core-16-64:tests/regression/lp-1630479 (145/147)...
+2017-09-15 02:09:22 Preparing external:ubuntu-core-16-64:tests/regression/lp-1618683...
+2017-09-15 02:09:31 Executing external:ubuntu-core-16-64:tests/regression/lp-1618683 (146/147)...
+2017-09-15 02:09:31 Preparing external:ubuntu-core-16-64:tests/regression/nmcli...
+2017-09-15 02:09:37 Executing external:ubuntu-core-16-64:tests/regression/nmcli (147/147)...
+2017-09-15 02:09:47 Restoring external:ubuntu-core-16-64:tests/regression/...
+2017-09-15 02:09:54 Restoring project on external:ubuntu-core-16-64...
+2017-09-15 02:09:56 Discarding external:ubuntu-core-16-64...
+2017-09-15 02:09:56 Successful tasks: 147
+2017-09-15 02:09:56 Aborted tasks: 0
+Restoring skipped tests
+2017-09-15 02:09:50,106 unknown-wealth INFO: END testrun
+complete
