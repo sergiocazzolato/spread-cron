@@ -5,7 +5,7 @@ Deleting test flinger data
 Creating job for snapd using a device
 Running testflinger client
 Submitting job to testflinger
-JOB_ID: d2b78bbd-ffb0-4b4e-a549-307b7c46a0b0
+JOB_ID: 3292634d-80ea-4906-8629-35f5ae0f80a4
 Print job: /var/snap/testflinger-cli/current/job.yaml 
 job_queue: dragonboard
 global_timeout: 36000
@@ -23,1425 +23,269 @@ test_data:
         (cd snapd && git checkout master)
         . snapd/tests/lib/external/prepare-ssh.sh "{device_ip}" "22" "ubuntu"
         . snappy-qa-jobs/scripts/utils/register_device.sh "{device_ip}" "22" "test" "ubuntu" "sergiocazzolato@yahoo.com.ar"
+        . snappy-qa-jobs/scripts/utils/refresh_core.sh "{device_ip}" "22" "test" "ubuntu" "edge"
         . snappy-qa-jobs/scripts/utils/run_setup.sh "{device_ip}" "22" "test" "ubuntu" ""
         . snappy-qa-jobs/scripts/utils/get_spread.sh
         . snappy-qa-jobs/scripts/utils/run_spread.sh "{device_ip}" "22" "snapd" "external:ubuntu-core-16-arm-64:tests/" "" "tests/main/auto-refresh,tests/main/failover"
 Showing job data
-This job is currently waiting on a node to become available. You will see no further output until the job starts running.
 *******************************************
 
-* Starting setup phase on dragonboard-005 *
+* Starting setup phase on dragonboard-002 *
 
 *******************************************
 
 Cleaning up container if it exists...
-Error response from daemon: No such container: dragonboard005
+Error response from daemon: No such container: dragonboard002
 
 ***********************************************
 
-* Starting provision phase on dragonboard-005 *
+* Starting provision phase on dragonboard-002 *
 
 ***********************************************
 Install python-logstash if you want to use logstash logging
-2017-09-20 05:08:33,320 dragonboard_005 INFO: BEGIN provision
-2017-09-20 05:08:33,320 dragonboard_005 INFO: Booting Master Image
-2017-09-20 05:08:33,320 dragonboard_005 INFO: Making sure the master image is booted
-2017-09-20 05:08:33,320 dragonboard_005 INFO: Checking if test image booted.
-2017-09-20 05:08:34,033 dragonboard_005 INFO: Running ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ubuntu@10.101.51.15 sudo sgdisk -o /dev/mmcblk1
-Warning: Permanently added '10.101.51.15' (ECDSA) to the list of known hosts.
+2017-09-20 13:21:04,357 dragonboard_002 INFO: BEGIN provision
+2017-09-20 13:21:04,357 dragonboard_002 INFO: Booting Master Image
+2017-09-20 13:21:04,357 dragonboard_002 INFO: Making sure the master image is booted
+2017-09-20 13:21:04,357 dragonboard_002 INFO: Checking if test image booted.
+2017-09-20 13:21:05,494 dragonboard_002 INFO: Running ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ubuntu@10.101.51.12 sudo sgdisk -o /dev/mmcblk1
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
 Warning: The kernel is still using the old partition table.
 The new table will be used at the next reboot or after you
 run partprobe(8) or kpartx(8)
 The operation has completed successfully.
-2017-09-20 05:08:35,963 dragonboard_005 INFO: Running ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ubuntu@10.101.51.15 sudo sync
-Warning: Permanently added '10.101.51.15' (ECDSA) to the list of known hosts.
-2017-09-20 05:08:36,685 dragonboard_005 INFO: Running snmpset -c private -v1 10.101.48.13 .1.3.6.1.4.1.318.1.1.12.3.3.1.1.4.5 i 2
-iso.3.6.1.4.1.318.1.1.12.3.3.1.1.4.5 = INTEGER: 2
-2017-09-20 05:08:36,803 dragonboard_005 INFO: Running sleep 10
-2017-09-20 05:08:46,830 dragonboard_005 INFO: Running snmpset -c private -v1 10.101.48.13 .1.3.6.1.4.1.318.1.1.12.3.3.1.1.4.5 i 1
-iso.3.6.1.4.1.318.1.1.12.3.3.1.1.4.5 = INTEGER: 1
-2017-09-20 05:08:56,959 dragonboard_005 INFO: Checking if master image booted.
-2017-09-20 05:11:22,739 dragonboard_005 INFO: Flashing Test Image
-Warning: Permanently added '10.101.51.15' (ECDSA) to the list of known hosts.
+2017-09-20 13:21:07,927 dragonboard_002 INFO: Running ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ubuntu@10.101.51.12 sudo sync
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+2017-09-20 13:21:10,007 dragonboard_002 INFO: Running snmpset -c private -v1 10.101.48.13 .1.3.6.1.4.1.318.1.1.12.3.3.1.1.4.2 i 2
+iso.3.6.1.4.1.318.1.1.12.3.3.1.1.4.2 = INTEGER: 2
+2017-09-20 13:21:10,125 dragonboard_002 INFO: Running sleep 10
+2017-09-20 13:21:20,151 dragonboard_002 INFO: Running snmpset -c private -v1 10.101.48.13 .1.3.6.1.4.1.318.1.1.12.3.3.1.1.4.2 i 1
+iso.3.6.1.4.1.318.1.1.12.3.3.1.1.4.2 = INTEGER: 1
+2017-09-20 13:21:30,279 dragonboard_002 INFO: Checking if master image booted.
+2017-09-20 13:23:21,400 dragonboard_002 INFO: Flashing Test Image
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
 umount: /dev/mmcblk1: not mounted
-2017-09-20 05:11:23,157 dragonboard_005 INFO: Running: ['ssh', '-o', 'StrictHostKeyChecking=no', '-o', 'UserKnownHostsFile=/dev/null', 'linaro@10.101.51.15', 'nc 10.101.50.22 57145| gunzip| sudo dd of=/dev/mmcblk1 bs=16M']
-Warning: Permanently added '10.101.51.15' (ECDSA) to the list of known hosts.
-0+13159 records in
-0+13159 records out
-748073984 bytes (748 MB) copied, 139.592 s, 5.4 MB/s
-Warning: Permanently added '10.101.51.15' (ECDSA) to the list of known hosts.
-Warning: Permanently added '10.101.51.15' (ECDSA) to the list of known hosts.
+2017-09-20 13:23:21,818 dragonboard_002 INFO: Running: ['ssh', '-o', 'StrictHostKeyChecking=no', '-o', 'UserKnownHostsFile=/dev/null', 'linaro@10.101.51.12', 'nc 10.101.50.22 40183| gunzip| sudo dd of=/dev/mmcblk1 bs=16M']
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+0+12790 records in
+0+12790 records out
+748073984 bytes (748 MB) copied, 88.1793 s, 8.5 MB/s
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
 
 /dev/mmcblk1:
  re-reading partition table
-2017-09-20 05:13:43,790 dragonboard_005 INFO: Creating Test User
-Warning: Permanently added '10.101.51.15' (ECDSA) to the list of known hosts.
-Warning: Permanently added '10.101.51.15' (ECDSA) to the list of known hosts.
-Warning: Permanently added '10.101.51.15' (ECDSA) to the list of known hosts.
-2017-09-20 05:13:44,846 dragonboard_005 INFO: Booting Test Image
-2017-09-20 05:13:44,847 dragonboard_005 INFO: Booting the test image
-Warning: Permanently added '10.101.51.15' (ECDSA) to the list of known hosts.
-Connection to 10.101.51.15 closed by remote host.
+2017-09-20 13:24:50,984 dragonboard_002 INFO: Creating Test User
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+2017-09-20 13:24:52,292 dragonboard_002 INFO: Booting Test Image
+2017-09-20 13:24:52,292 dragonboard_002 INFO: Booting the test image
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Connection to 10.101.51.12 closed by remote host.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+
+/usr/bin/ssh-copy-id: ERROR: ssh: connect to host 10.101.51.12 port 22: Connection refused
+
 /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
 /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
 /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
-Warning: Permanently added '10.101.51.15' (ECDSA) to the list of known hosts.
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
 Permission denied, please try again.
 /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ubuntu/.ssh/id_rsa.pub"
 
 /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
-
-/usr/bin/ssh-copy-id: WARNING: All keys were skipped because they already exist on the remote system.
-		(if you think this is a mistake, you may want to use -f option)
-
-2017-09-20 05:15:06,946 dragonboard_005 INFO: Checking if test image booted.
-2017-09-20 05:15:07,439 dragonboard_005 INFO: END provision
-
-******************************************
-
-* Starting test phase on dragonboard-005 *
-
-******************************************
-Install python-logstash if you want to use logstash logging
-2017-09-20 05:15:12,493 dragonboard_005 INFO: BEGIN testrun
-
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
-Hit:1 http://archive.ubuntu.com/ubuntu xenial InRelease
-Get:2 http://security.ubuntu.com/ubuntu xenial-security InRelease [102 kB]
-Get:3 http://archive.ubuntu.com/ubuntu xenial-updates InRelease [102 kB]
-Get:4 http://security.ubuntu.com/ubuntu xenial-security/universe Sources [49.8 kB]
-Get:5 http://archive.ubuntu.com/ubuntu xenial-backports InRelease [102 kB]
-Get:6 http://security.ubuntu.com/ubuntu xenial-security/main amd64 Packages [450 kB]
-Get:7 http://archive.ubuntu.com/ubuntu xenial-updates/universe Sources [219 kB]
-Get:8 http://security.ubuntu.com/ubuntu xenial-security/restricted amd64 Packages [12.8 kB]
-Get:9 http://security.ubuntu.com/ubuntu xenial-security/universe amd64 Packages [211 kB]
-Get:10 http://security.ubuntu.com/ubuntu xenial-security/multiverse amd64 Packages [2928 B]
-Get:11 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 Packages [816 kB]
-Get:12 http://archive.ubuntu.com/ubuntu xenial-updates/restricted amd64 Packages [13.5 kB]
-Get:13 http://archive.ubuntu.com/ubuntu xenial-updates/universe amd64 Packages [686 kB]
-Get:14 http://archive.ubuntu.com/ubuntu xenial-updates/multiverse amd64 Packages [17.5 kB]
-Get:15 http://archive.ubuntu.com/ubuntu xenial-backports/main amd64 Packages [5176 B]
-Get:16 http://archive.ubuntu.com/ubuntu xenial-backports/universe amd64 Packages [6192 B]
-Fetched 2798 kB in 4s (561 kB/s)
-Reading package lists...
-Building dependency tree...
-Reading state information...
-42 packages can be upgraded. Run 'apt list --upgradable' to see them.
-
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
-Reading package lists...
-Building dependency tree...
-Reading state information...
-The following additional packages will be installed:
-  git-man ifupdown iproute2 isc-dhcp-client isc-dhcp-common less
-  libasn1-8-heimdal libatm1 libcurl3-gnutls libdns-export162 liberror-perl
-  libgdbm3 libgmp10 libgnutls30 libgssapi3-heimdal libhcrypto4-heimdal
-  libheimbase1-heimdal libheimntlm0-heimdal libhogweed4 libhx509-5-heimdal
-  libisc-export160 libkrb5-26-heimdal libldap-2.4-2 libmnl0 libnettle6
-  libp11-kit0 libperl5.22 libpopt0 libroken18-heimdal librtmp1 libsasl2-2
-  libsasl2-modules libsasl2-modules-db libtasn1-6 libwind0-heimdal
-  libxtables11 netbase patch perl perl-modules-5.22 rename rsync
-Suggested packages:
-  gettext-base git-daemon-run | git-daemon-sysvinit git-doc git-el git-email
-  git-gui gitk gitweb git-arch git-cvs git-mediawiki git-svn ppp rdnssd
-  iproute2-doc resolvconf avahi-autoipd isc-dhcp-client-ddns apparmor
-  gnutls-bin libsasl2-modules-otp libsasl2-modules-ldap libsasl2-modules-sql
-  libsasl2-modules-gssapi-mit | libsasl2-modules-gssapi-heimdal ed
-  diffutils-doc perl-doc libterm-readline-gnu-perl
-  | libterm-readline-perl-perl make openssh-server
-The following NEW packages will be installed:
-  curl git git-man ifupdown iproute2 isc-dhcp-client isc-dhcp-common less
-  libasn1-8-heimdal libatm1 libcurl3-gnutls libdns-export162 liberror-perl
-  libgdbm3 libgmp10 libgnutls30 libgssapi3-heimdal libhcrypto4-heimdal
-  libheimbase1-heimdal libheimntlm0-heimdal libhogweed4 libhx509-5-heimdal
-  libisc-export160 libkrb5-26-heimdal libldap-2.4-2 libmnl0 libnettle6
-  libp11-kit0 libperl5.22 libpopt0 libroken18-heimdal librtmp1 libsasl2-2
-  libsasl2-modules libsasl2-modules-db libtasn1-6 libwind0-heimdal
-  libxtables11 netbase patch perl perl-modules-5.22 rename rsync sshpass
-0 upgraded, 45 newly installed, 0 to remove and 42 not upgraded.
-Need to get 15.2 MB of archives.
-After this operation, 79.8 MB of additional disk space will be used.
-Get:1 http://archive.ubuntu.com/ubuntu xenial/main amd64 libatm1 amd64 1:2.5.1-1.5 [24.2 kB]
-Get:2 http://archive.ubuntu.com/ubuntu xenial/main amd64 libmnl0 amd64 1.0.3-5 [12.0 kB]
-Get:3 http://archive.ubuntu.com/ubuntu xenial/main amd64 libpopt0 amd64 1.16-10 [26.0 kB]
-Get:4 http://archive.ubuntu.com/ubuntu xenial/main amd64 libgdbm3 amd64 1.8.3-13.1 [16.9 kB]
-Get:5 http://archive.ubuntu.com/ubuntu xenial/main amd64 perl-modules-5.22 all 5.22.1-9 [2641 kB]
-Get:6 http://archive.ubuntu.com/ubuntu xenial/main amd64 libperl5.22 amd64 5.22.1-9 [3371 kB]
-Get:7 http://archive.ubuntu.com/ubuntu xenial/main amd64 perl amd64 5.22.1-9 [237 kB]
-Get:8 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 iproute2 amd64 4.3.0-1ubuntu3.16.04.1 [522 kB]
-Get:9 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 ifupdown amd64 0.8.10ubuntu1.2 [54.9 kB]
-Get:10 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libisc-export160 amd64 1:9.10.3.dfsg.P4-8ubuntu1.8 [153 kB]
-Get:11 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libdns-export162 amd64 1:9.10.3.dfsg.P4-8ubuntu1.8 [666 kB]
-Get:12 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 isc-dhcp-client amd64 4.3.3-5ubuntu12.7 [223 kB]
-Get:13 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 isc-dhcp-common amd64 4.3.3-5ubuntu12.7 [105 kB]
-Get:14 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 less amd64 481-2.1ubuntu0.2 [110 kB]
-Get:15 http://archive.ubuntu.com/ubuntu xenial/main amd64 libgmp10 amd64 2:6.1.0+dfsg-2 [240 kB]
-Get:16 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libnettle6 amd64 3.2-1ubuntu0.16.04.1 [93.5 kB]
-Get:17 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libhogweed4 amd64 3.2-1ubuntu0.16.04.1 [136 kB]
-Get:18 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libp11-kit0 amd64 0.23.2-5~ubuntu16.04.1 [105 kB]
-Get:19 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libtasn1-6 amd64 4.7-3ubuntu0.16.04.2 [43.3 kB]
-Get:20 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libgnutls30 amd64 3.4.10-4ubuntu1.3 [548 kB]
-Get:21 http://archive.ubuntu.com/ubuntu xenial/main amd64 libxtables11 amd64 1.6.0-2ubuntu3 [27.2 kB]
-Get:22 http://archive.ubuntu.com/ubuntu xenial/main amd64 netbase all 5.3 [12.9 kB]
-Get:23 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libroken18-heimdal amd64 1.7~git20150920+dfsg-4ubuntu1.16.04.1 [41.4 kB]
-Get:24 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libasn1-8-heimdal amd64 1.7~git20150920+dfsg-4ubuntu1.16.04.1 [174 kB]
-Get:25 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libhcrypto4-heimdal amd64 1.7~git20150920+dfsg-4ubuntu1.16.04.1 [85.0 kB]
-Get:26 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libheimbase1-heimdal amd64 1.7~git20150920+dfsg-4ubuntu1.16.04.1 [29.3 kB]
-Get:27 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libwind0-heimdal amd64 1.7~git20150920+dfsg-4ubuntu1.16.04.1 [47.8 kB]
-Get:28 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libhx509-5-heimdal amd64 1.7~git20150920+dfsg-4ubuntu1.16.04.1 [107 kB]
-Get:29 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libkrb5-26-heimdal amd64 1.7~git20150920+dfsg-4ubuntu1.16.04.1 [202 kB]
-Get:30 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libheimntlm0-heimdal amd64 1.7~git20150920+dfsg-4ubuntu1.16.04.1 [15.1 kB]
-Get:31 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libgssapi3-heimdal amd64 1.7~git20150920+dfsg-4ubuntu1.16.04.1 [96.1 kB]
-Get:32 http://archive.ubuntu.com/ubuntu xenial/main amd64 libsasl2-modules-db amd64 2.1.26.dfsg1-14build1 [14.5 kB]
-Get:33 http://archive.ubuntu.com/ubuntu xenial/main amd64 libsasl2-2 amd64 2.1.26.dfsg1-14build1 [48.7 kB]
-Get:34 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libldap-2.4-2 amd64 2.4.42+dfsg-2ubuntu3.2 [160 kB]
-Get:35 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 librtmp1 amd64 2.4+20151223.gitfa8646d-1ubuntu0.1 [54.4 kB]
-Get:36 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libcurl3-gnutls amd64 7.47.0-1ubuntu2.2 [184 kB]
-Get:37 http://archive.ubuntu.com/ubuntu xenial/main amd64 libsasl2-modules amd64 2.1.26.dfsg1-14build1 [47.5 kB]
-Get:38 http://archive.ubuntu.com/ubuntu xenial/main amd64 rsync amd64 3.1.1-3ubuntu1 [325 kB]
-Get:39 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 curl amd64 7.47.0-1ubuntu2.2 [139 kB]
-Get:40 http://archive.ubuntu.com/ubuntu xenial/main amd64 liberror-perl all 0.17-1.2 [19.6 kB]
-Get:41 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 git-man all 1:2.7.4-0ubuntu1.2 [736 kB]
-Get:42 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 git amd64 1:2.7.4-0ubuntu1.2 [3163 kB]
-Get:43 http://archive.ubuntu.com/ubuntu xenial/main amd64 patch amd64 2.7.5-1 [90.4 kB]
-Get:44 http://archive.ubuntu.com/ubuntu xenial/main amd64 rename all 0.20-4 [12.0 kB]
-Get:45 http://archive.ubuntu.com/ubuntu xenial/universe amd64 sshpass amd64 1.05-1 [10.5 kB]
-debconf: delaying package configuration, since apt-utils is not installed
-Fetched 15.2 MB in 38s (392 kB/s)
-Selecting previously unselected package libatm1:amd64.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 9540 files and directories currently installed.)
-Preparing to unpack .../libatm1_1%3a2.5.1-1.5_amd64.deb ...
-Unpacking libatm1:amd64 (1:2.5.1-1.5) ...
-Selecting previously unselected package libmnl0:amd64.
-Preparing to unpack .../libmnl0_1.0.3-5_amd64.deb ...
-Unpacking libmnl0:amd64 (1.0.3-5) ...
-Selecting previously unselected package libpopt0:amd64.
-Preparing to unpack .../libpopt0_1.16-10_amd64.deb ...
-Unpacking libpopt0:amd64 (1.16-10) ...
-Selecting previously unselected package libgdbm3:amd64.
-Preparing to unpack .../libgdbm3_1.8.3-13.1_amd64.deb ...
-Unpacking libgdbm3:amd64 (1.8.3-13.1) ...
-Selecting previously unselected package perl-modules-5.22.
-Preparing to unpack .../perl-modules-5.22_5.22.1-9_all.deb ...
-Unpacking perl-modules-5.22 (5.22.1-9) ...
-Selecting previously unselected package libperl5.22:amd64.
-Preparing to unpack .../libperl5.22_5.22.1-9_amd64.deb ...
-Unpacking libperl5.22:amd64 (5.22.1-9) ...
-Selecting previously unselected package perl.
-Preparing to unpack .../perl_5.22.1-9_amd64.deb ...
-Unpacking perl (5.22.1-9) ...
-Selecting previously unselected package iproute2.
-Preparing to unpack .../iproute2_4.3.0-1ubuntu3.16.04.1_amd64.deb ...
-Unpacking iproute2 (4.3.0-1ubuntu3.16.04.1) ...
-Selecting previously unselected package ifupdown.
-Preparing to unpack .../ifupdown_0.8.10ubuntu1.2_amd64.deb ...
-Unpacking ifupdown (0.8.10ubuntu1.2) ...
-Selecting previously unselected package libisc-export160.
-Preparing to unpack .../libisc-export160_1%3a9.10.3.dfsg.P4-8ubuntu1.8_amd64.deb ...
-Unpacking libisc-export160 (1:9.10.3.dfsg.P4-8ubuntu1.8) ...
-Selecting previously unselected package libdns-export162.
-Preparing to unpack .../libdns-export162_1%3a9.10.3.dfsg.P4-8ubuntu1.8_amd64.deb ...
-Unpacking libdns-export162 (1:9.10.3.dfsg.P4-8ubuntu1.8) ...
-Selecting previously unselected package isc-dhcp-client.
-Preparing to unpack .../isc-dhcp-client_4.3.3-5ubuntu12.7_amd64.deb ...
-Unpacking isc-dhcp-client (4.3.3-5ubuntu12.7) ...
-Selecting previously unselected package isc-dhcp-common.
-Preparing to unpack .../isc-dhcp-common_4.3.3-5ubuntu12.7_amd64.deb ...
-Unpacking isc-dhcp-common (4.3.3-5ubuntu12.7) ...
-Selecting previously unselected package less.
-Preparing to unpack .../less_481-2.1ubuntu0.2_amd64.deb ...
-Unpacking less (481-2.1ubuntu0.2) ...
-Selecting previously unselected package libgmp10:amd64.
-Preparing to unpack .../libgmp10_2%3a6.1.0+dfsg-2_amd64.deb ...
-Unpacking libgmp10:amd64 (2:6.1.0+dfsg-2) ...
-Selecting previously unselected package libnettle6:amd64.
-Preparing to unpack .../libnettle6_3.2-1ubuntu0.16.04.1_amd64.deb ...
-Unpacking libnettle6:amd64 (3.2-1ubuntu0.16.04.1) ...
-Selecting previously unselected package libhogweed4:amd64.
-Preparing to unpack .../libhogweed4_3.2-1ubuntu0.16.04.1_amd64.deb ...
-Unpacking libhogweed4:amd64 (3.2-1ubuntu0.16.04.1) ...
-Selecting previously unselected package libp11-kit0:amd64.
-Preparing to unpack .../libp11-kit0_0.23.2-5~ubuntu16.04.1_amd64.deb ...
-Unpacking libp11-kit0:amd64 (0.23.2-5~ubuntu16.04.1) ...
-Selecting previously unselected package libtasn1-6:amd64.
-Preparing to unpack .../libtasn1-6_4.7-3ubuntu0.16.04.2_amd64.deb ...
-Unpacking libtasn1-6:amd64 (4.7-3ubuntu0.16.04.2) ...
-Selecting previously unselected package libgnutls30:amd64.
-Preparing to unpack .../libgnutls30_3.4.10-4ubuntu1.3_amd64.deb ...
-Unpacking libgnutls30:amd64 (3.4.10-4ubuntu1.3) ...
-Selecting previously unselected package libxtables11:amd64.
-Preparing to unpack .../libxtables11_1.6.0-2ubuntu3_amd64.deb ...
-Unpacking libxtables11:amd64 (1.6.0-2ubuntu3) ...
-Selecting previously unselected package netbase.
-Preparing to unpack .../archives/netbase_5.3_all.deb ...
-Unpacking netbase (5.3) ...
-Selecting previously unselected package libroken18-heimdal:amd64.
-Preparing to unpack .../libroken18-heimdal_1.7~git20150920+dfsg-4ubuntu1.16.04.1_amd64.deb ...
-Unpacking libroken18-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
-Selecting previously unselected package libasn1-8-heimdal:amd64.
-Preparing to unpack .../libasn1-8-heimdal_1.7~git20150920+dfsg-4ubuntu1.16.04.1_amd64.deb ...
-Unpacking libasn1-8-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
-Selecting previously unselected package libhcrypto4-heimdal:amd64.
-Preparing to unpack .../libhcrypto4-heimdal_1.7~git20150920+dfsg-4ubuntu1.16.04.1_amd64.deb ...
-Unpacking libhcrypto4-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
-Selecting previously unselected package libheimbase1-heimdal:amd64.
-Preparing to unpack .../libheimbase1-heimdal_1.7~git20150920+dfsg-4ubuntu1.16.04.1_amd64.deb ...
-Unpacking libheimbase1-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
-Selecting previously unselected package libwind0-heimdal:amd64.
-Preparing to unpack .../libwind0-heimdal_1.7~git20150920+dfsg-4ubuntu1.16.04.1_amd64.deb ...
-Unpacking libwind0-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
-Selecting previously unselected package libhx509-5-heimdal:amd64.
-Preparing to unpack .../libhx509-5-heimdal_1.7~git20150920+dfsg-4ubuntu1.16.04.1_amd64.deb ...
-Unpacking libhx509-5-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
-Selecting previously unselected package libkrb5-26-heimdal:amd64.
-Preparing to unpack .../libkrb5-26-heimdal_1.7~git20150920+dfsg-4ubuntu1.16.04.1_amd64.deb ...
-Unpacking libkrb5-26-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
-Selecting previously unselected package libheimntlm0-heimdal:amd64.
-Preparing to unpack .../libheimntlm0-heimdal_1.7~git20150920+dfsg-4ubuntu1.16.04.1_amd64.deb ...
-Unpacking libheimntlm0-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
-Selecting previously unselected package libgssapi3-heimdal:amd64.
-Preparing to unpack .../libgssapi3-heimdal_1.7~git20150920+dfsg-4ubuntu1.16.04.1_amd64.deb ...
-Unpacking libgssapi3-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
-Selecting previously unselected package libsasl2-modules-db:amd64.
-Preparing to unpack .../libsasl2-modules-db_2.1.26.dfsg1-14build1_amd64.deb ...
-Unpacking libsasl2-modules-db:amd64 (2.1.26.dfsg1-14build1) ...
-Selecting previously unselected package libsasl2-2:amd64.
-Preparing to unpack .../libsasl2-2_2.1.26.dfsg1-14build1_amd64.deb ...
-Unpacking libsasl2-2:amd64 (2.1.26.dfsg1-14build1) ...
-Selecting previously unselected package libldap-2.4-2:amd64.
-Preparing to unpack .../libldap-2.4-2_2.4.42+dfsg-2ubuntu3.2_amd64.deb ...
-Unpacking libldap-2.4-2:amd64 (2.4.42+dfsg-2ubuntu3.2) ...
-Selecting previously unselected package librtmp1:amd64.
-Preparing to unpack .../librtmp1_2.4+20151223.gitfa8646d-1ubuntu0.1_amd64.deb ...
-Unpacking librtmp1:amd64 (2.4+20151223.gitfa8646d-1ubuntu0.1) ...
-Selecting previously unselected package libcurl3-gnutls:amd64.
-Preparing to unpack .../libcurl3-gnutls_7.47.0-1ubuntu2.2_amd64.deb ...
-Unpacking libcurl3-gnutls:amd64 (7.47.0-1ubuntu2.2) ...
-Selecting previously unselected package libsasl2-modules:amd64.
-Preparing to unpack .../libsasl2-modules_2.1.26.dfsg1-14build1_amd64.deb ...
-Unpacking libsasl2-modules:amd64 (2.1.26.dfsg1-14build1) ...
-Selecting previously unselected package rsync.
-Preparing to unpack .../rsync_3.1.1-3ubuntu1_amd64.deb ...
-Unpacking rsync (3.1.1-3ubuntu1) ...
-Selecting previously unselected package curl.
-Preparing to unpack .../curl_7.47.0-1ubuntu2.2_amd64.deb ...
-Unpacking curl (7.47.0-1ubuntu2.2) ...
-Selecting previously unselected package liberror-perl.
-Preparing to unpack .../liberror-perl_0.17-1.2_all.deb ...
-Unpacking liberror-perl (0.17-1.2) ...
-Selecting previously unselected package git-man.
-Preparing to unpack .../git-man_1%3a2.7.4-0ubuntu1.2_all.deb ...
-Unpacking git-man (1:2.7.4-0ubuntu1.2) ...
-Selecting previously unselected package git.
-Preparing to unpack .../git_1%3a2.7.4-0ubuntu1.2_amd64.deb ...
-Unpacking git (1:2.7.4-0ubuntu1.2) ...
-Selecting previously unselected package patch.
-Preparing to unpack .../patch_2.7.5-1_amd64.deb ...
-Unpacking patch (2.7.5-1) ...
-Selecting previously unselected package rename.
-Preparing to unpack .../archives/rename_0.20-4_all.deb ...
-Unpacking rename (0.20-4) ...
-Selecting previously unselected package sshpass.
-Preparing to unpack .../sshpass_1.05-1_amd64.deb ...
-Unpacking sshpass (1.05-1) ...
-Processing triggers for systemd (229-4ubuntu16) ...
-Processing triggers for libc-bin (2.23-0ubuntu7) ...
-Processing triggers for mime-support (3.59ubuntu1) ...
-Setting up libatm1:amd64 (1:2.5.1-1.5) ...
-Setting up libmnl0:amd64 (1.0.3-5) ...
-Setting up libpopt0:amd64 (1.16-10) ...
-Setting up libgdbm3:amd64 (1.8.3-13.1) ...
-Setting up perl-modules-5.22 (5.22.1-9) ...
-Setting up libperl5.22:amd64 (5.22.1-9) ...
-Setting up perl (5.22.1-9) ...
-update-alternatives: using /usr/bin/prename to provide /usr/bin/rename (rename) in auto mode
-Setting up iproute2 (4.3.0-1ubuntu3.16.04.1) ...
-Setting up ifupdown (0.8.10ubuntu1.2) ...
-Creating /etc/network/interfaces.
-Setting up libisc-export160 (1:9.10.3.dfsg.P4-8ubuntu1.8) ...
-Setting up libdns-export162 (1:9.10.3.dfsg.P4-8ubuntu1.8) ...
-Setting up isc-dhcp-client (4.3.3-5ubuntu12.7) ...
-Setting up isc-dhcp-common (4.3.3-5ubuntu12.7) ...
-Setting up less (481-2.1ubuntu0.2) ...
-debconf: unable to initialize frontend: Dialog
-debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 76.)
-debconf: falling back to frontend: Readline
-Setting up libgmp10:amd64 (2:6.1.0+dfsg-2) ...
-Setting up libnettle6:amd64 (3.2-1ubuntu0.16.04.1) ...
-Setting up libhogweed4:amd64 (3.2-1ubuntu0.16.04.1) ...
-Setting up libp11-kit0:amd64 (0.23.2-5~ubuntu16.04.1) ...
-Setting up libtasn1-6:amd64 (4.7-3ubuntu0.16.04.2) ...
-Setting up libgnutls30:amd64 (3.4.10-4ubuntu1.3) ...
-Setting up libxtables11:amd64 (1.6.0-2ubuntu3) ...
-Setting up netbase (5.3) ...
-Setting up libroken18-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
-Setting up libasn1-8-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
-Setting up libhcrypto4-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
-Setting up libheimbase1-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
-Setting up libwind0-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
-Setting up libhx509-5-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
-Setting up libkrb5-26-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
-Setting up libheimntlm0-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
-Setting up libgssapi3-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
-Setting up libsasl2-modules-db:amd64 (2.1.26.dfsg1-14build1) ...
-Setting up libsasl2-2:amd64 (2.1.26.dfsg1-14build1) ...
-Setting up libldap-2.4-2:amd64 (2.4.42+dfsg-2ubuntu3.2) ...
-Setting up librtmp1:amd64 (2.4+20151223.gitfa8646d-1ubuntu0.1) ...
-Setting up libcurl3-gnutls:amd64 (7.47.0-1ubuntu2.2) ...
-Setting up libsasl2-modules:amd64 (2.1.26.dfsg1-14build1) ...
-Setting up rsync (3.1.1-3ubuntu1) ...
-invoke-rc.d: could not determine current runlevel
-invoke-rc.d: policy-rc.d denied execution of restart.
-Setting up curl (7.47.0-1ubuntu2.2) ...
-Setting up liberror-perl (0.17-1.2) ...
-Setting up git-man (1:2.7.4-0ubuntu1.2) ...
-Setting up git (1:2.7.4-0ubuntu1.2) ...
-Setting up patch (2.7.5-1) ...
-Setting up rename (0.20-4) ...
-update-alternatives: using /usr/bin/file-rename to provide /usr/bin/rename (rename) in auto mode
-Setting up sshpass (1.05-1) ...
-Processing triggers for libc-bin (2.23-0ubuntu7) ...
-Processing triggers for systemd (229-4ubuntu16) ...
-Cloning into 'snappy-qa-jobs'...
-Already on 'master'
-Your branch is up-to-date with 'origin/master'.
-Cloning into 'snapd'...
-Already on 'master'
-Your branch is up-to-date with 'origin/master'.
-++ INSTANCE_IP=10.101.51.15
-++ INSTANCE_PORT=22
-++ USER=ubuntu
-++ execute_remote 'sudo adduser --extrausers --quiet --disabled-password --gecos '\'''\'' test'
-++ ssh -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 22 ubuntu@10.101.51.15 'sudo adduser --extrausers --quiet --disabled-password --gecos '\'''\'' test'
-ENTER EXTRAUSERS_GROUP_FILEEXIT EXTRAUSERS_GROUP_FILEENTER EXTRAUSERS_SHADOWGROUP_FILEEXIT EXTRAUSERS_SHADOWGROUP_FILE++ execute_remote 'echo test:ubuntu | sudo chpasswd'
-++ ssh -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 22 ubuntu@10.101.51.15 'echo test:ubuntu | sudo chpasswd'
-++ execute_remote 'echo '\''test ALL=(ALL) NOPASSWD:ALL'\'' | sudo tee /etc/sudoers.d/create-user-test'
-++ ssh -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 22 ubuntu@10.101.51.15 'echo '\''test ALL=(ALL) NOPASSWD:ALL'\'' | sudo tee /etc/sudoers.d/create-user-test'
-test ALL=(ALL) NOPASSWD:ALL
-+ . snappy-qa-jobs/scripts/utils/register_device.sh 10.101.51.15 22 test ubuntu sergiocazzolato@yahoo.com.ar
-++ echo 'Register device'
-Register device
-++ '[' 5 -ne 5 ']'
-++ DEVICE_IP=10.101.51.15
-++ DEVICE_PORT=22
-++ USER=test
-++ PASS=ubuntu
-++ EMAIL=sergiocazzolato@yahoo.com.ar
-++ SCRIPT='sudo snap install jq;         sudo cp /var/lib/snapd/state.json /var/lib/snapd/state.json.bak;         sudo cat /var/lib/snapd/state.json.bak | jq -r '\''.data.auth.users=[]'\'' | sudo tee /var/lib/snapd/state.json > /dev/null;         sudo systemctl stop snapd.service snapd.socket;         sudo systemctl start snapd.service snapd.socket;         sudo snap create-user sergiocazzolato@yahoo.com.ar;         sudo snap remove jq'
-++ '[' -z sergiocazzolato@yahoo.com.ar ']'
-++ '[' -z ubuntu ']'
-++ echo 'Registering device (with pass): sudo snap install jq;         sudo cp /var/lib/snapd/state.json /var/lib/snapd/state.json.bak;         sudo cat /var/lib/snapd/state.json.bak | jq -r '\''.data.auth.users=[]'\'' | sudo tee /var/lib/snapd/state.json > /dev/null;         sudo systemctl stop snapd.service snapd.socket;         sudo systemctl start snapd.service snapd.socket;         sudo snap create-user sergiocazzolato@yahoo.com.ar;         sudo snap remove jq'
-Registering device (with pass): sudo snap install jq;         sudo cp /var/lib/snapd/state.json /var/lib/snapd/state.json.bak;         sudo cat /var/lib/snapd/state.json.bak | jq -r '.data.auth.users=[]' | sudo tee /var/lib/snapd/state.json > /dev/null;         sudo systemctl stop snapd.service snapd.socket;         sudo systemctl start snapd.service snapd.socket;         sudo snap create-user sergiocazzolato@yahoo.com.ar;         sudo snap remove jq
-++ sshpass -p ubuntu ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 22 test@10.101.51.15 'sudo snap install jq;         sudo cp /var/lib/snapd/state.json /var/lib/snapd/state.json.bak;         sudo cat /var/lib/snapd/state.json.bak | jq -r '\''.data.auth.users=[]'\'' | sudo tee /var/lib/snapd/state.json > /dev/null;         sudo systemctl stop snapd.service snapd.socket;         sudo systemctl start snapd.service snapd.socket;         sudo snap create-user sergiocazzolato@yahoo.com.ar;         sudo snap remove jq'
-Warning: Permanently added '10.101.51.15' (ECDSA) to the list of known hosts.
-[|] Ensure prerequisites for "jq" are available[K[/] Download snap "jq" (8) from channel "stable"[K[-] Download snap "jq" (8) from channel "stable"[K[\] Download snap "jq" (8) from channel "stable"[K[|] Download snap "jq" (8) from channel "stable"[K[/] Download snap "jq" (8) from channel "stable"[K[-] Download snap "jq" (8) from channel "stable"[K[\] Download snap "jq" (8) from channel "stable"[K[|] Download snap "jq" (8) from channel "stable"[K[/] Download snap "jq" (8) from channel "stable"[K[-] Download snap "jq" (8) from channel "stable"[K[\] Download snap "jq" (8) from channel "stable"[K[|] Download snap "jq" (8) from channel "stable"[K[/] Download snap "jq" (8) from channel "stable"[K[-] Download snap "jq" (8) from channel "stable"[K[\] Download snap "jq" (8) from channel "stable"[K[|] Download snap "jq" (8) from channel "stable"[K[/] Download snap "jq" (8) from channel "stable"[K[-] Download snap "jq" (8) from channel "stable"[K[\] Download snap "jq" (8) from channel "stable"[K[|] Download snap "jq" (8) from channel "stable"[Kjq 0 B / 204.00 KB    0.00%jq 204.00 KB / 204.00 KB  100.00% 1014.64 KB/s 0[/] Fetch and check assertions for snap "jq" (8)[K[-] Fetch and check assertions for snap "jq" (8)[K[\] Fetch and check assertions for snap "jq" (8)[K[|] Fetch and check assertions for snap "jq" (8)[K[/] Fetch and check assertions for snap "jq" (8)[K[-] Fetch and check assertions for snap "jq" (8)[K[\] Fetch and check assertions for snap "jq" (8)[K[|] Fetch and check assertions for snap "jq" (8)[K[/] Fetch and check assertions for snap "jq" (8)[K[-] Fetch and check assertions for snap "jq" (8)[K[\] Mount snap "jq" (8)[K[|] Mount snap "jq" (8)[K[/] Mount snap "jq" (8)[K[-] Mount snap "jq" (8)[K[\] Mount snap "jq" (8)[K[|] Mount snap "jq" (8)[K[/] Mount snap "jq" (8)[K[-] Mount snap "jq" (8)[K[\] Mount snap "jq" (8)[K[|] Mount snap "jq" (8)[K[/] Mount snap "jq" (8)[K[-] Mount snap "jq" (8)[K[\] Copy snap "jq" data[K[|] Setup snap "jq" (8) security profiles[K[/] Setup snap "jq" (8) security profiles[K[-] Setup snap "jq" (8) security profiles[K[\] Setup snap "jq" (8) security profiles[K[|] Setup snap "jq" (8) security profiles[K[/] Setup snap "jq" (8) security profiles[K[-] Setup snap "jq" (8) security profiles[K[\] Setup snap "jq" aliases[K[|] Run install hook of "jq" snap if present[K[/] Run configure hook of "jq" snap if present[K[Kjq 1.5+dfsg-1 from 'canonical' installed
-created user "snappytestaccount1"
-[|] Run remove hook of "jq" snap if present[K[/] Remove security profile for snap "jq" (8)[K[Kjq removed
-+ . snappy-qa-jobs/scripts/utils/run_setup.sh 10.101.51.15 22 test ubuntu ''
-++ echo 'Running setup command'
-Running setup command
-++ '[' 5 -ne 5 ']'
-++ DEVICE_IP=10.101.51.15
-++ DEVICE_PORT=22
-++ USER=test
-++ PASS=ubuntu
-++ SETUP=
-++ '[' -z '' ']'
-++ echo 'No setup command to run'
-No setup command to run
-+ . snappy-qa-jobs/scripts/utils/get_spread.sh
-++ echo 'Getting spread'
-Getting spread
-+++ pwd
-++ export WORKSPACE=/home/ubuntu
-++ WORKSPACE=/home/ubuntu
-++ export SPREAD_DIR=/home/ubuntu/spread
-++ SPREAD_DIR=/home/ubuntu/spread
-++ export PATH=/home/ubuntu/spread:/srv/testflinger-agent/dragonboard005/env/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-++ PATH=/home/ubuntu/spread:/srv/testflinger-agent/dragonboard005/env/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-++ '[' -f /home/ubuntu/spread/spread ']'
-++ mkdir -p /home/ubuntu/spread
-++ cd /home/ubuntu/spread
-++ curl -s -O https://niemeyer.s3.amazonaws.com/spread-amd64.tar.gz
-++ tar xzvf spread-amd64.tar.gz
-spread
-++ echo 'Spread downloaded and ready to use'
-Spread downloaded and ready to use
-+ . snappy-qa-jobs/scripts/utils/run_spread.sh 10.101.51.15 22 snapd external:ubuntu-core-16-arm-64:tests/ '' tests/main/auto-refresh,tests/main/failover
-++ echo 'Running spread'
-Running spread
-++ '[' 6 -ne 6 ']'
-++ export WORKSPACE=/home/ubuntu
-++ WORKSPACE=/home/ubuntu
-++ DEVICE_IP=10.101.51.15
-++ DEVICE_PORT=22
-++ PROJECT_PATH=snapd
-++ SPREAD_TESTS=external:ubuntu-core-16-arm-64:tests/
-++ SPREAD_ENV=
-++ SKIP_TESTS=tests/main/auto-refresh,tests/main/failover
-++ '[' -z external:ubuntu-core-16-arm-64:tests/ ']'
-++ '[' '!' -z '' ']'
-++ export SPREAD_EXTERNAL_ADDRESS=10.101.51.15:22
-++ SPREAD_EXTERNAL_ADDRESS=10.101.51.15:22
-+++ which spread
-++ [[ -n /home/ubuntu/spread/spread ]]
-++ echo 'Spread found'
-Spread found
-++ cd snapd
-++ echo 'Moving to manual all the tests to skip: tests/main/auto-refresh,tests/main/failover'
-Moving to manual all the tests to skip: tests/main/auto-refresh,tests/main/failover
-+++ echo tests/main/auto-refresh,tests/main/failover
-+++ tr , ' '
-++ tests_skip='tests/main/auto-refresh tests/main/failover'
-++ for test in '$tests_skip'
-++ '[' -f tests/main/auto-refresh/task.yaml ']'
-++ cp tests/main/auto-refresh/task.yaml tests/main/auto-refresh/task.yaml.back
-++ echo 'manual: true'
-++ for test in '$tests_skip'
-++ '[' -f tests/main/failover/task.yaml ']'
-++ cp tests/main/failover/task.yaml tests/main/failover/task.yaml.back
-++ echo 'manual: true'
-++ echo 'Running command: spread -v external:ubuntu-core-16-arm-64:tests/'
-Running command: spread -v external:ubuntu-core-16-arm-64:tests/
-++ spread -v external:ubuntu-core-16-arm-64:tests/
-2017-09-20 05:18:54 Found /home/ubuntu/snapd/spread.yaml.
-2017-09-20 05:18:55 Project content is packed for delivery (1.44MB).
-2017-09-20 05:18:55 Sequence of jobs produced with -seed=1505884735
-2017-09-20 05:18:55 Allocating external:ubuntu-core-16-arm-64...
-2017-09-20 05:18:55 Waiting for external:ubuntu-core-16-arm-64 to make SSH available at 10.101.51.15:22...
-2017-09-20 05:18:55 Allocated external:ubuntu-core-16-arm-64.
-2017-09-20 05:18:55 If killed, discard servers with: spread -reuse-pid=792 -discard
-2017-09-20 05:18:55 Connecting to external:ubuntu-core-16-arm-64...
-2017-09-20 05:18:55 Connected to external:ubuntu-core-16-arm-64 at 10.101.51.15:22.
-2017-09-20 05:18:55 Sending project content to external:ubuntu-core-16-arm-64...
-2017-09-20 05:18:57 Preparing project on external:ubuntu-core-16-arm-64...
-2017-09-20 05:19:12 Preparing external:ubuntu-core-16-arm-64:tests/main/...
-2017-09-20 05:21:05 Preparing external:ubuntu-core-16-arm-64:tests/main/refresh-devmode:remote...
-2017-09-20 05:23:37 Executing external:ubuntu-core-16-arm-64:tests/main/refresh-devmode:remote (1/135)...
-2017-09-20 05:23:55 Restoring external:ubuntu-core-16-arm-64:tests/main/refresh-devmode:remote...
-2017-09-20 05:23:55 Preparing external:ubuntu-core-16-arm-64:tests/main/help:remove...
-2017-09-20 05:25:52 Executing external:ubuntu-core-16-arm-64:tests/main/help:remove (2/135)...
-2017-09-20 05:25:52 Preparing external:ubuntu-core-16-arm-64:tests/main/snapctl...
-2017-09-20 05:28:02 Executing external:ubuntu-core-16-arm-64:tests/main/snapctl (3/135)...
-2017-09-20 05:28:03 Restoring external:ubuntu-core-16-arm-64:tests/main/snapctl...
-2017-09-20 05:28:03 Preparing external:ubuntu-core-16-arm-64:tests/main/snap-remove-not-mounted...
-2017-09-20 05:29:51 Executing external:ubuntu-core-16-arm-64:tests/main/snap-remove-not-mounted (4/135)...
-2017-09-20 05:30:09 Preparing external:ubuntu-core-16-arm-64:tests/main/snap-switch...
-2017-09-20 05:31:59 Executing external:ubuntu-core-16-arm-64:tests/main/snap-switch (5/135)...
-2017-09-20 05:32:21 Preparing external:ubuntu-core-16-arm-64:tests/main/prefer...
-2017-09-20 05:34:13 Executing external:ubuntu-core-16-arm-64:tests/main/prefer (6/135)...
-2017-09-20 05:34:30 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-network...
-2017-09-20 05:36:31 Executing external:ubuntu-core-16-arm-64:tests/main/interfaces-network (7/135)...
-2017-09-20 05:36:46 Restoring external:ubuntu-core-16-arm-64:tests/main/interfaces-network...
-2017-09-20 05:36:46 Preparing external:ubuntu-core-16-arm-64:tests/main/help:interfaces...
-2017-09-20 05:38:26 Executing external:ubuntu-core-16-arm-64:tests/main/help:interfaces (8/135)...
-2017-09-20 05:38:27 Preparing external:ubuntu-core-16-arm-64:tests/main/install-store:reexec1...
-2017-09-20 05:40:21 Executing external:ubuntu-core-16-arm-64:tests/main/install-store:reexec1 (9/135)...
-2017-09-20 05:42:31 Preparing external:ubuntu-core-16-arm-64:tests/main/snap-discard-ns...
-2017-09-20 05:44:44 Executing external:ubuntu-core-16-arm-64:tests/main/snap-discard-ns (10/135)...
-2017-09-20 05:44:46 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-content...
-2017-09-20 05:46:48 Executing external:ubuntu-core-16-arm-64:tests/main/interfaces-content (11/135)...
-2017-09-20 05:46:54 Preparing external:ubuntu-core-16-arm-64:tests/main/snap-debug-get-base-declaration...
-2017-09-20 05:48:44 Executing external:ubuntu-core-16-arm-64:tests/main/snap-debug-get-base-declaration (12/135)...
-2017-09-20 05:48:45 Preparing external:ubuntu-core-16-arm-64:tests/main/snap-disconnect...
-2017-09-20 05:51:02 Executing external:ubuntu-core-16-arm-64:tests/main/snap-disconnect (13/135)...
-2017-09-20 05:51:33 Restoring external:ubuntu-core-16-arm-64:tests/main/snap-disconnect...
-2017-09-20 05:51:33 Preparing external:ubuntu-core-16-arm-64:tests/main/cmdline...
-2017-09-20 05:53:07 Executing external:ubuntu-core-16-arm-64:tests/main/cmdline (14/135)...
-2017-09-20 05:53:09 Restoring external:ubuntu-core-16-arm-64:tests/main/cmdline...
-2017-09-20 05:53:09 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-alsa...
-2017-09-20 05:55:13 Executing external:ubuntu-core-16-arm-64:tests/main/interfaces-alsa (15/135)...
-2017-09-20 05:55:25 Restoring external:ubuntu-core-16-arm-64:tests/main/interfaces-alsa...
-2017-09-20 05:55:25 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-kernel-module-control...
-2017-09-20 05:57:32 Executing external:ubuntu-core-16-arm-64:tests/main/interfaces-kernel-module-control (16/135)...
-2017-09-20 05:57:48 Restoring external:ubuntu-core-16-arm-64:tests/main/interfaces-kernel-module-control...
-2017-09-20 05:57:49 Preparing external:ubuntu-core-16-arm-64:tests/main/enable-disable...
-2017-09-20 05:59:45 Executing external:ubuntu-core-16-arm-64:tests/main/enable-disable (17/135)...
-2017-09-20 06:00:14 Preparing external:ubuntu-core-16-arm-64:tests/main/econnreset...
-2017-09-20 06:02:05 Executing external:ubuntu-core-16-arm-64:tests/main/econnreset (18/135)...
-2017-09-20 06:02:14 Restoring external:ubuntu-core-16-arm-64:tests/main/econnreset...
-2017-09-20 06:02:14 Preparing external:ubuntu-core-16-arm-64:tests/main/remove-errors...
-2017-09-20 06:03:55 Executing external:ubuntu-core-16-arm-64:tests/main/remove-errors (19/135)...
-2017-09-20 06:04:15 Preparing external:ubuntu-core-16-arm-64:tests/main/install-store-laaaarge...
-2017-09-20 06:06:12 Executing external:ubuntu-core-16-arm-64:tests/main/install-store-laaaarge (20/135)...
-2017-09-20 06:06:36 Restoring external:ubuntu-core-16-arm-64:tests/main/install-store-laaaarge...
-2017-09-20 06:06:37 Preparing external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-device-reg...
-2017-09-20 06:08:16 Executing external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-device-reg (21/135)...
-2017-09-20 06:08:17 Preparing external:ubuntu-core-16-arm-64:tests/main/op-remove-retry...
-2017-09-20 06:10:04 Executing external:ubuntu-core-16-arm-64:tests/main/op-remove-retry (22/135)...
-2017-09-20 06:10:39 Restoring external:ubuntu-core-16-arm-64:tests/main/op-remove-retry...
-2017-09-20 06:10:39 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-network-bind...
-2017-09-20 06:12:39 Executing external:ubuntu-core-16-arm-64:tests/main/interfaces-network-bind (23/135)...
-2017-09-20 06:12:49 Restoring external:ubuntu-core-16-arm-64:tests/main/interfaces-network-bind...
-2017-09-20 06:12:50 Preparing external:ubuntu-core-16-arm-64:tests/main/auto-aliases...
-2017-09-20 06:14:43 Executing external:ubuntu-core-16-arm-64:tests/main/auto-aliases (24/135)...
-2017-09-20 06:15:15 Preparing external:ubuntu-core-16-arm-64:tests/main/refresh-devmode:fake...
-2017-09-20 06:16:48 Executing external:ubuntu-core-16-arm-64:tests/main/refresh-devmode:fake (25/135)...
-2017-09-20 06:16:48 Restoring external:ubuntu-core-16-arm-64:tests/main/refresh-devmode:fake...
-2017-09-20 06:16:48 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-snapd-control...
-2017-09-20 06:18:55 Executing external:ubuntu-core-16-arm-64:tests/main/interfaces-snapd-control (26/135)...
-2017-09-20 06:19:32 Restoring external:ubuntu-core-16-arm-64:tests/main/interfaces-snapd-control...
-2017-09-20 06:19:33 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-network-control...
-2017-09-20 06:21:42 Executing external:ubuntu-core-16-arm-64:tests/main/interfaces-network-control (27/135)...
-2017-09-20 06:22:04 Restoring external:ubuntu-core-16-arm-64:tests/main/interfaces-network-control...
-2017-09-20 06:22:05 Preparing external:ubuntu-core-16-arm-64:tests/main/classic-confinement-not-supported...
-2017-09-20 06:23:43 Executing external:ubuntu-core-16-arm-64:tests/main/classic-confinement-not-supported (28/135)...
-2017-09-20 06:24:03 Preparing external:ubuntu-core-16-arm-64:tests/main/snap-repair...
-2017-09-20 06:25:46 Executing external:ubuntu-core-16-arm-64:tests/main/snap-repair (29/135)...
-2017-09-20 06:25:47 Preparing external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-fan...
-2017-09-20 06:28:00 Executing external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-fan (30/135)...
-2017-09-20 06:28:01 Restoring external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-fan...
-2017-09-20 06:28:01 Preparing external:ubuntu-core-16-arm-64:tests/main/help:find...
-2017-09-20 06:29:51 Executing external:ubuntu-core-16-arm-64:tests/main/help:find (31/135)...
-2017-09-20 06:29:52 Preparing external:ubuntu-core-16-arm-64:tests/main/revert:remote...
-2017-09-20 06:32:09 Executing external:ubuntu-core-16-arm-64:tests/main/revert:remote (32/135)...
-2017-09-20 06:32:53 Restoring external:ubuntu-core-16-arm-64:tests/main/revert:remote...
-2017-09-20 06:32:53 Preparing external:ubuntu-core-16-arm-64:tests/main/security-device-cgroups:uinput...
-2017-09-20 06:34:43 Executing external:ubuntu-core-16-arm-64:tests/main/security-device-cgroups:uinput (33/135)...
-2017-09-20 06:35:04 Restoring external:ubuntu-core-16-arm-64:tests/main/security-device-cgroups:uinput...
-2017-09-20 06:35:04 Preparing external:ubuntu-core-16-arm-64:tests/main/security-setuid-root...
-2017-09-20 06:37:13 Executing external:ubuntu-core-16-arm-64:tests/main/security-setuid-root (34/135)...
-2017-09-20 06:37:14 Restoring external:ubuntu-core-16-arm-64:tests/main/security-setuid-root...
-2017-09-20 06:37:14 Preparing external:ubuntu-core-16-arm-64:tests/main/snap-get...
-2017-09-20 06:39:38 Executing external:ubuntu-core-16-arm-64:tests/main/snap-get (35/135)...
-2017-09-20 06:39:45 Restoring external:ubuntu-core-16-arm-64:tests/main/snap-get...
-2017-09-20 06:39:46 Preparing external:ubuntu-core-16-arm-64:tests/main/install-sideload:reexec0...
-2017-09-20 06:41:41 Executing external:ubuntu-core-16-arm-64:tests/main/install-sideload:reexec0 (36/135)...
-2017-09-20 06:42:51 Restoring external:ubuntu-core-16-arm-64:tests/main/install-sideload:reexec0...
-2017-09-20 06:42:51 Preparing external:ubuntu-core-16-arm-64:tests/main/install-store:reexec0...
-2017-09-20 06:44:49 Executing external:ubuntu-core-16-arm-64:tests/main/install-store:reexec0 (37/135)...
-2017-09-20 06:46:52 Preparing external:ubuntu-core-16-arm-64:tests/main/i18n...
-2017-09-20 06:48:50 Executing external:ubuntu-core-16-arm-64:tests/main/i18n (38/135)...
-2017-09-20 06:48:51 Preparing external:ubuntu-core-16-arm-64:tests/main/abort...
-2017-09-20 06:50:37 Executing external:ubuntu-core-16-arm-64:tests/main/abort (39/135)...
-2017-09-20 06:51:24 Preparing external:ubuntu-core-16-arm-64:tests/main/snap-service...
-2017-09-20 06:53:06 Executing external:ubuntu-core-16-arm-64:tests/main/snap-service (40/135)...
-2017-09-20 06:53:24 Preparing external:ubuntu-core-16-arm-64:tests/main/debug-confinement...
-2017-09-20 06:55:17 Executing external:ubuntu-core-16-arm-64:tests/main/debug-confinement (41/135)...
-2017-09-20 06:55:19 Preparing external:ubuntu-core-16-arm-64:tests/main/snap-env...
-2017-09-20 06:57:28 Executing external:ubuntu-core-16-arm-64:tests/main/snap-env (42/135)...
-2017-09-20 06:57:30 Restoring external:ubuntu-core-16-arm-64:tests/main/snap-env...
-2017-09-20 06:57:30 Preparing external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-upgrade...
-2017-09-20 06:59:23 Executing external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-upgrade (43/135)...
-2017-09-20 06:59:53 Rebooting external:ubuntu-core-16-arm-64 as requested...
-2017-09-20 07:00:46 Rebooting external:ubuntu-core-16-arm-64 as requested...
-2017-09-20 07:01:53 Rebooting external:ubuntu-core-16-arm-64 as requested...
-2017-09-20 07:02:43 Rebooting external:ubuntu-core-16-arm-64 as requested...
-2017-09-20 07:03:27 Restoring external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-upgrade...
-2017-09-20 07:03:27 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-browser-support:allow...
-2017-09-20 07:05:30 Executing external:ubuntu-core-16-arm-64:tests/main/interfaces-browser-support:allow (44/135)...
-
-2017-09-20 07:05:41 Restoring external:ubuntu-core-16-arm-64:tests/main/interfaces-browser-support:allow...
-2017-09-20 07:05:41 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-hooks...
-2017-09-20 07:07:53 Executing external:ubuntu-core-16-arm-64:tests/main/interfaces-hooks (45/135)...
-2017-09-20 07:07:59 Restoring external:ubuntu-core-16-arm-64:tests/main/interfaces-hooks...
-2017-09-20 07:07:59 Preparing external:ubuntu-core-16-arm-64:tests/main/known-remote...
-2017-09-20 07:09:54 Executing external:ubuntu-core-16-arm-64:tests/main/known-remote (46/135)...
-2017-09-20 07:09:57 Preparing external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-services...
-2017-09-20 07:11:45 Executing external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-services (47/135)...
-2017-09-20 07:11:45 Error executing external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-services : 
------
-+ echo 'Ensure one-shot services are working'
-Ensure one-shot services are working
-+ for oneshot in snapd.autoimport.service snapd.sshd-keygen.service
-+ systemctl status snapd.autoimport.service
-+ MATCH SUCCESS
-error: pattern not found, got:
-● snapd.autoimport.service - Auto import assertions from block devices
-   Loaded: loaded (/lib/systemd/system/snapd.autoimport.service; enabled; vendor preset: enabled)
-   Active: failed (Result: exit-code) since Wed 2017-09-20 05:19:08 UTC; 1h 52min ago
- Main PID: 1314 (code=exited, status=1/FAILURE)
-
-Warning: Journal has been rotated since unit was started. Log output is incomplete or unavailable.
------
-.
-2017-09-20 07:11:46 Debug output for external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-services : 
------
-+ echo '# journal messages for snapd'
-# journal messages for snapd
-+ journalctl -u snapd
--- Logs begin at Wed 2017-09-20 07:10:04 UTC, end at Wed 2017-09-20 07:11:52 UTC. --
-Sep 20 07:10:04 localhost.localdomain systemd[1]: Stopping Snappy daemon...
-Sep 20 07:10:04 localhost.localdomain snapd[3413]: 2017/09/20 07:10:04.656366 main.go:78: Exiting on terminated signal.
-Sep 20 07:10:06 localhost.localdomain systemd[1]: Stopped Snappy daemon.
-Sep 20 07:11:50 localhost.localdomain systemd[1]: Starting Snappy daemon...
-Sep 20 07:11:52 localhost.localdomain snapd[3499]: 2017/09/20 07:11:52.294868 daemon.go:290: started snapd/2.27.6+git378.bd3c0be~ubuntu16.04.1 (series 16) ubuntu-core/16 (arm64) linux/4.4.0-1076-snapdragon.
-Sep 20 07:11:52 localhost.localdomain systemd[1]: Started Snappy daemon.
-+ echo '# apparmor denials '
-# apparmor denials 
-+ dmesg --ctime
-+ grep DENIED
-+ true
-+ echo '# seccomp denials (kills) '
-# seccomp denials (kills) 
-+ dmesg --ctime
-+ grep type=1326
-+ true
-+ echo '# snap interfaces'
-# snap interfaces
-+ snap interfaces
-Slot                      Plug
-:account-control          -
-:alsa                     -
-:autopilot-introspection  -
-:bluetooth-control        -
-:broadcom-asic-control    -
-:browser-support          -
-:camera                   -
-:classic-support          -
-:core-support             core:core-support-plug
-:dcdbas-control           -
-:docker-support           -
-:firewall-control         -
-:framebuffer              -
-:fuse-support             -
-:greengrass-support       -
-:hardware-observe         -
-:hardware-random-control  -
-:hardware-random-observe  -
-:home                     -
-:io-ports-control         -
-:joystick                 -
-:kernel-module-control    -
-:kubernetes-support       -
-:kvm                      -
-:log-observe              -
-:lxd-support              -
-:mount-observe            -
-:netlink-audit            -
-:netlink-connector        -
-:network                  -
-:network-bind             -
-:network-control          -
-:network-observe          -
-:network-setup-control    -
-:network-setup-observe    -
-:opengl                   -
-:openvswitch-support      -
-:physical-memory-control  -
-:physical-memory-observe  -
-:ppp                      -
-:process-control          -
-:raw-usb                  -
-:removable-media          -
-:shutdown                 -
-:snapd-control            -
-:system-observe           -
-:system-trace             -
-:time-control             -
-:timeserver-control       -
-:timezone-control         -
-:tpm                      -
-:uhid                     -
-dragonboard:gpio-0        -
-dragonboard:gpio-1        -
-dragonboard:gpio-10       -
-dragonboard:gpio-100      -
-dragonboard:gpio-101      -
-dragonboard:gpio-102      -
-dragonboard:gpio-103      -
-dragonboard:gpio-104      -
-dragonboard:gpio-105      -
-dragonboard:gpio-106      -
-dragonboard:gpio-107      -
-dragonboard:gpio-108      -
-dragonboard:gpio-109      -
-dragonboard:gpio-11       -
-dragonboard:gpio-110      -
-dragonboard:gpio-111      -
-dragonboard:gpio-112      -
-dragonboard:gpio-113      -
-dragonboard:gpio-114      -
-dragonboard:gpio-115      -
-dragonboard:gpio-116      -
-dragonboard:gpio-117      -
-dragonboard:gpio-118      -
-dragonboard:gpio-119      -
-dragonboard:gpio-12       -
-dragonboard:gpio-120      -
-dragonboard:gpio-121      -
-dragonboard:gpio-13       -
-dragonboard:gpio-14       -
-dragonboard:gpio-15       -
-dragonboard:gpio-16       -
-dragonboard:gpio-17       -
-dragonboard:gpio-18       -
-dragonboard:gpio-19       -
-dragonboard:gpio-2        -
-dragonboard:gpio-20       -
-dragonboard:gpio-21       -
-dragonboard:gpio-22       -
-dragonboard:gpio-23       -
-dragonboard:gpio-24       -
-dragonboard:gpio-25       -
-dragonboard:gpio-26       -
-dragonboard:gpio-27       -
-dragonboard:gpio-28       -
-dragonboard:gpio-29       -
-dragonboard:gpio-3        -
-dragonboard:gpio-30       -
-dragonboard:gpio-31       -
-dragonboard:gpio-32       -
-dragonboard:gpio-33       -
-dragonboard:gpio-34       -
-dragonboard:gpio-35       -
-dragonboard:gpio-36       -
-dragonboard:gpio-37       -
-dragonboard:gpio-38       -
-dragonboard:gpio-39       -
-dragonboard:gpio-4        -
-dragonboard:gpio-40       -
-dragonboard:gpio-41       -
-dragonboard:gpio-42       -
-dragonboard:gpio-43       -
-dragonboard:gpio-44       -
-dragonboard:gpio-45       -
-dragonboard:gpio-46       -
-dragonboard:gpio-47       -
-dragonboard:gpio-48       -
-dragonboard:gpio-49       -
-dragonboard:gpio-5        -
-dragonboard:gpio-50       -
-dragonboard:gpio-51       -
-dragonboard:gpio-52       -
-dragonboard:gpio-53       -
-dragonboard:gpio-54       -
-dragonboard:gpio-55       -
-dragonboard:gpio-56       -
-dragonboard:gpio-57       -
-dragonboard:gpio-58       -
-dragonboard:gpio-59       -
-dragonboard:gpio-6        -
-dragonboard:gpio-60       -
-dragonboard:gpio-61       -
-dragonboard:gpio-62       -
-dragonboard:gpio-63       -
-dragonboard:gpio-64       -
-dragonboard:gpio-65       -
-dragonboard:gpio-66       -
-dragonboard:gpio-67       -
-dragonboard:gpio-68       -
-dragonboard:gpio-69       -
-dragonboard:gpio-7        -
-dragonboard:gpio-70       -
-dragonboard:gpio-71       -
-dragonboard:gpio-72       -
-dragonboard:gpio-73       -
-dragonboard:gpio-74       -
-dragonboard:gpio-75       -
-dragonboard:gpio-76       -
-dragonboard:gpio-77       -
-dragonboard:gpio-78       -
-dragonboard:gpio-79       -
-dragonboard:gpio-8        -
-dragonboard:gpio-80       -
-dragonboard:gpio-81       -
-dragonboard:gpio-82       -
-dragonboard:gpio-83       -
-dragonboard:gpio-84       -
-dragonboard:gpio-85       -
-dragonboard:gpio-86       -
-dragonboard:gpio-87       -
-dragonboard:gpio-88       -
-dragonboard:gpio-89       -
-dragonboard:gpio-9        -
-dragonboard:gpio-90       -
-dragonboard:gpio-91       -
-dragonboard:gpio-92       -
-dragonboard:gpio-93       -
-dragonboard:gpio-94       -
-dragonboard:gpio-95       -
-dragonboard:gpio-96       -
-dragonboard:gpio-97       -
-dragonboard:gpio-98       -
-dragonboard:gpio-99       -
-dragonboard:i2c-0         -
-dragonboard:i2c-1         -
-dragonboard:i2c-3         -
-dragonboard:serialtty-0   -
-dragonboard:serialtty-1   -
-dragonboard:serialtty-10  -
-dragonboard:serialtty-11  -
-dragonboard:serialtty-12  -
-dragonboard:serialtty-13  -
-dragonboard:serialtty-14  -
-dragonboard:serialtty-15  -
-dragonboard:serialtty-16  -
-dragonboard:serialtty-17  -
-dragonboard:serialtty-18  -
-dragonboard:serialtty-19  -
-dragonboard:serialtty-2   -
-dragonboard:serialtty-20  -
-dragonboard:serialtty-21  -
-dragonboard:serialtty-22  -
-dragonboard:serialtty-23  -
-dragonboard:serialtty-24  -
-dragonboard:serialtty-25  -
-dragonboard:serialtty-26  -
-dragonboard:serialtty-27  -
-dragonboard:serialtty-28  -
-dragonboard:serialtty-29  -
-dragonboard:serialtty-3   -
-dragonboard:serialtty-30  -
-dragonboard:serialtty-31  -
-dragonboard:serialtty-4   -
-dragonboard:serialtty-5   -
-dragonboard:serialtty-6   -
-dragonboard:serialtty-7   -
-dragonboard:serialtty-8   -
-dragonboard:serialtty-9   -
------
-.
-2017-09-20 07:11:46 Preparing external:ubuntu-core-16-arm-64:tests/main/install-hook...
-2017-09-20 07:13:39 Executing external:ubuntu-core-16-arm-64:tests/main/install-hook (48/135)...
-2017-09-20 07:14:54 Restoring external:ubuntu-core-16-arm-64:tests/main/install-hook...
-2017-09-20 07:14:54 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-network-observe...
-2017-09-20 07:16:57 Executing external:ubuntu-core-16-arm-64:tests/main/interfaces-network-observe (49/135)...
-2017-09-20 07:17:05 Restoring external:ubuntu-core-16-arm-64:tests/main/interfaces-network-observe...
-2017-09-20 07:17:06 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-udev...
-2017-09-20 07:19:11 Executing external:ubuntu-core-16-arm-64:tests/main/interfaces-udev (50/135)...
-2017-09-20 07:19:15 Restoring external:ubuntu-core-16-arm-64:tests/main/interfaces-udev...
-2017-09-20 07:19:15 Preparing external:ubuntu-core-16-arm-64:tests/main/snap-multi-service-failing...
-2017-09-20 07:21:02 Executing external:ubuntu-core-16-arm-64:tests/main/snap-multi-service-failing (51/135)...
-2017-09-20 07:21:27 Preparing external:ubuntu-core-16-arm-64:tests/main/snap-seccomp...
-2017-09-20 07:23:07 Executing external:ubuntu-core-16-arm-64:tests/main/snap-seccomp (52/135)...
-2017-09-20 07:25:53 Preparing external:ubuntu-core-16-arm-64:tests/main/server-snap:pythonServer...
-2017-09-20 07:28:15 Executing external:ubuntu-core-16-arm-64:tests/main/server-snap:pythonServer (53/135)...
-2017-09-20 07:28:15 Restoring external:ubuntu-core-16-arm-64:tests/main/server-snap:pythonServer...
-2017-09-20 07:28:15 Preparing external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-os-release...
-2017-09-20 07:30:10 Executing external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-os-release (54/135)...
-2017-09-20 07:30:10 Preparing external:ubuntu-core-16-arm-64:tests/main/help:changes...
-2017-09-20 07:32:03 Executing external:ubuntu-core-16-arm-64:tests/main/help:changes (55/135)...
-2017-09-20 07:32:04 Preparing external:ubuntu-core-16-arm-64:tests/main/listing...
-2017-09-20 07:34:14 Executing external:ubuntu-core-16-arm-64:tests/main/listing (56/135)...
-2017-09-20 07:34:31 Preparing external:ubuntu-core-16-arm-64:tests/main/snap-run-hook:reexec0...
-2017-09-20 07:36:33 Executing external:ubuntu-core-16-arm-64:tests/main/snap-run-hook:reexec0 (57/135)...
-2017-09-20 07:36:33 Restoring external:ubuntu-core-16-arm-64:tests/main/snap-run-hook:reexec0...
-2017-09-20 07:36:33 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-browser-support:disallow...
-2017-09-20 07:38:35 Executing external:ubuntu-core-16-arm-64:tests/main/interfaces-browser-support:disallow (58/135)...
-2017-09-20 07:38:42 Restoring external:ubuntu-core-16-arm-64:tests/main/interfaces-browser-support:disallow...
-2017-09-20 07:38:42 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-upower-observe...
-2017-09-20 07:40:38 Error preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-upower-observe : 
------
-+ [[ ubuntu-core-16-arm-64 != ubuntu-14.04-* ]]
-+ journalctl --rotate
-+ sleep .1
-+ journalctl --vacuum-time=1ms
-Deleted archived journal /run/log/journal/8e7b80fa50b849e6bf0df4c5842212f3/system@f644ac3014ba433d9187d42663c3af09-000000000000072c-0005599a0963c5b9.journal (1012.0K).
-Vacuuming done, freed 1012.0K of archived journals on disk.
-+ dmesg -c
-+ /home/gopath/src/github.com/snapcore/snapd/tests/lib/reset.sh --reuse-core
-+ . /home/gopath/src/github.com/snapcore/snapd/tests/lib/dirs.sh
-++ export SNAP_MOUNT_DIR=/snap
-++ SNAP_MOUNT_DIR=/snap
-++ export LIBEXECDIR=/usr/lib
-++ LIBEXECDIR=/usr/lib
-++ case "$SPREAD_SYSTEM" in
-+ [[ ubuntu-core-16-arm-64 == ubuntu-core-16-* ]]
-+ reset_all_snap --reuse-core
-+ . /home/gopath/src/github.com/snapcore/snapd/tests/lib/names.sh
-+++ snap list
-+++ sed -n 's/^\(pc\|pi[23]\|dragonboard\) .*/\1/p'
-++ gadget_name=dragonboard
-++ kernel_name=dragonboard-kernel
-++ '[' dragonboard-kernel = pi3-kernel ']'
-+ for snap in '"$SNAP_MOUNT_DIR"/*'
-+ snap=bin
-+ case "$snap" in
-+ for snap in '"$SNAP_MOUNT_DIR"/*'
-+ snap=browser-support-consumer
-+ case "$snap" in
-+ snap remove browser-support-consumer
-[|] Run remove hook of "browser-support-consumer" snap if present[K[/] Remove security profile for snap "browser-support-consumer" (x1)[K[-] Remove data for snap "browser-support-consumer" (x1)[K[\] Remove snap "browser-support-consumer" (x1) from the system[K[Kbrowser-support-consumer removed
-+ for snap in '"$SNAP_MOUNT_DIR"/*'
-+ snap=core
-+ case "$snap" in
-+ for snap in '"$SNAP_MOUNT_DIR"/*'
-+ snap=dragonboard
-+ case "$snap" in
-+ for snap in '"$SNAP_MOUNT_DIR"/*'
-+ snap=dragonboard-kernel
-+ case "$snap" in
-+ systemctl stop snapd.service snapd.socket
-+ rm -rf /var/lib/snapd/apparmor /var/lib/snapd/assertions /var/lib/snapd/auto-import /var/lib/snapd/cookie /var/lib/snapd/desktop /var/lib/snapd/device /var/lib/snapd/environment /var/lib/snapd/firstboot /var/lib/snapd/hostfs /var/lib/snapd/lib /var/lib/snapd/mount /var/lib/snapd/seccomp /var/lib/snapd/seed /var/lib/snapd/snaps /var/lib/snapd/state.json /var/lib/snapd/state.json.bak /var/lib/snapd/void
-+ tar -C/ -xzf /home/gopath/src/github.com/snapcore/snapd/snapd-state.tar.gz
-+ rm -rf /root/.snap
-+ '[' --reuse-core '!=' --keep-stopped ']'
-+ systemctl start snapd.service snapd.socket
-+ '[' production = staging ']'
-+ . /home/gopath/src/github.com/snapcore/snapd/tests/lib/prepare.sh
-++ set -eux
-++ . /home/gopath/src/github.com/snapcore/snapd/tests/lib/dirs.sh
-+++ export SNAP_MOUNT_DIR=/snap
-+++ SNAP_MOUNT_DIR=/snap
-+++ export LIBEXECDIR=/usr/lib
-+++ LIBEXECDIR=/usr/lib
-+++ case "$SPREAD_SYSTEM" in
-++ . /home/gopath/src/github.com/snapcore/snapd/tests/lib/snaps.sh
-++ . /home/gopath/src/github.com/snapcore/snapd/tests/lib/pkgdb.sh
-+++ . /home/gopath/src/github.com/snapcore/snapd/tests/lib/quiet.sh
-+ [[ ubuntu-core-16-arm-64 != ubuntu-core-16-* ]]
-+ echo 'Given a snap declaring a plug on the upower-observe interface is installed'
-Given a snap declaring a plug on the upower-observe interface is installed
-+ snap install --edge test-snapd-upower-observe-consumer
-error: snap "test-snapd-upower-observe-consumer" not found (at least in channel
-       "edge")
------
-.
-2017-09-20 07:40:39 Debug output for external:ubuntu-core-16-arm-64:tests/main/interfaces-upower-observe : 
------
-+ echo '# journal messages for snapd'
-# journal messages for snapd
-+ journalctl -u snapd
--- Logs begin at Wed 2017-09-20 07:38:50 UTC, end at Wed 2017-09-20 07:40:46 UTC. --
-Sep 20 07:38:54 localhost.localdomain snapd[7738]: 2017/09/20 07:38:54.276032 cmd.go:134: exe doesn't have snap mount dir prefix: "/usr/lib/snapd/snapd" vs "/snap"
-Sep 20 07:38:54 localhost.localdomain systemd[1]: Stopping Snappy daemon...
-Sep 20 07:38:54 localhost.localdomain snapd[7738]: 2017/09/20 07:38:54.602244 main.go:78: Exiting on terminated signal.
-Sep 20 07:38:54 localhost.localdomain systemd[1]: Stopped Snappy daemon.
-Sep 20 07:40:39 localhost.localdomain systemd[1]: Starting Snappy daemon...
-Sep 20 07:40:44 localhost.localdomain snapd[8567]: 2017/09/20 07:40:44.280137 daemon.go:290: started snapd/2.27.6+git378.bd3c0be~ubuntu16.04.1 (series 16) ubuntu-core/16 (arm64) linux/4.4.0-1076-snapdragon.
-Sep 20 07:40:44 localhost.localdomain systemd[1]: Started Snappy daemon.
-Sep 20 07:40:44 localhost.localdomain snapd[8567]: 2017/09/20 07:40:44.905969 api.go:956: Installing snap "test-snapd-upower-observe-consumer" revision unset
-+ echo '# apparmor denials '
-# apparmor denials 
-+ dmesg --ctime
-+ grep DENIED
-+ true
-+ echo '# seccomp denials (kills) '
-# seccomp denials (kills) 
-+ dmesg --ctime
-+ grep type=1326
-+ true
-+ echo '# snap interfaces'
-# snap interfaces
-+ snap interfaces
-Slot                      Plug
-:account-control          -
-:alsa                     -
-:autopilot-introspection  -
-:bluetooth-control        -
-:broadcom-asic-control    -
-:browser-support          -
-:camera                   -
-:classic-support          -
-:core-support             core:core-support-plug
-:dcdbas-control           -
-:docker-support           -
-:firewall-control         -
-:framebuffer              -
-:fuse-support             -
-:greengrass-support       -
-:hardware-observe         -
-:hardware-random-control  -
-:hardware-random-observe  -
-:home                     -
-:io-ports-control         -
-:joystick                 -
-:kernel-module-control    -
-:kubernetes-support       -
-:kvm                      -
-:log-observe              -
-:lxd-support              -
-:mount-observe            -
-:netlink-audit            -
-:netlink-connector        -
-:network                  -
-:network-bind             -
-:network-control          -
-:network-observe          -
-:network-setup-control    -
-:network-setup-observe    -
-:opengl                   -
-:openvswitch-support      -
-:physical-memory-control  -
-:physical-memory-observe  -
-:ppp                      -
-:process-control          -
-:raw-usb                  -
-:removable-media          -
-:shutdown                 -
-:snapd-control            -
-:system-observe           -
-:system-trace             -
-:time-control             -
-:timeserver-control       -
-:timezone-control         -
-:tpm                      -
-:uhid                     -
-dragonboard:gpio-0        -
-dragonboard:gpio-1        -
-dragonboard:gpio-10       -
-dragonboard:gpio-100      -
-dragonboard:gpio-101      -
-dragonboard:gpio-102      -
-dragonboard:gpio-103      -
-dragonboard:gpio-104      -
-dragonboard:gpio-105      -
-dragonboard:gpio-106      -
-dragonboard:gpio-107      -
-dragonboard:gpio-108      -
-dragonboard:gpio-109      -
-dragonboard:gpio-11       -
-dragonboard:gpio-110      -
-dragonboard:gpio-111      -
-dragonboard:gpio-112      -
-dragonboard:gpio-113      -
-dragonboard:gpio-114      -
-dragonboard:gpio-115      -
-dragonboard:gpio-116      -
-dragonboard:gpio-117      -
-dragonboard:gpio-118      -
-dragonboard:gpio-119      -
-dragonboard:gpio-12       -
-dragonboard:gpio-120      -
-dragonboard:gpio-121      -
-dragonboard:gpio-13       -
-dragonboard:gpio-14       -
-dragonboard:gpio-15       -
-dragonboard:gpio-16       -
-dragonboard:gpio-17       -
-dragonboard:gpio-18       -
-dragonboard:gpio-19       -
-dragonboard:gpio-2        -
-dragonboard:gpio-20       -
-dragonboard:gpio-21       -
-dragonboard:gpio-22       -
-dragonboard:gpio-23       -
-dragonboard:gpio-24       -
-dragonboard:gpio-25       -
-dragonboard:gpio-26       -
-dragonboard:gpio-27       -
-dragonboard:gpio-28       -
-dragonboard:gpio-29       -
-dragonboard:gpio-3        -
-dragonboard:gpio-30       -
-dragonboard:gpio-31       -
-dragonboard:gpio-32       -
-dragonboard:gpio-33       -
-dragonboard:gpio-34       -
-dragonboard:gpio-35       -
-dragonboard:gpio-36       -
-dragonboard:gpio-37       -
-dragonboard:gpio-38       -
-dragonboard:gpio-39       -
-dragonboard:gpio-4        -
-dragonboard:gpio-40       -
-dragonboard:gpio-41       -
-dragonboard:gpio-42       -
-dragonboard:gpio-43       -
-dragonboard:gpio-44       -
-dragonboard:gpio-45       -
-dragonboard:gpio-46       -
-dragonboard:gpio-47       -
-dragonboard:gpio-48       -
-dragonboard:gpio-49       -
-dragonboard:gpio-5        -
-dragonboard:gpio-50       -
-dragonboard:gpio-51       -
-dragonboard:gpio-52       -
-dragonboard:gpio-53       -
-dragonboard:gpio-54       -
-dragonboard:gpio-55       -
-dragonboard:gpio-56       -
-dragonboard:gpio-57       -
-dragonboard:gpio-58       -
-dragonboard:gpio-59       -
-dragonboard:gpio-6        -
-dragonboard:gpio-60       -
-dragonboard:gpio-61       -
-dragonboard:gpio-62       -
-dragonboard:gpio-63       -
-dragonboard:gpio-64       -
-dragonboard:gpio-65       -
-dragonboard:gpio-66       -
-dragonboard:gpio-67       -
-dragonboard:gpio-68       -
-dragonboard:gpio-69       -
-dragonboard:gpio-7        -
-dragonboard:gpio-70       -
-dragonboard:gpio-71       -
-dragonboard:gpio-72       -
-dragonboard:gpio-73       -
-dragonboard:gpio-74       -
-dragonboard:gpio-75       -
-dragonboard:gpio-76       -
-dragonboard:gpio-77       -
-dragonboard:gpio-78       -
-dragonboard:gpio-79       -
-dragonboard:gpio-8        -
-dragonboard:gpio-80       -
-dragonboard:gpio-81       -
-dragonboard:gpio-82       -
-dragonboard:gpio-83       -
-dragonboard:gpio-84       -
-dragonboard:gpio-85       -
-dragonboard:gpio-86       -
-dragonboard:gpio-87       -
-dragonboard:gpio-88       -
-dragonboard:gpio-89       -
-dragonboard:gpio-9        -
-dragonboard:gpio-90       -
-dragonboard:gpio-91       -
-dragonboard:gpio-92       -
-dragonboard:gpio-93       -
-dragonboard:gpio-94       -
-dragonboard:gpio-95       -
-dragonboard:gpio-96       -
-dragonboard:gpio-97       -
-dragonboard:gpio-98       -
-dragonboard:gpio-99       -
-dragonboard:i2c-0         -
-dragonboard:i2c-1         -
-dragonboard:i2c-3         -
-dragonboard:serialtty-0   -
-dragonboard:serialtty-1   -
-dragonboard:serialtty-10  -
-dragonboard:serialtty-11  -
-dragonboard:serialtty-12  -
-dragonboard:serialtty-13  -
-dragonboard:serialtty-14  -
-dragonboard:serialtty-15  -
-dragonboard:serialtty-16  -
-dragonboard:serialtty-17  -
-dragonboard:serialtty-18  -
-dragonboard:serialtty-19  -
-dragonboard:serialtty-2   -
-dragonboard:serialtty-20  -
-dragonboard:serialtty-21  -
-dragonboard:serialtty-22  -
-dragonboard:serialtty-23  -
-dragonboard:serialtty-24  -
-dragonboard:serialtty-25  -
-dragonboard:serialtty-26  -
-dragonboard:serialtty-27  -
-dragonboard:serialtty-28  -
-dragonboard:serialtty-29  -
-dragonboard:serialtty-3   -
-dragonboard:serialtty-30  -
-dragonboard:serialtty-31  -
-dragonboard:serialtty-4   -
-dragonboard:serialtty-5   -
-dragonboard:serialtty-6   -
-dragonboard:serialtty-7   -
-dragonboard:serialtty-8   -
-dragonboard:serialtty-9   -
------
-.
-2017-09-20 07:40:39 Restoring external:ubuntu-core-16-arm-64:tests/main/interfaces-upower-observe...
-2017-09-20 07:40:39 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-cli...
-2017-09-20 07:42:52 Executing external:ubuntu-core-16-arm-64:tests/main/interfaces-cli (60/135)...
-2017-09-20 07:42:52 Restoring external:ubuntu-core-16-arm-64:tests/main/interfaces-cli...
-2017-09-20 07:42:52 Preparing external:ubuntu-core-16-arm-64:tests/main/snap-run-symlink-error...
-2017-09-20 07:44:43 Executing external:ubuntu-core-16-arm-64:tests/main/snap-run-symlink-error (61/135)...
-2017-09-20 07:44:44 Restoring external:ubuntu-core-16-arm-64:tests/main/snap-run-symlink-error...
-2017-09-20 07:44:44 Preparing external:ubuntu-core-16-arm-64:tests/main/snap-run-hook:reexec1...
-2017-09-20 07:46:55 Executing external:ubuntu-core-16-arm-64:tests/main/snap-run-hook:reexec1 (62/135)...
-2017-09-20 07:46:56 Restoring external:ubuntu-core-16-arm-64:tests/main/snap-run-hook:reexec1...
-2017-09-20 07:46:56 Preparing external:ubuntu-core-16-arm-64:tests/main/try-snap-goes-away:network_bind_consumer...
-2017-09-20 07:48:45 Executing external:ubuntu-core-16-arm-64:tests/main/try-snap-goes-away:network_bind_consumer (63/135)...
-2017-09-20 07:49:01 Restoring external:ubuntu-core-16-arm-64:tests/main/try-snap-goes-away:network_bind_consumer...
-2017-09-20 07:49:01 Preparing external:ubuntu-core-16-arm-64:tests/main/snap-interface...
-2017-09-20 07:50:57 Executing external:ubuntu-core-16-arm-64:tests/main/snap-interface (64/135)...
-2017-09-20 07:50:58 Restoring external:ubuntu-core-16-arm-64:tests/main/snap-interface...
-2017-09-20 07:50:58 Preparing external:ubuntu-core-16-arm-64:tests/main/snapctl-configure-core...
-2017-09-20 07:52:51 Executing external:ubuntu-core-16-arm-64:tests/main/snapctl-configure-core (65/135)...
-2017-09-20 07:53:24 Restoring external:ubuntu-core-16-arm-64:tests/main/snapctl-configure-core...
-2017-09-20 07:53:26 Preparing external:ubuntu-core-16-arm-64:tests/main/prepare-image-uboot...
-2017-09-20 07:55:13 Executing external:ubuntu-core-16-arm-64:tests/main/prepare-image-uboot (66/135)...
-2017-09-20 07:57:02 Restoring external:ubuntu-core-16-arm-64:tests/main/prepare-image-uboot...
-2017-09-20 07:57:02 Preparing external:ubuntu-core-16-arm-64:tests/main/try-snap-goes-away:test_snapd_tools...
-2017-09-20 07:58:47 Executing external:ubuntu-core-16-arm-64:tests/main/try-snap-goes-away:test_snapd_tools (67/135)...
-2017-09-20 07:59:13 Restoring external:ubuntu-core-16-arm-64:tests/main/try-snap-goes-away:test_snapd_tools...
-2017-09-20 07:59:13 Preparing external:ubuntu-core-16-arm-64:tests/main/install-sideload:reexec1...
-2017-09-20 08:01:10 Executing external:ubuntu-core-16-arm-64:tests/main/install-sideload:reexec1 (68/135)...
-2017-09-20 08:02:39 Restoring external:ubuntu-core-16-arm-64:tests/main/install-sideload:reexec1...
-2017-09-20 08:02:39 Preparing external:ubuntu-core-16-arm-64:tests/main/op-remove...
-2017-09-20 08:04:35 Executing external:ubuntu-core-16-arm-64:tests/main/op-remove (69/135)...
-2017-09-20 08:05:03 Restoring external:ubuntu-core-16-arm-64:tests/main/op-remove...
-2017-09-20 08:05:03 Preparing external:ubuntu-core-16-arm-64:tests/main/install-remove-multi...
-2017-09-20 08:06:33 Executing external:ubuntu-core-16-arm-64:tests/main/install-remove-multi (70/135)...
-2017-09-20 08:07:43 Preparing external:ubuntu-core-16-arm-64:tests/main/refresh-undo...
-2017-09-20 08:09:24 Executing external:ubuntu-core-16-arm-64:tests/main/refresh-undo (71/135)...
-2017-09-20 08:10:10 Preparing external:ubuntu-core-16-arm-64:tests/main/snap-connect...
-2017-09-20 08:12:11 Executing external:ubuntu-core-16-arm-64:tests/main/snap-connect (72/135)...
-2017-09-20 08:13:15 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-log-observe...
-2017-09-20 08:15:23 Executing external:ubuntu-core-16-arm-64:tests/main/interfaces-log-observe (73/135)...
-2017-09-20 08:15:38 Restoring external:ubuntu-core-16-arm-64:tests/main/interfaces-log-observe...
-2017-09-20 08:15:38 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-system-observe...
-2017-09-20 08:17:55 Executing external:ubuntu-core-16-arm-64:tests/main/interfaces-system-observe (74/135)...
-2017-09-20 08:18:08 Restoring external:ubuntu-core-16-arm-64:tests/main/interfaces-system-observe...
-2017-09-20 08:18:08 Preparing external:ubuntu-core-16-arm-64:tests/main/writable-areas:reexec1...
-2017-09-20 08:19:56 Executing external:ubuntu-core-16-arm-64:tests/main/writable-areas:reexec1 (75/135)...
-2017-09-20 08:20:09 Restoring external:ubuntu-core-16-arm-64:tests/main/writable-areas:reexec1...
-2017-09-20 08:20:10 Preparing external:ubuntu-core-16-arm-64:tests/main/help:abort...
-2017-09-20 08:21:48 Executing external:ubuntu-core-16-arm-64:tests/main/help:abort (76/135)...
-2017-09-20 08:21:49 Preparing external:ubuntu-core-16-arm-64:tests/main/snap-info...
-2017-09-20 08:24:25 Executing external:ubuntu-core-16-arm-64:tests/main/snap-info (77/135)...
-2017-09-20 08:24:28 Restoring external:ubuntu-core-16-arm-64:tests/main/snap-info...
-2017-09-20 08:24:28 Preparing external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-apt...
-2017-09-20 08:26:21 Executing external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-apt (78/135)...
-2017-09-20 08:26:21 Preparing external:ubuntu-core-16-arm-64:tests/main/known...
-2017-09-20 08:28:10 Executing external:ubuntu-core-16-arm-64:tests/main/known (79/135)...
-2017-09-20 08:28:11 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-bluetooth-control...
-2017-09-20 08:30:24 Executing external:ubuntu-core-16-arm-64:tests/main/interfaces-bluetooth-control (80/135)...
-2017-09-20 08:30:29 Restoring external:ubuntu-core-16-arm-64:tests/main/interfaces-bluetooth-control...
-2017-09-20 08:30:29 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-process-control...
-2017-09-20 08:32:30 Executing external:ubuntu-core-16-arm-64:tests/main/interfaces-process-control (81/135)...
-2017-09-20 08:32:37 Restoring external:ubuntu-core-16-arm-64:tests/main/interfaces-process-control...
-2017-09-20 08:32:37 Preparing external:ubuntu-core-16-arm-64:tests/main/refresh:classic_fake...
-2017-09-20 08:34:29 Executing external:ubuntu-core-16-arm-64:tests/main/refresh:classic_fake (82/135)...
-2017-09-20 08:34:29 Restoring external:ubuntu-core-16-arm-64:tests/main/refresh:classic_fake...
-2017-09-20 08:34:29 Preparing external:ubuntu-core-16-arm-64:tests/main/security-apparmor...
-2017-09-20 08:36:48 Executing external:ubuntu-core-16-arm-64:tests/main/security-apparmor (83/135)...
-2017-09-20 08:36:50 Restoring external:ubuntu-core-16-arm-64:tests/main/security-apparmor...
-2017-09-20 08:36:50 Preparing external:ubuntu-core-16-arm-64:tests/main/snapctl-from-snap...
-2017-09-20 08:39:09 Executing external:ubuntu-core-16-arm-64:tests/main/snapctl-from-snap (84/135)...
-2017-09-20 08:39:40 Restoring external:ubuntu-core-16-arm-64:tests/main/snapctl-from-snap...
-2017-09-20 08:39:40 Preparing external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-writablepaths...
-2017-09-20 08:41:35 Executing external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-writablepaths (85/135)...
-2017-09-20 08:41:38 Preparing external:ubuntu-core-16-arm-64:tests/main/base-snaps...
-2017-09-20 08:43:27 Executing external:ubuntu-core-16-arm-64:tests/main/base-snaps (86/135)...
-2017-09-20 08:43:43 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-home...
-2017-09-20 08:46:02 Executing external:ubuntu-core-16-arm-64:tests/main/interfaces-home (87/135)...
-2017-09-20 08:46:32 Restoring external:ubuntu-core-16-arm-64:tests/main/interfaces-home...
-2017-09-20 08:46:32 Preparing external:ubuntu-core-16-arm-64:tests/main/lxd...
-2017-09-20 08:48:26 Executing external:ubuntu-core-16-arm-64:tests/main/lxd (88/135)...
-2017-09-20 08:48:27 Restoring external:ubuntu-core-16-arm-64:tests/main/lxd...
-2017-09-20 08:48:27 Preparing external:ubuntu-core-16-arm-64:tests/main/revert-devmode:fake...
-2017-09-20 08:50:23 Executing external:ubuntu-core-16-arm-64:tests/main/revert-devmode:fake (89/135)...
-2017-09-20 08:50:23 Restoring external:ubuntu-core-16-arm-64:tests/main/revert-devmode:fake...
-2017-09-20 08:50:23 Preparing external:ubuntu-core-16-arm-64:tests/main/media-sharing...
-2017-09-20 08:52:36 Executing external:ubuntu-core-16-arm-64:tests/main/media-sharing (90/135)...
-2017-09-20 08:52:37 Restoring external:ubuntu-core-16-arm-64:tests/main/media-sharing...
-2017-09-20 08:52:37 Preparing external:ubuntu-core-16-arm-64:tests/main/searching...
-2017-09-20 08:54:19 Executing external:ubuntu-core-16-arm-64:tests/main/searching (91/135)...
-2017-09-20 08:54:23 Preparing external:ubuntu-core-16-arm-64:tests/main/refresh:strict_fake...
-2017-09-20 08:56:15 Executing external:ubuntu-core-16-arm-64:tests/main/refresh:strict_fake (92/135)...
-2017-09-20 08:56:15 Restoring external:ubuntu-core-16-arm-64:tests/main/refresh:strict_fake...
-2017-09-20 08:56:15 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-network-control-ip-netns...
-2017-09-20 08:58:35 Executing external:ubuntu-core-16-arm-64:tests/main/interfaces-network-control-ip-netns (93/135)...
-2017-09-20 08:58:37 Restoring external:ubuntu-core-16-arm-64:tests/main/interfaces-network-control-ip-netns...
-2017-09-20 08:58:42 Preparing external:ubuntu-core-16-arm-64:tests/main/refresh:strict_remote...
-2017-09-20 09:00:48 Executing external:ubuntu-core-16-arm-64:tests/main/refresh:strict_remote (94/135)...
-2017-09-20 09:01:34 Restoring external:ubuntu-core-16-arm-64:tests/main/refresh:strict_remote...
-2017-09-20 09:01:34 Preparing external:ubuntu-core-16-arm-64:tests/main/regression-home-snap-root-owned...
-2017-09-20 09:03:45 Executing external:ubuntu-core-16-arm-64:tests/main/regression-home-snap-root-owned (95/135)...
-2017-09-20 09:03:46 Preparing external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-uboot:initrdimg...
-2017-09-20 09:05:30 Executing external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-uboot:initrdimg (96/135)...
-2017-09-20 09:05:30 Preparing external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-classic...
-2017-09-20 09:07:18 Executing external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-classic (97/135)...
-2017-09-20 09:11:17 Restoring external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-classic...
-2017-09-20 09:11:17 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-hardware-observe...
-2017-09-20 09:13:29 Executing external:ubuntu-core-16-arm-64:tests/main/interfaces-hardware-observe (98/135)...
-2017-09-20 09:13:37 Restoring external:ubuntu-core-16-arm-64:tests/main/interfaces-hardware-observe...
-2017-09-20 09:13:37 Preparing external:ubuntu-core-16-arm-64:tests/main/security-device-cgroups:kmsg...
-2017-09-20 09:15:39 Executing external:ubuntu-core-16-arm-64:tests/main/security-device-cgroups:kmsg (99/135)...
-2017-09-20 09:16:01 Restoring external:ubuntu-core-16-arm-64:tests/main/security-device-cgroups:kmsg...
-2017-09-20 09:16:01 Preparing external:ubuntu-core-16-arm-64:tests/main/refresh:classic_remote...
-2017-09-20 09:17:50 Executing external:ubuntu-core-16-arm-64:tests/main/refresh:classic_remote (100/135)...
-2017-09-20 09:17:50 Restoring external:ubuntu-core-16-arm-64:tests/main/refresh:classic_remote...
-2017-09-20 09:17:50 Preparing external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-uboot:kernelimg...
-2017-09-20 09:19:33 Executing external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-uboot:kernelimg (101/135)...
-2017-09-20 09:19:34 Preparing external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-create-user...
-2017-09-20 09:21:31 Executing external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-create-user (102/135)...
-2017-09-20 09:21:32 Restoring external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-create-user...
-2017-09-20 09:21:32 Preparing external:ubuntu-core-16-arm-64:tests/main/change-errors...
-2017-09-20 09:23:32 Executing external:ubuntu-core-16-arm-64:tests/main/change-errors (103/135)...
-2017-09-20 09:23:33 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-firewall-control...
-2017-09-20 09:25:40 Executing external:ubuntu-core-16-arm-64:tests/main/interfaces-firewall-control (104/135)...
-2017-09-20 09:25:51 Restoring external:ubuntu-core-16-arm-64:tests/main/interfaces-firewall-control...
-2017-09-20 09:25:51 Preparing external:ubuntu-core-16-arm-64:tests/main/revert-devmode:remote...
-2017-09-20 09:28:09 Executing external:ubuntu-core-16-arm-64:tests/main/revert-devmode:remote (105/135)...
-2017-09-20 09:29:05 Restoring external:ubuntu-core-16-arm-64:tests/main/revert-devmode:remote...
-2017-09-20 09:29:05 Preparing external:ubuntu-core-16-arm-64:tests/main/snap-download...
-2017-09-20 09:30:55 Executing external:ubuntu-core-16-arm-64:tests/main/snap-download (106/135)...
-2017-09-20 09:31:16 Restoring external:ubuntu-core-16-arm-64:tests/main/snap-download...
-2017-09-20 09:31:16 Preparing external:ubuntu-core-16-arm-64:tests/main/xauth-migration...
-2017-09-20 09:32:45 Executing external:ubuntu-core-16-arm-64:tests/main/xauth-migration (107/135)...
-2017-09-20 09:33:15 Preparing external:ubuntu-core-16-arm-64:tests/main/snap-update-ns...
-2017-09-20 09:35:28 Executing external:ubuntu-core-16-arm-64:tests/main/snap-update-ns (108/135)...
-2017-09-20 09:35:34 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-fuse_support...
-2017-09-20 09:37:47 Executing external:ubuntu-core-16-arm-64:tests/main/interfaces-fuse_support (109/135)...
-2017-09-20 09:38:01 Restoring external:ubuntu-core-16-arm-64:tests/main/interfaces-fuse_support...
-2017-09-20 09:38:01 Preparing external:ubuntu-core-16-arm-64:tests/main/writable-areas:reexec0...
-2017-09-20 09:39:56 Executing external:ubuntu-core-16-arm-64:tests/main/writable-areas:reexec0 (110/135)...
-2017-09-20 09:40:20 Restoring external:ubuntu-core-16-arm-64:tests/main/writable-areas:reexec0...
-2017-09-20 09:40:20 Preparing external:ubuntu-core-16-arm-64:tests/main/security-profiles...
-2017-09-20 09:42:05 Executing external:ubuntu-core-16-arm-64:tests/main/security-profiles (111/135)...
-2017-09-20 09:42:35 Restoring external:ubuntu-core-16-arm-64:tests/main/security-profiles...
-2017-09-20 09:42:36 Preparing external:ubuntu-core-16-arm-64:tests/main/alias...
-2017-09-20 09:44:48 Executing external:ubuntu-core-16-arm-64:tests/main/alias (112/135)...
-2017-09-20 09:44:58 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-content-empty-content-attr...
-2017-09-20 09:47:07 Executing external:ubuntu-core-16-arm-64:tests/main/interfaces-content-empty-content-attr (113/135)...
-2017-09-20 09:47:12 Preparing external:ubuntu-core-16-arm-64:tests/main/systemd-service...
-2017-09-20 09:49:07 Executing external:ubuntu-core-16-arm-64:tests/main/systemd-service (114/135)...
-2017-09-20 09:49:19 Restoring external:ubuntu-core-16-arm-64:tests/main/systemd-service...
-2017-09-20 09:49:20 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-locale-control...
-2017-09-20 09:51:11 Executing external:ubuntu-core-16-arm-64:tests/main/interfaces-locale-control (115/135)...
-2017-09-20 09:51:11 Restoring external:ubuntu-core-16-arm-64:tests/main/interfaces-locale-control...
-2017-09-20 09:51:11 Preparing external:ubuntu-core-16-arm-64:tests/main/server-snap:goServer...
-2017-09-20 09:53:22 Executing external:ubuntu-core-16-arm-64:tests/main/server-snap:goServer (116/135)...
-2017-09-20 09:53:22 Restoring external:ubuntu-core-16-arm-64:tests/main/server-snap:goServer...
-2017-09-20 09:53:23 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-mount-observe...
-2017-09-20 09:55:36 Executing external:ubuntu-core-16-arm-64:tests/main/interfaces-mount-observe (117/135)...
-2017-09-20 09:55:57 Restoring external:ubuntu-core-16-arm-64:tests/main/interfaces-mount-observe...
-2017-09-20 09:55:57 Preparing external:ubuntu-core-16-arm-64:tests/main/interfaces-bluez...
-2017-09-20 09:57:47 Executing external:ubuntu-core-16-arm-64:tests/main/interfaces-bluez (118/135)...
-2017-09-20 09:58:25 Preparing external:ubuntu-core-16-arm-64:tests/main/snap-set...
-2017-09-20 10:00:41 Executing external:ubuntu-core-16-arm-64:tests/main/snap-set (119/135)...
-2017-09-20 10:00:57 Restoring external:ubuntu-core-16-arm-64:tests/main/snap-set...
-2017-09-20 10:00:58 Preparing external:ubuntu-core-16-arm-64:tests/main/revert-sideload...
-2017-09-20 10:02:51 Executing external:ubuntu-core-16-arm-64:tests/main/revert-sideload (120/135)...
-2017-09-20 10:03:12 Restoring external:ubuntu-core-16-arm-64:tests/main/revert-sideload...
-2017-09-20 10:03:12 Preparing external:ubuntu-core-16-arm-64:tests/main/revert:fake...
-2017-09-20 10:05:08 Executing external:ubuntu-core-16-arm-64:tests/main/revert:fake (121/135)...
-2017-09-20 10:05:08 Restoring external:ubuntu-core-16-arm-64:tests/main/revert:fake...
-2017-09-20 10:05:08 Preparing external:ubuntu-core-16-arm-64:tests/main/find-private...
-2017-09-20 10:07:00 Executing external:ubuntu-core-16-arm-64:tests/main/find-private (122/135)...
-2017-09-20 10:07:02 Restoring external:ubuntu-core-16-arm-64:tests/main/find-private...
-2017-09-20 10:07:02 Preparing external:ubuntu-core-16-arm-64:tests/main/help:install...
-2017-09-20 10:08:52 Executing external:ubuntu-core-16-arm-64:tests/main/help:install (123/135)...
-2017-09-20 10:08:53 Preparing external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-reboot...
-2017-09-20 10:11:19 Executing external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-reboot (124/135)...
-2017-09-20 10:11:19 Rebooting external:ubuntu-core-16-arm-64 as requested...
-2017-09-20 10:12:10 Restoring external:ubuntu-core-16-arm-64:tests/main/...
-2017-09-20 10:14:04 Preparing external:ubuntu-core-16-arm-64:tests/regression/...
-2017-09-20 10:14:12 Preparing external:ubuntu-core-16-arm-64:tests/regression/lp-1607796...
-2017-09-20 10:16:24 Executing external:ubuntu-core-16-arm-64:tests/regression/lp-1607796 (125/135)...
-2017-09-20 10:16:25 Restoring external:ubuntu-core-16-arm-64:tests/regression/lp-1607796...
-2017-09-20 10:16:25 Preparing external:ubuntu-core-16-arm-64:tests/regression/lp-1630479...
-2017-09-20 10:18:45 Executing external:ubuntu-core-16-arm-64:tests/regression/lp-1630479 (126/135)...
-2017-09-20 10:18:46 Preparing external:ubuntu-core-16-arm-64:tests/regression/lp-1667385:devmode...
-2017-09-20 10:20:52 Executing external:ubuntu-core-16-arm-64:tests/regression/lp-1667385:devmode (127/135)...
-2017-09-20 10:20:55 Preparing external:ubuntu-core-16-arm-64:tests/regression/lp-1615113...
-2017-09-20 10:23:24 Executing external:ubuntu-core-16-arm-64:tests/regression/lp-1615113 (128/135)...
-2017-09-20 10:23:25 Preparing external:ubuntu-core-16-arm-64:tests/regression/lp-1641885...
-2017-09-20 10:25:37 Executing external:ubuntu-core-16-arm-64:tests/regression/lp-1641885 (129/135)...
-2017-09-20 10:25:38 Restoring external:ubuntu-core-16-arm-64:tests/regression/lp-1641885...
-2017-09-20 10:25:38 Preparing external:ubuntu-core-16-arm-64:tests/regression/lp-1599891...
-2017-09-20 10:27:28 Executing external:ubuntu-core-16-arm-64:tests/regression/lp-1599891 (130/135)...
-2017-09-20 10:27:29 Preparing external:ubuntu-core-16-arm-64:tests/regression/lp-1667385:jailmode...
-2017-09-20 10:29:43 Executing external:ubuntu-core-16-arm-64:tests/regression/lp-1667385:jailmode (131/135)...
-2017-09-20 10:29:48 Preparing external:ubuntu-core-16-arm-64:tests/regression/lp-1618683...
-2017-09-20 10:32:04 Executing external:ubuntu-core-16-arm-64:tests/regression/lp-1618683 (132/135)...
-2017-09-20 10:32:05 Preparing external:ubuntu-core-16-arm-64:tests/regression/lp-1606277...
-2017-09-20 10:34:06 Executing external:ubuntu-core-16-arm-64:tests/regression/lp-1606277 (133/135)...
-2017-09-20 10:34:07 Preparing external:ubuntu-core-16-arm-64:tests/regression/lp-1693042...
-2017-09-20 10:35:49 Executing external:ubuntu-core-16-arm-64:tests/regression/lp-1693042 (134/135)...
-2017-09-20 10:35:55 Preparing external:ubuntu-core-16-arm-64:tests/regression/lp-1665004...
-2017-09-20 10:38:12 Executing external:ubuntu-core-16-arm-64:tests/regression/lp-1665004 (135/135)...
-2017-09-20 10:38:13 Restoring external:ubuntu-core-16-arm-64:tests/regression/...
-2017-09-20 10:39:57 Restoring project on external:ubuntu-core-16-arm-64...
-2017-09-20 10:40:02 Discarding external:ubuntu-core-16-arm-64...
-2017-09-20 10:40:02 Successful tasks: 133
-2017-09-20 10:40:02 Aborted tasks: 1
-2017-09-20 10:40:02 Failed tasks: 1
-    - external:ubuntu-core-16-arm-64:tests/main/ubuntu-core-services
-2017-09-20 10:40:02 Failed task prepare: 1
-    - external:ubuntu-core-16-arm-64:tests/main/interfaces-upower-observe
-error: unsuccessful run
-2017-09-20 10:40:02,732 dragonboard_005 WARNING: Tests failed, rc=1
-2017-09-20 10:40:02,733 dragonboard_005 INFO: END testrun
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Warning: Permanently added '10.101.51.12' (ECDSA) to the list of known hosts.
+Permission denied, please try again.
+2017-09-20 13:31:01,218 dragonboard_002 ERROR: exception
+Traceback (most recent call last):
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/guacamole-0.9.2-py3.5.egg/guacamole/core.py", line 248, in eat
+    return self._dispatch()
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/guacamole-0.9.2-py3.5.egg/guacamole/core.py", line 298, in _dispatch
+    result = ingredient.dispatch(self.context)
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/guacamole-0.9.2-py3.5.egg/guacamole/ingredients/cmdtree.py", line 152, in dispatch
+    return self._dispatch(context, 0)
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/guacamole-0.9.2-py3.5.egg/guacamole/ingredients/cmdtree.py", line 179, in _dispatch
+    return self._dispatch_None(context, level, retval, command)
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/guacamole-0.9.2-py3.5.egg/guacamole/ingredients/cmdtree.py", line 208, in _dispatch_None
+    return self._dispatch(context, level + 1)
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/guacamole-0.9.2-py3.5.egg/guacamole/ingredients/cmdtree.py", line 179, in _dispatch
+    return self._dispatch_None(context, level, retval, command)
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/guacamole-0.9.2-py3.5.egg/guacamole/ingredients/cmdtree.py", line 208, in _dispatch_None
+    return self._dispatch(context, level + 1)
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/guacamole-0.9.2-py3.5.egg/guacamole/ingredients/cmdtree.py", line 165, in _dispatch
+    retval = command.invoked(context)
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/snappy_device_agents-0.0.1-py3.5.egg/devices/__init__.py", line 37, in wrapper
+    return func(*args, **kwargs)
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/snappy_device_agents-0.0.1-py3.5.egg/devices/dragonboard/__init__.py", line 44, in invoked
+    device.provision()
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/snappy_device_agents-0.0.1-py3.5.egg/devices/dragonboard/dragonboard.py", line 350, in provision
+    self.ensure_test_image(test_username, test_password)
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/snappy_device_agents-0.0.1-py3.5.egg/devices/dragonboard/dragonboard.py", line 124, in ensure_test_image
+    raise ProvisioningError("Failed to boot test image!")
+devices.ProvisioningError: Failed to boot test image!
+Traceback (most recent call last):
+  File "/srv/testflinger-agent/dragonboard002/env/bin/snappy-device-agent", line 4, in <module>
+    __import__('pkg_resources').run_script('snappy-device-agents==0.0.1', 'snappy-device-agent')
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/pkg_resources/__init__.py", line 719, in run_script
+    self.require(requires)[0].run_script(script_name, ns)
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/pkg_resources/__init__.py", line 1504, in run_script
+    exec(code, namespace, namespace)
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/snappy_device_agents-0.0.1-py3.5.egg/EGG-INFO/scripts/snappy-device-agent", line 25, in <module>
+    main()
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/snappy_device_agents-0.0.1-py3.5.egg/snappy_device_agents/cmd.py", line 75, in main
+    Agent().main()
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/snappy_device_agents-0.0.1-py3.5.egg/snappy_device_agents/cmd.py", line 71, in main
+    return AgentCommandRecipe(self).main(argv, exit)
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/guacamole-0.9.2-py3.5.egg/guacamole/recipes/__init__.py", line 119, in main
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/guacamole-0.9.2-py3.5.egg/guacamole/core.py", line 254, in eat
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/guacamole-0.9.2-py3.5.egg/guacamole/core.py", line 310, in _dispatch_failed
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/guacamole-0.9.2-py3.5.egg/guacamole/core.py", line 248, in eat
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/guacamole-0.9.2-py3.5.egg/guacamole/core.py", line 298, in _dispatch
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/guacamole-0.9.2-py3.5.egg/guacamole/ingredients/cmdtree.py", line 152, in dispatch
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/guacamole-0.9.2-py3.5.egg/guacamole/ingredients/cmdtree.py", line 179, in _dispatch
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/guacamole-0.9.2-py3.5.egg/guacamole/ingredients/cmdtree.py", line 208, in _dispatch_None
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/guacamole-0.9.2-py3.5.egg/guacamole/ingredients/cmdtree.py", line 179, in _dispatch
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/guacamole-0.9.2-py3.5.egg/guacamole/ingredients/cmdtree.py", line 208, in _dispatch_None
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/guacamole-0.9.2-py3.5.egg/guacamole/ingredients/cmdtree.py", line 165, in _dispatch
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/snappy_device_agents-0.0.1-py3.5.egg/devices/__init__.py", line 37, in wrapper
+    return func(*args, **kwargs)
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/snappy_device_agents-0.0.1-py3.5.egg/devices/dragonboard/__init__.py", line 44, in invoked
+    device.provision()
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/snappy_device_agents-0.0.1-py3.5.egg/devices/dragonboard/dragonboard.py", line 350, in provision
+    self.ensure_test_image(test_username, test_password)
+  File "/srv/testflinger-agent/dragonboard002/env/lib/python3.5/site-packages/snappy_device_agents-0.0.1-py3.5.egg/devices/dragonboard/dragonboard.py", line 124, in ensure_test_image
+    raise ProvisioningError("Failed to boot test image!")
+devices.ProvisioningError: Failed to boot test image!
 complete
